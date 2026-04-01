@@ -23,12 +23,12 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Nanded City Pune | Premium Residential Flats",
-    description: "Exclusive residential clusters — Melody, Aalaap, and Saajgiri. 400+ acres of eco-friendly luxury living on Sinhagad Road, Pune.",
+    description: "Exclusive residential clusters — Melody, Aalaap, and Saajgiri. 700 Acres of eco-friendly luxury living on Sinhagad Road, Pune.",
     images: ["https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"],
   },
   openGraph: {
     title: "Nanded City Pune | Built on Trust",
-    description: "Exclusive residential clusters — Melody, Aalaap, and Saajgiri. 400+ acres of eco-friendly luxury living on Sinhagad Road, Pune.",
+    description: "Exclusive residential clusters — Melody, Aalaap, and Saajgiri. 700 Acres of eco-friendly luxury living on Sinhagad Road, Pune.",
     url: "https://nandedcitypune.com",
     siteName: "Nanded City Pune Residences",
     images: [

@@ -107,7 +107,7 @@ export default function Home() {
         <span className="badge badge-gold">Sinhagad Road · Pune</span>
         <h1 className="speakable-title">Welcome to <span>Nanded City Pune</span></h1>
         <p className="hero-seo-text">
-          Discover <strong>premium 2 & 3 BHK luxury flats in Nanded City Pune</strong>. An eco-friendly township on <strong>Sinhagad Road</strong> offering MahaRERA registered projects with <em>world-class development</em> across 400+ acres.
+          Discover <strong>premium 2 & 3 BHK luxury flats in Nanded City Pune</strong>. An eco-friendly township on <strong>Sinhagad Road</strong> offering MahaRERA registered projects with <em>world-class development</em> across 700 Acres township.
         </p>
         <div className="hero-actions">
           <a href="#ongoing" className="btn btn-gold">Explore Projects</a>
@@ -190,7 +190,7 @@ export default function Home() {
           <div className="why-grid">
             {[
               { icon: '🏆', title: '25+ Years of Excellence', body: 'A legacy developer trusted by 15,000+ families across Pune for timely delivery and superior construction quality.' },
-              { icon: '🌿', title: 'Eco-Friendly Township', body: '400+ acres with 70% open spaces, rainwater harvesting, solar energy, and a dedicated green belt.' },
+              { icon: '🌿', title: 'Eco-Friendly Township', body: '700 Acres with 70% open spaces, rainwater harvesting, solar energy, and a dedicated green belt.' },
               { icon: '📜', title: 'MahaRERA Compliant', body: 'Every active project carries a valid MahaRERA registration number, ensuring full legal transparency and buyer protection.' },
               { icon: '🎓', title: 'World-Class Infrastructure', body: 'Schools, hospitals, shopping centers, and recreational facilities are all within the township — a truly walkable community.' },
             ].map((w, idx) => (
@@ -203,6 +203,51 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Master Township Layout */}
+      <section className="section-padding" style={{ backgroundColor: '#0f172a', color: '#fff' }}>
+        <div className="container">
+          <ScrollReveal className="section-header" style={{ color: '#fff' }}>
+            <span className="section-eyebrow" style={{ color: 'var(--accent-gold)' }}>700 Acres of Perfection</span>
+            <h2 style={{ color: '#fff' }}>Master Township Layout</h2>
+            <p style={{ color: 'rgba(255,255,255,0.8)' }}>
+              Explore the sheer scale of Nanded City. From the expansive <strong>Symphony IT Park</strong> and dedicated Education grids to the massive <strong>Kridaangan</strong> sports complexes and Commercial Destination Centers interconnecting the residential ecosystems.
+            </p>
+          </ScrollReveal>
+          
+          <ScrollReveal delay={0.2}>
+            <div style={{ position: 'relative', width: '100%', height: '600px', backgroundColor: '#f1f5f9', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)' }}>
+              <Image 
+                src="/master-layout.png" 
+                alt="Nanded City Master Township Layout showcasing Symphony IT Park, Destination Centers, and Residential Clusters" 
+                fill 
+                style={{ objectFit: 'contain', padding: '10px' }} 
+              />
+            </div>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginTop: '40px' }}>
+              <div style={{ padding: '24px', backgroundColor: 'rgba(255,255,255,0.03)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <strong style={{ color: 'var(--accent-gold)', display: 'block', fontSize: '1.2rem', marginBottom: '8px' }}>Residential Mastery</strong>
+                <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.6', display: 'block' }}>
+                  Integrated clusters including Melody, Rhythm, Kalashree, Bageshree, Saajgiri, Stream Park, Sarang, and Bahaar interconnected by green corridors.
+                </span>
+              </div>
+              <div style={{ padding: '24px', backgroundColor: 'rgba(255,255,255,0.03)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <strong style={{ color: 'var(--accent-gold)', display: 'block', fontSize: '1.2rem', marginBottom: '8px' }}>Commercial Hubs</strong>
+                <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.6', display: 'block' }}>
+                  A self-sustaining micro-economy featuring Destination Center-I & II and the cutting-edge Symphony IT Park for immense local employment.
+                </span>
+              </div>
+              <div style={{ padding: '24px', backgroundColor: 'rgba(255,255,255,0.03)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.1)' }}>
+                <strong style={{ color: 'var(--accent-gold)', display: 'block', fontSize: '1.2rem', marginBottom: '8px' }}>Lifestyle Infrastructure</strong>
+                <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.95rem', lineHeight: '1.6', display: 'block' }}>
+                  Fully equipped with the centralized Kridaangan Sports complex, Club Harmony, and dedicated Nanded City Public School grids.
+                </span>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
