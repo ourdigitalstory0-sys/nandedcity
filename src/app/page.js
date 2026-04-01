@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { clusters } from '../data/clusters';
 import ContactForm from './components/ContactForm';
 import ReraQrCode from './components/ReraQrCode';
@@ -73,6 +74,27 @@ export default function Home() {
           "item": "https://nandedcitypune.com"
         }
       ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Nanded City Developers Pune",
+      "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+      "telephone": "+917996645777",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Nanded, Sinhagad Road",
+        "addressLocality": "Pune",
+        "addressRegion": "Maharashtra",
+        "postalCode": "411041",
+        "addressCountry": "IN"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SpeakableSpecification",
+      "xpathtypes": ["cssSelector"],
+      "cssSelector": [".hero-seo-text", ".speakable-title"]
     }
   ];
 
@@ -83,8 +105,10 @@ export default function Home() {
       {/* Hero */}
       <ParallaxHero bgImage="https://nandedcitypune.com/wp-content/uploads/2026/02/saajgiri-ncp-banner-img-01.webp">
         <span className="badge badge-gold">Sinhagad Road · Pune</span>
-        <h1>Welcome to <span>Nanded City</span></h1>
-        <p>A place that strikes the perfect balance between nature, eco-friendly lifestyle and modern, world-class development. 400+ acres of curated luxury.</p>
+        <h1 className="speakable-title">Welcome to <span>Nanded City Pune</span></h1>
+        <p className="hero-seo-text">
+          Discover <strong>premium 2 & 3 BHK luxury flats in Nanded City Pune</strong>. An eco-friendly township on <strong>Sinhagad Road</strong> offering MahaRERA registered projects with <em>world-class development</em> across 400+ acres.
+        </p>
         <div className="hero-actions">
           <a href="#ongoing" className="btn btn-gold">Explore Projects</a>
           <a href="#contact" className="btn btn-outline">Contact Us</a>
@@ -219,6 +243,39 @@ export default function Home() {
               </article>
               </ScrollReveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SEO Compass Grid */}
+      <section className="section-padding" style={{ backgroundColor: '#f8fafc', borderTop: '1px solid #e2e8f0' }}>
+        <div className="container">
+          <div className="section-header" style={{ marginBottom: '30px', textAlign: 'left' }}>
+            <span className="section-eyebrow">Top Real Estate Searches in Pune</span>
+            <h2 style={{ fontSize: '1.75rem', color: '#111827' }}>Explore Nanded City Clusters</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+            <div style={{ padding: '24px', backgroundColor: '#fff', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', color: '#1e293b' }}>Luxury 3 BHK Flats</h3>
+              <p style={{ fontSize: '0.95rem', color: '#64748b', lineHeight: '1.6' }}>
+                Looking for <strong>spacious 3 BHK apartments in Pune</strong> with panoramic views? 
+                Explore the premium high-rise residences at <Link href="/cluster/saajgiri" style={{ color: 'var(--accent-gold)', fontWeight: '600' }}>Saajgiri</Link>.
+              </p>
+            </div>
+            <div style={{ padding: '24px', backgroundColor: '#fff', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', color: '#1e293b' }}>Premium Bungalow Plots</h3>
+              <p style={{ fontSize: '0.95rem', color: '#64748b', lineHeight: '1.6' }}>
+                Invest in <strong>premium bungalow plots near Hinjewadi IT Park routes</strong> and Sinhagad Road. 
+                Secure your legacy with <Link href="/cluster/rhythm-1" style={{ color: 'var(--accent-gold)', fontWeight: '600' }}>Rhythm</Link> today.
+              </p>
+            </div>
+            <div style={{ padding: '24px', backgroundColor: '#fff', borderRadius: '12px', boxShadow: '0 4px 6px -1px rgba(0,0,0,0.05)' }}>
+              <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', color: '#1e293b' }}>Affordable 2 BHK Homes</h3>
+              <p style={{ fontSize: '0.95rem', color: '#64748b', lineHeight: '1.6' }}>
+                Discover vibrant community living with <strong>MahaRERA registered 2 BHK flats in Pune</strong>. 
+                Experience tranquility and modern design at <Link href="/cluster/aalaap-1" style={{ color: 'var(--accent-gold)', fontWeight: '600' }}>Aalaap-I</Link>.
+              </p>
+            </div>
           </div>
         </div>
       </section>
