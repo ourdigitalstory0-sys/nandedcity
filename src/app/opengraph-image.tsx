@@ -144,7 +144,7 @@ export default function Image() {
             display: 'flex',
           }}
         >
-          nandedcitypune.com
+          www.nanded-city.in
         </div>
       </div>
     ),

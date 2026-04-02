@@ -27,12 +27,12 @@ export async function generateMetadata({ params }: { params: Promise<PostParams>
     title: `${post.title} | Nanded City Pune Insights`,
     description: post.excerpt,
     alternates: {
-      canonical: `https://nandedcitypune.com/blog/${post.slug}`,
+      canonical: `https://www.nanded-city.in/blog/${post.slug}`,
     },
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://nandedcitypune.com/blog/${post.slug}`,
+      url: `https://www.nanded-city.in/blog/${post.slug}`,
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
@@ -67,7 +67,7 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
     "@type": "BlogPosting",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://nandedcitypune.com/blog/${post.slug}`
+      "@id": `https://www.nanded-city.in/blog/${post.slug}`
     },
     "headline": post.title,
     "description": post.excerpt,
@@ -75,7 +75,7 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
     "author": {
       "@type": "Organization",
       "name": post.author,
-      "url": "https://nandedcitypune.com",
+      "url": "https://www.nanded-city.in",
       "knowsAbout": [
         "Real Estate Investment in Pune",
         "Sinhagad Road Property Market",
@@ -94,16 +94,16 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
       "name": "Nanded City Developers Pune",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://nandedcitypune.com/wp-content/themes/nandedcity/images/nc-logo.png"
+        "url": "https://www.nanded-city.in/wp-content/themes/nandedcity/images/nc-logo.png"
       },
-      "@id": "https://nandedcitypune.com/#organization"
+      "@id": "https://www.nanded-city.in/#organization"
     },
     "datePublished": post.date,
     "dateModified": post.date,
     "inLanguage": "en-IN",
     "isPartOf": {
       "@type": "WebSite",
-      "@id": "https://nandedcitypune.com/#website"
+      "@id": "https://www.nanded-city.in/#website"
     },
     // Speakable — enables Google Assistant and SGE audio answers
     "speakable": {
@@ -113,7 +113,7 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
     "about": {
       "@type": "Thing",
       "name": "Nanded City Pune Real Estate",
-      "sameAs": "https://nandedcitypune.com"
+      "sameAs": "https://www.nanded-city.in"
     },
     "keywords": `${post.category}, Nanded City Pune, Sinhagad Road Real Estate, MahaRERA Projects`
   };
@@ -127,19 +127,19 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://nandedcitypune.com"
+        "item": "https://www.nanded-city.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Market Intelligence",
-        "item": "https://nandedcitypune.com/blog"
+        "item": "https://www.nanded-city.in/blog"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://nandedcitypune.com/blog/${post.slug}`
+        "item": `https://www.nanded-city.in/blog/${post.slug}`
       }
     ]
   };

@@ -77,7 +77,7 @@ export default function DynamicHeader() {
             {/* Left: Logo */}
             <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
               <Image 
-                src="https://nandedcitypune.com/wp-content/themes/nandedcity/images/nc-logo.png" 
+                src="https://www.nanded-city.in/wp-content/themes/nandedcity/images/nc-logo.png" 
                 alt="Nanded City" 
                 width={140} 
                 height={42} 
@@ -191,7 +191,7 @@ export default function DynamicHeader() {
             }}
           >
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '50px' }}>
-              <Image src="https://nandedcitypune.com/wp-content/themes/nandedcity/images/nc-logo.png" alt="Logo" width={100} height={30} />
+              <Image src="https://www.nanded-city.in/wp-content/themes/nandedcity/images/nc-logo.png" alt="Logo" width={100} height={30} />
               <button 
                 onClick={() => setMobileMenuOpen(false)}
                 style={{ background: 'none', border: 'none', fontSize: '2rem', color: '#0f172a', cursor: 'pointer' }}

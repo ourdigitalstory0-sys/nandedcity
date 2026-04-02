@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { clusters } from '../../../data/clusters';
 
 export async function GET() {
-  const host = "nandedcitypune.com";
+  const host = "www.nanded-city.in";
   // The unique key for IndexNow for this domain
   // In a production environment, this should match a hosted text file at the server root.
   const key = "a5f8b9e6c4d742e983f1a0b5c7d8e9fa"; 

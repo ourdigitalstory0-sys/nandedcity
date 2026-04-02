@@ -17,7 +17,7 @@ import { RealEstateAgent, WebSite, BreadcrumbList, LocalBusiness, SpeakableSpeci
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://nandedcitypune.com',
+    canonical: 'https://www.nanded-city.in',
   },
 };
 
@@ -31,8 +31,8 @@ export default function Home() {
       "@type": "RealEstateAgent",
       "name": "Nanded City Developers",
       "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      "@id": "https://nandedcitypune.com",
-      "url": "https://nandedcitypune.com",
+      "@id": "https://www.nanded-city.in",
+      "url": "https://www.nanded-city.in",
       "telephone": "+917996645777",
       "address": {
         "@type": "PostalAddress",
@@ -65,10 +65,10 @@ export default function Home() {
       "@context": "https://schema.org",
       "@type": "WebSite",
       "name": "Nanded City Pune",
-      "url": "https://nandedcitypune.com",
+      "url": "https://www.nanded-city.in",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://nandedcitypune.com/?s={search_term_string}",
+        "target": "https://www.nanded-city.in/?s={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     },
@@ -80,7 +80,7 @@ export default function Home() {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://nandedcitypune.com"
+          "item": "https://www.nanded-city.in"
         }
       ]
     },
@@ -111,7 +111,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Hero */}
-      <ParallaxHero bgImage="https://nandedcitypune.com/wp-content/uploads/2026/02/saajgiri-ncp-banner-img-01.webp">
+      <ParallaxHero bgImage="https://www.nanded-city.in/wp-content/uploads/2026/02/saajgiri-ncp-banner-img-01.webp">
         <span className="badge badge-gold">Sinhagad Road · Pune</span>
         <h1 className="speakable-title">Welcome to <span>Nanded City Pune</span></h1>
         <p className="hero-seo-text">
@@ -361,7 +361,7 @@ export default function Home() {
               <ReraQrCode 
                 reraUrl="https://maharera.mahaonline.gov.in/" 
                 reraNumber="MahaRERA Registered Projects" 
-                qrImage="https://nandedcitypune.com/aalaap/assets/img/img-aalaap-qr-code.png" 
+                qrImage="https://www.nanded-city.in/aalaap/assets/img/img-aalaap-qr-code.png" 
               />
             </div>
             <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: '32px' }}>
@@ -378,7 +378,7 @@ export default function Home() {
               </div>
               <div className="contact-item">
                 <span className="contact-icon">✉️</span>
-                <a href="mailto:info@nandedcitypune.com" style={{ color: 'rgba(255,255,255,0.9)' }}>info@nandedcitypune.com</a>
+                <a href="mailto:info@www.nanded-city.in" style={{ color: 'rgba(255,255,255,0.9)' }}>info@www.nanded-city.in</a>
               </div>
             </div>
           </ScrollReveal>

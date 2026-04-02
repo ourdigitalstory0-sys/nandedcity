@@ -26,7 +26,7 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
       "@type": "ListItem",
       "position": index + 1,
       "name": item.name,
-      "item": item.href ? `https://nandedcitypune.com${item.href}` : null,
+      "item": item.href ? `https://www.nanded-city.in${item.href}` : null,
     })),
   };
 

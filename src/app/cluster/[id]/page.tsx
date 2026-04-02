@@ -28,11 +28,11 @@ export async function generateMetadata({ params }: { params: Promise<ClusterPara
     openGraph: {
       title: `${cluster.name} | Nanded City, Pune`,
       description: cluster.description,
-      url: `https://nandedcitypune.com/cluster/${cluster.id}`,
+      url: `https://www.nanded-city.in/cluster/${cluster.id}`,
       images: [{ url: cluster.heroImage, width: 1200, height: 630 }],
     },
     alternates: {
-      canonical: `https://nandedcitypune.com/cluster/${cluster.id}`,
+      canonical: `https://www.nanded-city.in/cluster/${cluster.id}`,
     },
   };
 }
@@ -52,7 +52,7 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
     "@type": "Product",
     "name": `${cluster.name} — ${cluster.bhk} at Nanded City, Pune`,
     "description": cluster.description,
-    "url": `https://nandedcitypune.com/cluster/${cluster.id}`,
+    "url": `https://www.nanded-city.in/cluster/${cluster.id}`,
     "image": cluster.heroImage,
     "brand": {
       "@type": "Brand",
@@ -68,7 +68,7 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
       "seller": {
         "@type": "Organization",
         "name": "Nanded City Developers Pune",
-        "url": "https://nandedcitypune.com"
+        "url": "https://www.nanded-city.in"
       }
     },
     "additionalProperty": [
@@ -116,7 +116,7 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
     "@type": "Residence",
     "name": cluster.name,
     "description": cluster.description,
-    "url": `https://nandedcitypune.com/cluster/${cluster.id}`,
+    "url": `https://www.nanded-city.in/cluster/${cluster.id}`,
     "image": cluster.heroImage,
     "numberOfRooms": cluster.bhk,
     "address": {
@@ -201,19 +201,19 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://nandedcitypune.com"
+        "item": "https://www.nanded-city.in"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": cluster.type === 'new' ? 'Ongoing Projects' : 'Completed Projects',
-        "item": "https://nandedcitypune.com/#ongoing"
+        "item": "https://www.nanded-city.in/#ongoing"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": cluster.name,
-        "item": `https://nandedcitypune.com/cluster/${cluster.id}`
+        "item": `https://www.nanded-city.in/cluster/${cluster.id}`
       }
     ]
   };

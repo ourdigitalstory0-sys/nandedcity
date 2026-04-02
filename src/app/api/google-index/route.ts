@@ -93,7 +93,7 @@ async function notifyGoogle(accessToken: string, url: string, type: string = 'UR
 }
 
 export async function POST(request: NextRequest) {
-  const host = 'https://nandedcitypune.com';
+  const host = 'https://www.nanded-city.in';
 
   // Collect all indexable URLs
   const urls = [

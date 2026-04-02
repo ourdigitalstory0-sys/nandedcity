@@ -11,9 +11,9 @@ export const metadata: Metadata = {
     type: "website",
   },
   alternates: {
-    canonical: 'https://nandedcitypune.com/mr',
+    canonical: 'https://www.nanded-city.in/mr',
     languages: {
-      'mr-IN': 'https://nandedcitypune.com/mr',
+      'mr-IN': 'https://www.nanded-city.in/mr',
     },
   },
 };
@@ -23,9 +23,9 @@ export default function MarathiLayout({ children }: { children: React.ReactNode 
   const mrWebsiteSchema: any = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://nandedcitypune.com/mr/#website",
+    "@id": "https://www.nanded-city.in/mr/#website",
     "name": "नांदेड सिटी पुणे",
-    "url": "https://nandedcitypune.com/mr",
+    "url": "https://www.nanded-city.in/mr",
     "description": "नांदेड सिटी पुणे (सिंहगड रोड) मधील 2 BHK, 3 BHK आणि बंगलो प्लॉट्स.",
     "inLanguage": "mr-IN"
   };

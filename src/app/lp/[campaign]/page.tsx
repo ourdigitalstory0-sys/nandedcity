@@ -63,7 +63,7 @@ export default async function LandingPage({ params }: { params: Promise<Campaign
     <>
       {/* Stripped LP Header */}
       <header style={{ padding: '20px 40px', background: '#fff', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'center' }}>
-        <Image src="https://nandedcitypune.com/wp-content/themes/nandedcity/images/nc-logo.png" alt="Nanded City Pune Official Logo" width={180} height={50} style={{ objectFit: 'contain' }} />
+        <Image src="https://www.nanded-city.in/wp-content/themes/nandedcity/images/nc-logo.png" alt="Nanded City Pune Official Logo" width={180} height={50} style={{ objectFit: 'contain' }} />
       </header>
 
       {/* Hero / Above the Fold Conversion Trap */}
