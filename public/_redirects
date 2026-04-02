@@ -1,0 +1,4 @@
+# Redirect legacy campaign URLs if necessary
+# Example: /lp/2-bhk-flats /cluster/aalaap 301
+# Example: /lp/3-bhk-luxury /cluster/saajgiri 301
+# Example: /lp/na-bungalow-plots /cluster/melody 301

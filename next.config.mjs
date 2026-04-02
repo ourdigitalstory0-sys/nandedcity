@@ -1,7 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: false,
+  output: 'export', // Enables high-performance static HTML export for Cloudflare Pages
+  trailingSlash: true, // Recommended for Cloudflare to ensure clean directory routing
   images: {
+    unoptimized: true, // Required for static export; Cloudflare Image Resizing can be handled at the edge if needed
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
@@ -16,57 +18,8 @@ const nextConfig = {
       },
     ],
   },
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-          },
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
-          },
-          {
-            key: 'Strict-Transport-Security',
-            value: 'max-age=63072000; includeSubDomains; preload',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
-          },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=(self)',
-          },
-        ],
-      },
-      {
-        source: '/cluster/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, s-maxage=86400, stale-while-revalidate=43200',
-          },
-        ],
-      },
-      {
-        source: '/blog/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, s-maxage=43200, stale-while-revalidate=21600',
-          },
-        ],
-      },
-    ];
-  },
+  // Note: async headers() are not supported in static exports. 
+  // We have migrated these to public/_headers for Cloudflare native execution.
 };
 
 export default nextConfig;

@@ -1,0 +1,16 @@
+# Global Security & SEO Headers
+/*
+  X-Robots-Tag: index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1
+  X-DNS-Prefetch-Control: on
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(self)
+
+# Cache Control for Cluster Pages
+/cluster/*
+  Cache-Control: public, s-maxage=86400, stale-while-revalidate=43200
+
+# Cache Control for Blog Articles
+/blog/*
+  Cache-Control: public, s-maxage=43200, stale-while-revalidate=21600
