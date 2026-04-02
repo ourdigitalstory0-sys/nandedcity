@@ -1,10 +1,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { clusters } from '../data/clusters';
+import { blogs } from '../data/blogs';
 import ContactForm from './components/ContactForm';
 import ReraQrCode from './components/ReraQrCode';
+import DynamicClusterGrid from './components/DynamicClusterGrid';
 import ScrollReveal from './components/ScrollReveal';
 import ParallaxHero from './components/ParallaxHero';
+import HeroActions from './components/HeroActions';
+import MarketIntelligence from './components/MarketIntelligence';
+import TrustSection from './components/TrustSection';
+import Testimonials from './components/Testimonials';
 
 export const metadata = {
   alternates: {
@@ -107,12 +113,9 @@ export default function Home() {
         <span className="badge badge-gold">Sinhagad Road · Pune</span>
         <h1 className="speakable-title">Welcome to <span>Nanded City Pune</span></h1>
         <p className="hero-seo-text">
-          Discover <strong>premium 2 & 3 BHK luxury flats in Nanded City Pune</strong>. An eco-friendly township on <strong>Sinhagad Road</strong> offering MahaRERA registered projects with <em>world-class development</em> across 700 Acres township.
+          Discover <strong>premium 2 & 3 BHK luxury flats</strong> and the <strong>most aspiring community of Branded NA Bungalow Plots</strong> at Nanded City Township on Sinhgad Road. A curated ecosystem for <strong>CEOs, CXOs, Doctors, CAs, and Business Owners</strong> offering world-class infrastructure across a 700-Acre township.
         </p>
-        <div className="hero-actions">
-          <a href="#ongoing" className="btn btn-gold">Explore Projects</a>
-          <a href="#contact" className="btn btn-outline">Contact Us</a>
-        </div>
+        <HeroActions />
         <div className="hero-stats">
           <div className="hero-stat"><strong>400+</strong><span>Acres</span></div>
           <div className="hero-stat-divider" />
@@ -123,6 +126,7 @@ export default function Home() {
           <div className="hero-stat"><strong>25+ Yrs</strong><span>Of Trust</span></div>
         </div>
       </ParallaxHero>
+      <MarketIntelligence />
 
       {/* Ongoing Projects */}
       <section id="ongoing" className="section-padding" style={{ backgroundColor: '#fff' }}>
@@ -133,49 +137,15 @@ export default function Home() {
             <p>Discover our under-construction towers — fully RERA registered and built to deliver on time.</p>
           </ScrollReveal>
 
-          <div className="grid-cols-2">
-            {ongoingClusters.map((cluster, index) => (
-              <ScrollReveal key={cluster.id} delay={index * 0.1}>
-                <article className="cluster-card">
-                <a href={`/cluster/${cluster.id}`} className="card-image-link">
-                  <div className="card-image">
-                    <Image src={cluster.image} alt={`${cluster.name} - ${cluster.bhk} apartments in Nanded City`} fill sizes="(max-width:768px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
-                    <div className="card-badge-wrap">
-                      <span className="badge badge-green">{cluster.bhk}</span>
-                    </div>
-                    <div className="card-price-tag">{cluster.price}</div>
-                  </div>
-                </a>
-                <div className="card-content">
-                  <h3 className="card-title">
-                    <a href={`/cluster/${cluster.id}`}>{cluster.name}</a>
-                  </h3>
-                  <div className="card-meta">
-                    <span className="status-dot ongoing" />
-                    <span>{cluster.status}</span>
-                    <span style={{ marginLeft: 'auto' }}>📐 {cluster.area}</span>
-                  </div>
-                  <p className="card-desc">{cluster.description}</p>
-
-                  <div className="card-highlights">
-                    {cluster.highlights.slice(0, 3).map(h => (
-                      <span key={h} className="highlight-chip">{h}</span>
-                    ))}
-                  </div>
-
-                  <div className="rera-footer" style={{ padding: '0', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <ReraQrCode reraUrl={cluster.reraUrl} reraNumber={cluster.rera} qrImage={cluster.qrImage} />
-                    <a href={`/cluster/${cluster.id}`} className="btn-details">
-                      View Details →
-                    </a>
-                  </div>
-                  </div>
-                </article>
-              </ScrollReveal>
-            ))}
-          </div>
+          <DynamicClusterGrid clusters={clusters} />
         </div>
       </section>
+
+      {/* 700-Acre Township Trust */}
+      <TrustSection />
+
+      {/* HNW Resident Testimonials */}
+      <Testimonials />
 
       {/* Why Nanded City */}
       <section className="section-padding why-section">
@@ -220,10 +190,10 @@ export default function Home() {
           <ScrollReveal delay={0.2}>
             <div style={{ position: 'relative', width: '100%', height: '600px', backgroundColor: '#f1f5f9', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)' }}>
               <Image 
-                src="/master-layout.png" 
+                src="https://images.unsplash.com/photo-1577412647305-991150c7d163?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
                 alt="Nanded City Master Township Layout showcasing Symphony IT Park, Destination Centers, and Residential Clusters" 
                 fill 
-                style={{ objectFit: 'contain', padding: '10px' }} 
+                style={{ objectFit: 'cover' }} 
               />
             </div>
             
@@ -288,6 +258,60 @@ export default function Home() {
               </article>
               </ScrollReveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Market Intelligence & Insights Section */}
+      <section className="section-padding" style={{ backgroundColor: '#ffffff' }}>
+        <div className="container">
+          <ScrollReveal className="section-header" style={{ marginBottom: '40px' }}>
+            <span className="section-eyebrow">Market Intelligence</span>
+            <h2>Nanded City & Sinhagad Road Real Estate Data</h2>
+            <p style={{ maxWidth: '680px', margin: '0 auto' }}>
+              Data-backed research, price appreciation trends, and institutional insights specifically focused on the Sinhagad Road property market.
+            </p>
+          </ScrollReveal>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '30px' }}>
+            {blogs.slice(0, 3).map((blog, idx) => (
+              <ScrollReveal key={blog.slug} delay={idx * 0.15}>
+                <article className="cluster-card" style={{ display: 'flex', flexDirection: 'column', height: '100%', border: '1px solid #e2e8f0', boxShadow: 'none' }}>
+                  <Link href={`/blog/${blog.slug}`} className="card-image-link" style={{ height: '220px', position: 'relative' }}>
+                    <Image 
+                      src={blog.coverImage} 
+                      alt={blog.title} 
+                      fill 
+                      sizes="(max-width:768px) 100vw, 33vw" 
+                      style={{ objectFit: 'cover' }} 
+                    />
+                    <div style={{ position: 'absolute', top: '16px', right: '16px', backgroundColor: 'rgba(0,0,0,0.7)', color: '#fff', fontSize: '0.75rem', padding: '4px 10px', borderRadius: '30px', fontWeight: '700' }}>
+                      {blog.readTime}
+                    </div>
+                  </Link>
+                  <div className="card-content" style={{ padding: '24px', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ color: 'var(--accent-gold)', fontWeight: '700', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '10px' }}>
+                      {blog.category.replace('-', ' ')}
+                    </div>
+                    <h3 style={{ fontSize: '1.2rem', marginBottom: '12px', lineHeight: '1.4' }}>
+                      <Link href={`/blog/${blog.slug}`} style={{ color: '#0f172a', textDecoration: 'none' }}>{blog.title}</Link>
+                    </h3>
+                    <p style={{ color: '#64748b', fontSize: '0.9rem', lineHeight: '1.6', marginBottom: '20px', flexGrow: 1 }}>
+                      {blog.excerpt}
+                    </p>
+                    <Link href={`/blog/${blog.slug}`} className="btn-details" style={{ alignSelf: 'flex-start', color: 'var(--primary-green)', fontWeight: '700' }}>
+                      Read Market Data →
+                    </Link>
+                  </div>
+                </article>
+              </ScrollReveal>
+            ))}
+          </div>
+          
+          <div style={{ textAlign: 'center', marginTop: '40px' }}>
+            <Link href="/blog" className="btn btn-outline" style={{ borderColor: 'var(--primary-green)', color: 'var(--primary-green)' }}>
+              View All Insights & Data
+            </Link>
           </div>
         </div>
       </section>

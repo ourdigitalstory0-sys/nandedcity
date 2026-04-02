@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import EnquiryForm from '../../components/EnquiryForm';
 import ReraQrCode from '../../components/ReraQrCode';
 import ScrollReveal from '../../components/ScrollReveal';
+import Breadcrumbs from '../../components/Breadcrumbs';
 
 export async function generateStaticParams() {
   return clusters.map((c) => ({ id: c.id }));
@@ -35,81 +36,189 @@ export default async function ClusterPage({ params }) {
   const cluster = clusters.find((c) => c.id === resolvedParams.id);
   if (!cluster) notFound();
 
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Residence",
-      "name": cluster.name,
-      "description": cluster.description,
-      "url": `https://nandedcitypune.com/cluster/${cluster.id}`,
-      "image": cluster.heroImage,
-      "numberOfRooms": cluster.bhk,
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Nanded, Sinhagad Road",
-        "addressLocality": "Pune",
-        "addressRegion": "Maharashtra",
-        "postalCode": "411041",
-        "addressCountry": "IN"
-      },
-      "offers": {
-        "@type": "Offer",
-        "price": cluster.price,
-        "priceCurrency": "INR",
+  // Determine if this is a plot or apartment
+  const isPlot = cluster.bhk.toLowerCase().includes('plot');
+
+  // Enhanced Product-type schema with Offer, PropertyValue, and LocationFeatureSpecification
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": `${cluster.name} — ${cluster.bhk} at Nanded City, Pune`,
+    "description": cluster.description,
+    "url": `https://nandedcitypune.com/cluster/${cluster.id}`,
+    "image": cluster.heroImage,
+    "brand": {
+      "@type": "Brand",
+      "name": "Nanded City Developers Pune"
+    },
+    "category": isPlot ? "NA Bungalow Plots" : "Residential Apartments",
+    "offers": {
+      "@type": "Offer",
+      "price": cluster.price === "On Request" ? undefined : cluster.price.replace(/[^\d]/g, ''),
+      "priceCurrency": "INR",
+      "priceValidUntil": "2026-12-31",
+      "availability": cluster.type === 'completed' ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+      "seller": {
+        "@type": "Organization",
+        "name": "Nanded City Developers Pune",
+        "url": "https://nandedcitypune.com"
       }
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": `What is the MahaRERA number for ${cluster.name} in Nanded City?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `${cluster.name} is a MahaRERA registered project. The registration number is ${cluster.rera}.`
-          }
-        },
-        {
-          "@type": "Question",
-          "name": `When is the possession date for ${cluster.name}?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `The expected possession for ${cluster.name} is ${cluster.possession}.`
-          }
-        },
-        {
-          "@type": "Question",
-          "name": `What are the flat configurations available in ${cluster.name}?`,
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": `${cluster.name} offers premium ${cluster.bhk} apartments with a carpet area ranging from ${cluster.area}.`
-          }
-        }
-      ]
+    "additionalProperty": [
+      {
+        "@type": "PropertyValue",
+        "name": "Configuration",
+        "value": cluster.bhk
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Carpet Area",
+        "value": cluster.area
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Floors",
+        "value": cluster.floors
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Total Units",
+        "value": cluster.units
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "Possession",
+        "value": cluster.possession
+      },
+      {
+        "@type": "PropertyValue",
+        "name": "MahaRERA Registration",
+        "value": cluster.rera
+      },
+      ...cluster.highlights.map(h => ({
+        "@type": "PropertyValue",
+        "name": "Amenity",
+        "value": h
+      }))
+    ]
+  };
+
+  // Residence schema with LocationFeatureSpecification
+  const residenceSchema = {
+    "@context": "https://schema.org",
+    "@type": "Residence",
+    "name": cluster.name,
+    "description": cluster.description,
+    "url": `https://nandedcitypune.com/cluster/${cluster.id}`,
+    "image": cluster.heroImage,
+    "numberOfRooms": cluster.bhk,
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nanded, Sinhagad Road",
+      "addressLocality": "Pune",
+      "addressRegion": "Maharashtra",
+      "postalCode": "411041",
+      "addressCountry": "IN"
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://nandedcitypune.com"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": cluster.name,
-          "item": `https://nandedcitypune.com/cluster/${cluster.id}`
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "18.4425",
+      "longitude": "73.8100"
+    },
+    "amenityFeature": [
+      { "@type": "LocationFeatureSpecification", "name": "Swimming Pool", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Gymnasium", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Landscaped Garden", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "24/7 Security", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Power Backup", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Township Hospital (within 2 km)", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Premium Schools (within 1 km)", "value": true },
+      { "@type": "LocationFeatureSpecification", "name": "Fire Station (within township)", "value": true },
+    ]
+  };
+
+  // FAQ Schema
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": `What is the MahaRERA number for ${cluster.name} in Nanded City?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `${cluster.name} is a MahaRERA registered project. The registration number is ${cluster.rera}. You can verify this at maharera.mahaonline.gov.in.`
         }
-      ]
-    }
-  ];
+      },
+      {
+        "@type": "Question",
+        "name": `When is the possession date for ${cluster.name}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `The expected possession for ${cluster.name} is ${cluster.possession}.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `What are the ${isPlot ? 'plot sizes' : 'flat configurations'} available in ${cluster.name}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `${cluster.name} offers premium ${cluster.bhk} ${isPlot ? 'plots' : 'apartments'} with ${isPlot ? 'plot sizes' : 'a carpet area'} ranging from ${cluster.area}.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `What is the starting price of ${cluster.name}?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `The starting price for ${cluster.name} is ${cluster.price}. Contact us for the latest pricing and exclusive offers.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": `What amenities are available in ${cluster.name}, Nanded City?`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": `${cluster.name} offers ${cluster.highlights.join(', ')}. Being part of the 700-acre Nanded City township, residents also have access to hospitals, schools, fire station, police outpost, and 200+ acres of green spaces.`
+        }
+      }
+    ]
+  };
+
+  // BreadcrumbList Schema
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://nandedcitypune.com"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": cluster.type === 'new' ? 'Ongoing Projects' : 'Completed Projects',
+        "item": "https://nandedcitypune.com/#ongoing"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": cluster.name,
+        "item": `https://nandedcitypune.com/cluster/${cluster.id}`
+      }
+    ]
+  };
+
+  const jsonLd = [productSchema, residenceSchema, faqSchema, breadcrumbSchema];
 
   return (
     <>
+      <Breadcrumbs items={[
+        { name: cluster.type === 'new' ? 'Ongoing Projects' : 'Completed Projects', href: '/#ongoing' },
+        { name: cluster.name }
+      ]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Hero */}
@@ -143,28 +252,28 @@ export default async function ClusterPage({ params }) {
       </section>
 
       <main className="cluster-main">
-        {/* Quick Stats */}
+        {/* Quick Stats Grid */}
         <ScrollReveal yOffset={20} className="stats-bar" aria-label="Project statistics">
-          <div className="container stats-grid">
-            <div className="stat-item">
-              <span className="stat-value">{cluster.price}</span>
-              <span className="stat-label">Starting Price</span>
+          <div className="container" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '20px' }}>
+            <div className="stat-item" style={{ textAlign: 'center', padding: '10px' }}>
+              <span className="stat-value" style={{ display: 'block', fontSize: '1.25rem', fontWeight: '800', color: 'var(--accent-gold)' }}>{cluster.price}</span>
+              <span className="stat-label" style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Starting Price</span>
             </div>
-            <div className="stat-item">
-              <span className="stat-value">{cluster.area}</span>
-              <span className="stat-label">Carpet Area</span>
+            <div className="stat-item" style={{ textAlign: 'center', padding: '10px' }}>
+              <span className="stat-value" style={{ display: 'block', fontSize: '1.25rem', fontWeight: '800', color: 'var(--accent-gold)' }}>{cluster.area}</span>
+              <span className="stat-label" style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Carpet Area</span>
             </div>
-            <div className="stat-item">
-              <span className="stat-value">{cluster.floors}</span>
-              <span className="stat-label">Floors / Plots</span>
+            <div className="stat-item" style={{ textAlign: 'center', padding: '10px' }}>
+              <span className="stat-value" style={{ display: 'block', fontSize: '1.25rem', fontWeight: '800', color: 'var(--accent-gold)' }}>{cluster.floors}</span>
+              <span className="stat-label" style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Floors / Plots</span>
             </div>
-            <div className="stat-item">
-              <span className="stat-value">{cluster.units}</span>
-              <span className="stat-label">Total Units</span>
+            <div className="stat-item" style={{ textAlign: 'center', padding: '10px' }}>
+              <span className="stat-value" style={{ display: 'block', fontSize: '1.25rem', fontWeight: '800', color: 'var(--accent-gold)' }}>{cluster.units}</span>
+              <span className="stat-label" style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Total Units</span>
             </div>
-            <div className="stat-item">
-              <span className="stat-value">{cluster.possession}</span>
-              <span className="stat-label">Possession</span>
+            <div className="stat-item" style={{ textAlign: 'center', padding: '10px' }}>
+              <span className="stat-value" style={{ display: 'block', fontSize: '1.25rem', fontWeight: '800', color: 'var(--accent-gold)' }}>{cluster.possession}</span>
+              <span className="stat-label" style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: '#64748b' }}>Possession</span>
             </div>
           </div>
         </ScrollReveal>

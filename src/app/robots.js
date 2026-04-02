@@ -1,12 +1,31 @@
 export default function robots() {
+  const baseUrl = 'https://nandedcitypune.com';
+
   return {
     rules: [
       {
+        userAgent: 'Googlebot',
+        allow: ['/', '/cluster/', '/blog/', '/api/indexnow'],
+        disallow: ['/admin', '/private', '/_next/static/'],
+      },
+      {
+        userAgent: 'AdsBot-Google',
+        allow: ['/'],
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: ['/', '/cluster/', '/blog/'],
+        disallow: ['/admin', '/private', '/_next/'],
+        crawlDelay: 1,
+      },
+      {
         userAgent: '*',
-        allow: '/',
+        allow: ['/', '/cluster/', '/blog/', '/api/indexnow'],
+        disallow: ['/admin', '/private', '/*.json$', '/_next/', '/api/google-index'],
+        crawlDelay: 2,
       },
     ],
-    sitemap: 'https://nandedcitypune.com/sitemap.xml',
-    host: 'https://nandedcitypune.com',
+    sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 }
