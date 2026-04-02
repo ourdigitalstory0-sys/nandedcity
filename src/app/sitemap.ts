@@ -3,6 +3,9 @@ import { clusters } from '../data/clusters';
 import { blogs } from '../data/blogs';
 import { Cluster } from '@/types';
 
+// Helper to escape special characters for XML (specifically ampersands in Unsplash URLs)
+const escapeXml = (str: string) => str.replace(/&/g, '&amp;');
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.nanded-city.in';
 
@@ -14,20 +17,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
   };
 
   const clusterUrls = clusters.map((c) => ({
-    url: `${baseUrl}/cluster/${c.id}`,
+    url: escapeXml(`${baseUrl}/cluster/${c.id}`),
     lastModified: getClusterLastModified(c),
     changeFrequency: (c.type === 'completed' ? 'monthly' : 'weekly') as 'monthly' | 'weekly',
     priority: c.type === 'completed' ? 0.60 : 0.95,
     // Google Image Sitemap: embed hero images for indexing
-    images: [c.heroImage],
+    images: [escapeXml(c.heroImage)],
   }));
 
   const blogUrls = blogs.map((b) => ({
-    url: `${baseUrl}/blog/${b.slug}`,
+    url: escapeXml(`${baseUrl}/blog/${b.slug}`),
     lastModified: b.date,
     changeFrequency: 'daily' as const,
     priority: 0.80,
-    images: [b.coverImage],
+    images: [escapeXml(b.coverImage)],
   }));
 
   return [
@@ -38,7 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/blog`,
+      url: escapeXml(`${baseUrl}/blog`),
       lastModified: '2026-03-30T00:00:00.000Z',
       changeFrequency: 'daily',
       priority: 0.85,
