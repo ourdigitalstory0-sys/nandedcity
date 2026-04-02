@@ -1,9 +1,7 @@
 import { MetadataRoute } from 'next';
 
-export const dynamic = 'force-static';
-
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://nandedcitypune.com';
+  const baseUrl = 'https://www.nanded-city.in';
 
   return {
     rules: [

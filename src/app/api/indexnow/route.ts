@@ -1,5 +1,6 @@
+import { NextRequest, NextResponse } from 'next/server';
 
-import { clusters } from '../src/data/clusters';
+import { clusters } from '../../../data/clusters';
 
 export async function GET() {
   const host = "nandedcitypune.com";
@@ -29,20 +30,20 @@ export async function GET() {
     });
 
     if (response.ok) {
-      return console.log({ 
+      return NextResponse.json({ 
         success: true, 
         message: "Successfully submitted properties to IndexNow (Bing/Yandex).", 
         urlsSubmitted: urlList.length 
       });
     } else {
-      return console.log({ 
+      return NextResponse.json({ 
         success: false, 
         message: "Failed to submit to IndexNow API.", 
         status: response.status 
       }, { status: 500 });
     }
   } catch (error: any) {
-    return console.log({ 
+    return NextResponse.json({ 
       success: false, 
       message: "Network Error contacting IndexNow API.", 
       error: error.message 

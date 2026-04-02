@@ -3,10 +3,8 @@ import { clusters } from '../data/clusters';
 import { blogs } from '../data/blogs';
 import { Cluster } from '@/types';
 
-export const dynamic = 'force-static';
-
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://nandedcitypune.com';
+  const baseUrl = 'https://www.nanded-city.in';
 
   // Accurate lastModified dates based on project status
   const getClusterLastModified = (cluster: Cluster): string => {

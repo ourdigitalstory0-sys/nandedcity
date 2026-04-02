@@ -1,6 +1,7 @@
+import { NextRequest, NextResponse } from 'next/server';
 
-import { clusters } from '../src/data/clusters';
-import { blogs } from '../src/data/blogs';
+import { clusters } from '../../../data/clusters';
+import { blogs } from '../../../data/blogs';
 
 /**
  * Google Indexing API Integration
@@ -133,7 +134,7 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    return console.log({
+    return NextResponse.json({
       success: true,
       message: `Google Indexing API: ${results.length} URLs accepted, ${errors.length} errors.`,
       totalUrls: urls.length,
@@ -142,7 +143,7 @@ export async function POST(request: NextRequest) {
       details: { results, errors },
     });
   } catch (error: any) {
-    return console.log(
+    return NextResponse.json(
       {
         success: false,
         message: 'Google Indexing API failed.',
@@ -161,7 +162,7 @@ export async function GET() {
     process.env.GOOGLE_PRIVATE_KEY
   );
 
-  return console.log({
+  return NextResponse.json({
     service: 'Google Indexing API',
     status: hasCredentials ? 'CONFIGURED' : 'PENDING_CREDENTIALS',
     instructions: hasCredentials
