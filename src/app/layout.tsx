@@ -82,8 +82,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "name": "Nanded City Developers Pune",
     "alternateName": "Nanded City Pune Residences",
     "url": "https://www.nanded-city.in",
-    "logo": "https://www.nanded-city.in/official-logo.png", 
-    "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+    "logo": "https://www.nanded-city.in/nc-logo.png", 
+    "image": "https://nandedcitypune.com/aalaap/assets/img/img-hero-banner-02.jpg",
     "description": "Nanded City Pune: 700+ acres of self-reliant premium township on Sinhagad Road near Khadakwasla. Offering 1, 2, 2.5, 3 BHK apartments and branded NA bungalow plots for business owners and professionals.",
     "telephone": "+917996645777",
     "email": "info@nanded-city.in",
@@ -197,9 +197,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 {/* Column 1: Brand */}
                 <div>
                   <Image 
-                    src="https://www.nanded-city.in/wp-content/themes/nandedcity/images/nc-logo.png" 
+                    src="/nc-logo.png" 
                     alt="Nanded City Pune Official Logo" 
-                    width={140} height={40}
+                    width={180} height={50}
                     style={{ objectFit: 'contain', filter: 'brightness(0) invert(1) opacity(0.9)', marginBottom: '20px' }}
                   />
                   <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.88rem', lineHeight: '1.7', maxWidth: '240px', marginBottom: '24px' }}>

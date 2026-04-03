@@ -111,7 +111,7 @@ export default function Home() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       {/* Hero */}
-      <ParallaxHero bgImage="https://www.nanded-city.in/wp-content/uploads/2026/02/saajgiri-ncp-banner-img-01.webp">
+      <ParallaxHero bgImage="https://nandedcitypune.com/wp-content/uploads/2026/02/saajgiri-ncp-banner-img-01.webp">
         <span className="badge badge-gold">Sinhagad Road · Pune</span>
         <h1 className="speakable-title">Welcome to <span>Nanded City Pune</span></h1>
         <p className="hero-seo-text">
@@ -361,7 +361,7 @@ export default function Home() {
               <ReraQrCode 
                 reraUrl="https://maharera.mahaonline.gov.in/" 
                 reraNumber="MahaRERA Registered Projects" 
-                qrImage="https://www.nanded-city.in/aalaap/assets/img/img-aalaap-qr-code.png" 
+                qrImage="https://nandedcitypune.com/aalaap/assets/img/img-aalaap-qr-code.png" 
               />
             </div>
             <p style={{ color: 'rgba(255,255,255,0.8)', marginBottom: '32px' }}>
