@@ -311,8 +311,8 @@ export const clusters: Cluster[] = [
     units: "220 Units",
     description: "Sur peaceful homes Nanded City — Calm living on Sinhagad Road with balanced lifestyle apartments. Stress-free residential community.",
     highlights: ["Sur Peaceful Living", "Quiet Township Homes", "Balanced Layout Flats", "Senior-Friendly Community"],
-    image: "https://is1-3.housingcdn.com/4f2250ad/2c89283e33e49e2954848034a787265e/v0/large/sur_at_nanded_city-nanded-pune-nanded_city_development_construction_co_ltd.jpg",
-    heroImage: "https://is1-3.housingcdn.com/4f2250ad/2c89283e33e49e2954848034a787265e/v0/large/sur_at_nanded_city-nanded-pune-nanded_city_development_construction_co_ltd.jpg",
+    image: "https://nandedcitypune.com/wp-content/uploads/2017/10/aswari-1.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2017/10/aswari-1.jpg",
   },
   {
     id: "mangal-bhairav",
@@ -329,8 +329,8 @@ export const clusters: Cluster[] = [
     units: "840 Units",
     description: "Mangal Bhairav affordable 1 BHK Nanded City — Entry level homes Pune for first-time buyers. High demand budget housing Sinhagad Road.",
     highlights: ["1 BHK under 40 Lakh", "Starter Homes Pune", "High Rental Income", "Best Budget Value"],
-    image: "https://nandedcitypune.com/wp-content/uploads/2020/01/Mangal-Bhairav.jpg",
-    heroImage: "https://nandedcitypune.com/wp-content/uploads/2020/01/Mangal-Bhairav.jpg",
+    image: "https://nandedcitypune.com/wp-content/uploads/2020/01/pancham-completed.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2020/01/pancham-completed.jpg",
   },
   {
     id: "janaranjani",
@@ -347,8 +347,8 @@ export const clusters: Cluster[] = [
     units: "512 Units",
     description: "Janaranjani MHADA flats Nanded City — Government housing and low-cost homes Pune. Subsidized economical housing for all.",
     highlights: ["Cheap Flats Sinhagad Road", "MHADA Nanded City", "Economical Township Living", "Ready Possession MHADA"],
-    image: "https://is1-2.housingcdn.com/4f2250ad/21966a337166ea20835f8e5f29910609/v0/large/nanded_city_janaranjani-nanded-pune-magarpatta_city_group.jpg",
-    heroImage: "https://is1-2.housingcdn.com/4f2250ad/21966a337166ea20835f8e5f29910609/v0/large/nanded_city_janaranjani-nanded-pune-magarpatta_city_group.jpg",
+    image: "https://nandedcitypune.com/wp-content/uploads/2017/10/sar-1-1.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2017/10/sar-1-1.jpg",
   },
   {
     id: "dhanashree",
