@@ -17,8 +17,8 @@ export const clusters: Cluster[] = [
     units: "Exclusive Plotted Development",
     description: "Melody Villa Lifestyle Plots in Nanded City — the flagship gated community for build-your-own-villa dreams. Secure a luxury plot in a premium bungalow community.",
     highlights: ["Independent House Plots", "Villa Lifestyle Plots", "Gated Community Plots Sinhagad Road", "Residential land with High ROI"],
-    image: "https://nandedcitypune.com/wp-content/uploads/2023/08/Melody-I_Rera.jpeg",
-    heroImage: "https://nandedcitypune.com/wp-content/uploads/2023/08/Melody-I_Rera.jpeg",
+    image: "https://nandedcitypune.com/melody/assets/img/Melody%20Big%20League%20Living_Home.webp",
+    heroImage: "https://nandedcitypune.com/melody/assets/img/Melody%20Big%20League%20Living_Home.webp",
     faqs: [
       { question: "What is the plot size in Melody I, Nanded City?", answer: "Melody I offers premium NA bungalow plots ranging from 1,200 to 3,500 sq. ft., ideal for independent villa construction." },
       { question: "Is Melody I MahaRERA registered?", answer: "Yes, Melody I is a MahaRERA registered project with registration number P52100051948." }
@@ -40,8 +40,8 @@ export const clusters: Cluster[] = [
     units: "Exclusive Plotted Development",
     description: "Melody Bungalow Community Pune — Phase II of the most aspiring NA plot development. Premium residential plots in Nanded City Pune for elite professionals.",
     highlights: ["Independent Plots Sinhagad Road", "Luxury Plot Community", "Gated Township Land", "MahaRERA Registered Plots"],
-    image: "https://nandedcitypune.com/wp-content/uploads/2023/08/Melody-II_Rera.jpeg",
-    heroImage: "https://nandedcitypune.com/wp-content/uploads/2023/08/Melody-II_Rera.jpeg",
+    image: "https://nandedcitypune.com/melody/assets/img/Melody%20Big%20League%20Living_Home.webp",
+    heroImage: "https://nandedcitypune.com/melody/assets/img/Melody%20Big%20League%20Living_Home.webp",
     faqs: [
       { question: "How many plots are available in Melody II?", answer: "Melody II is a boutique plotted development. Contact our sales team for current real-time inventory on Sinhagad Road." },
       { question: "What is the possession status of Melody II plots?", answer: "Possession for Melody II NA plots is currently ongoing, allowing you to begin your villa construction soon." }
@@ -77,7 +77,7 @@ export const clusters: Cluster[] = [
     status: "Ongoing",
     rera: "P52100055134",
     reraUrl: "https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=P52100055134",
-    qrImage: "https://www.nanded-city.in/aalaap/assets/img/img-aalaap-qr-code.png",
+    qrImage: "",
     price: "₹78 Lakh onwards",
     area: "720 – 1,280 sq. ft. Carpet",
     possession: "Jun 2027",
@@ -100,7 +100,7 @@ export const clusters: Cluster[] = [
     status: "Ongoing",
     rera: "PR1260002501621",
     reraUrl: "https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=PR1260002501621",
-    qrImage: "https://www.nanded-city.in/aalaap/assets/img/img-aalaap-qr-code.png",
+    qrImage: "",
     price: "₹1.45 Cr onwards",
     area: "1,350 – 1,820 sq. ft. Carpet",
     possession: "Sep 2027",
@@ -123,7 +123,7 @@ export const clusters: Cluster[] = [
     status: "Ongoing",
     rera: "P52100028606",
     reraUrl: "https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=P52100028606",
-    qrImage: "https://nandedcitypune.com/wp-content/uploads/2024/02/Rhythm-1.png",
+    qrImage: "",
     price: "On Request",
     area: "1,500 - 3,500 sq. ft. Plot area",
     possession: "Ongoing",
@@ -366,7 +366,7 @@ export const clusters: Cluster[] = [
     units: "Premium Bungalow Plots",
     description: "Dhanashree premium plots Nanded City — Build your own villa in Pune's finest township. Premium land investment with gated plot development.",
     highlights: ["Dhanashree NA Plots", "Luxury Villa Plots", "High Appreciation Land", "Gated Security Plots"],
-    image: "https://www.nanded-city.in/wp-content/uploads/2026/02/dhanashree-ncp-featured-img.webp",
-    heroImage: "https://www.nanded-city.in/wp-content/uploads/2026/02/dhanashree-ncp-featured-img.webp",
+    image: "https://nandedcitypune.com/melody/assets/img/overview-back.jpg",
+    heroImage: "https://nandedcitypune.com/melody/assets/img/overview-back.jpg",
   }
 ];
