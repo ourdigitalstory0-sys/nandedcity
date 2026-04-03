@@ -56,8 +56,31 @@ export default async function MarathiLocalPage({ params }: { params: Promise<Mar
   const data = mrData[resolvedParams.slug];
   if (!data) notFound();
 
+  // LocalBusiness Schema for Marathi Language Targeting
+  const businessSchema: any = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateListing",
+    "name": data.title,
+    "description": data.sub,
+    "url": `https://www.nanded-city.in/mr/${resolvedParams.slug}`,
+    "image": data.heroImg,
+    "brand": {
+      "@type": "Brand",
+      "name": "Nanded City Developers Pune (नांदेड सिटी पुणे)"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nanded, Sinhagad Road",
+      "addressLocality": "Pune",
+      "addressRegion": "Maharashtra",
+      "postalCode": "411041",
+      "addressCountry": "IN"
+    }
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessSchema) }} />
       {/* Hero Section */}
       <section style={{ backgroundColor: '#0f172a', color: '#fff', position: 'relative', overflow: 'hidden' }}>
         <Image

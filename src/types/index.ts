@@ -16,6 +16,7 @@ export interface Cluster {
   highlights: string[];
   image: string;
   heroImage: string;
+  faqs?: { question: string; answer: string }[];
 }
 
 export interface BlogPost {

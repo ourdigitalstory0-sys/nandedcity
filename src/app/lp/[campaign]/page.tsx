@@ -5,6 +5,8 @@ import EnquiryForm from '../../components/EnquiryForm';
 import { clusters } from '../../../data/clusters';
 import ScrollReveal from '../../components/ScrollReveal';
 
+import { Metadata } from 'next';
+
 interface CampaignParams {
   campaign: string;
 }
@@ -16,6 +18,22 @@ export async function generateStaticParams() {
     { campaign: '3-bhk-luxury' },
     { campaign: 'na-bungalow-plots' }
   ];
+}
+
+export async function generateMetadata({ params }: { params: Promise<CampaignParams> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const campaign = campaignData[resolvedParams.campaign];
+  if (!campaign) return { title: 'Nanded City | Premium Residences' };
+
+  return {
+    title: `${campaign.title} | Nanded City Official Sales`,
+    description: `Official Sales Partner for ${campaign.title} in Nanded City. ${campaign.sub}. Book your priority site visit today.`,
+    openGraph: {
+      title: campaign.title,
+      description: campaign.sub,
+      images: [{ url: campaign.heroImg, width: 1200, height: 630 }],
+    }
+  };
 }
 
 interface CampaignInfo {
@@ -33,25 +51,25 @@ const campaignData: Record<string, CampaignInfo> = {
     sub: 'MahaRERA Registered | ₹78 Lakh Onwards | 700-Acre Township',
     bhk: '2 BHK',
     clusterName: 'Aalaap',
-    heroImg: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
+    heroImg: 'https://nandedcitypune.com/aalaap/assets/img/img-hero-banner-02.jpg',
     bullets: ['Spacious 720-1280 sq.ft Carpet Area', '0% Brokerage - Direct Developer Sale', 'Exclusive Pre-Launch Pricing Valid Today'],
   },
   '3-bhk-luxury': {
     title: 'Luxury 3 BHK Residences in Pune',
-    sub: 'Panoramic Sahyadri Views | ₹1.45 Cr Onwards | Premium High-Rise',
+    sub: 'Premium Township Signature Living | ₹1.45 Cr Onwards',
     bhk: '3 BHK',
     clusterName: 'Saajgiri',
-    heroImg: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-    bullets: ['Massive 1,350-1,820 sq.ft Carpet Area', 'Private Lift Lobbies & Concierge', 'Infinity Pool & Club Access'],
+    heroImg: 'https://nandedcitypune.com/wp-content/uploads/2026/02/saajgiri-ncp-banner-img-01.webp',
+    bullets: ['Panoramic Sahyadri Hill Views', 'High Floor Exclusive Availability', 'MahaRERA Verified Project Status'],
   },
   'na-bungalow-plots': {
-    title: 'Branded NA Bungalow Plots on Sinhagad Road',
-    sub: 'Build Your Legacy in an Elite Community | 1200+ sq.ft | MahaRERA Verified',
-    bhk: 'Branded NA Bungalow Plots',
-    clusterName: 'Melody / Rhythm',
-    heroImg: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80',
-    bullets: ['18-22% Expected Annual ROI', 'Fully Developed Internal Infrastructure', 'Exclusive Peer Group Community'],
-  }
+    title: 'Signature NA Bungalow Plots Pune',
+    sub: 'Gated Township Estate | Build Your Own Villa | ROI Growth',
+    bhk: 'Plots',
+    clusterName: 'Melody I',
+    heroImg: 'https://nandedcitypune.com/wp-content/uploads/2023/08/Melody-I_Rera.jpeg',
+    bullets: ['High Appreciation Plots Sinhagad Road', 'Premium Infrastructure & Road Access', '1,200 - 3,500 sq.ft Plot Area Configurations'],
+  },
 };
 
 export default async function LandingPage({ params }: { params: Promise<CampaignParams> }) {
@@ -59,8 +77,36 @@ export default async function LandingPage({ params }: { params: Promise<Campaign
   const campaign = campaignData[resolvedParams.campaign];
   if (!campaign) notFound();
 
+  // Campaign-specific RealEstateAgent & Product Schema
+  const lpSchema: any = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": `Nanded City Official Sales - ${campaign.title}`,
+    "description": campaign.sub,
+    "url": `https://www.nanded-city.in/lp/${resolvedParams.campaign}`,
+    "image": campaign.heroImg,
+    "telephone": "+91-20-67500000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Nanded, Sinhagad Road",
+      "addressLocality": "Pune",
+      "addressRegion": "Maharashtra",
+      "postalCode": "411041",
+      "addressCountry": "IN"
+    },
+    "makesOffer": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Accommodation",
+        "name": campaign.clusterName,
+        "description": campaign.title
+      }
+    }
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(lpSchema) }} />
       {/* Stripped LP Header */}
       <header style={{ padding: '20px 40px', background: '#fff', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'center' }}>
         <Image src="https://www.nanded-city.in/wp-content/themes/nandedcity/images/nc-logo.png" alt="Nanded City Pune Official Logo" width={180} height={50} style={{ objectFit: 'contain' }} />

@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: 'Googlebot',
-        allow: ['/', '/cluster/', '/blog/', '/api/indexnow'],
+        allow: ['/', '/cluster/', '/blog/', '/lp/', '/mr/', '/api/indexnow'],
         disallow: ['/admin', '/private', '/_next/static/'],
       },
       {
@@ -22,7 +22,7 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: '*',
-        allow: ['/', '/cluster/', '/blog/', '/api/indexnow'],
+        allow: ['/', '/cluster/', '/blog/', '/lp/', '/mr/', '/api/indexnow'],
         disallow: ['/admin', '/private', '/*.json$', '/_next/', '/api/google-index'],
         crawlDelay: 2,
       },

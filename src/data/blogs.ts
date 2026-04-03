@@ -22,7 +22,7 @@ export const blogs: BlogPost[] = [
     coverImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     content: `
       <h2>The Benchmark of Status & Lifestyle</h2>
-      <p>In the high-stakes world of <strong>CEOs, CXOs, Doctors, and CAs</strong>, a home is more than just square footage—it is an statement of achievement. The <strong>Branded NA Bungalow Plots at Nanded City Township</strong> have emerged as Pune's most aspiring bungalow community, offering a blend of vertical security and horizontal freedom.</p>
+      <p>In the high-stakes world of <strong>CEOs, CXOs, Doctors, and CAs</strong>, a home is more than just square footage—it is an statement of achievement. The <strong><a href="/cluster/rhythm-1">Branded NA Bungalow Plots at Nanded City Township</a></strong> have emerged as Pune's most aspiring bungalow community, offering a blend of vertical security and horizontal freedom.</p>
     `,
     relatedCluster: "rhythm-1"
   },

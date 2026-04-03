@@ -18,15 +18,20 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   
   if (!items || items.length === 0) return null;
 
-  // Breadcrumb Schema for SEO
+  // Breadcrumb Schema for SEO - Hardening with Root Home Reference
+  const breadcrumbItems = [
+    { name: 'Home', href: '/' },
+    ...items
+  ];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": items.map((item, index) => ({
+    "itemListElement": breadcrumbItems.map((item, index) => ({
       "@type": "ListItem",
       "position": index + 1,
       "name": item.name,
-      "item": item.href ? `https://www.nanded-city.in${item.href}` : null,
+      "item": item.href ? `https://www.nanded-city.in${item.href}` : `https://www.nanded-city.in${pathname}`,
     })),
   };
 

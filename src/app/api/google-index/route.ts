@@ -99,8 +99,17 @@ export async function POST(request: NextRequest) {
   const urls = [
     `${host}/`,
     `${host}/blog`,
+    `${host}/about-us`,
+    `${host}/legal-compliance`,
     ...clusters.map((c) => `${host}/cluster/${c.id}`),
     ...blogs.map((b) => `${host}/blog/${b.slug}`),
+    // Localized Marathi pages
+    `${host}/mr/2-bhk-flats`,
+    `${host}/mr/bungalow-plots`,
+    // Campaign Landing Pages
+    `${host}/lp/2-bhk-flats`,
+    `${host}/lp/3-bhk-luxury`,
+    `${host}/lp/na-bungalow-plots`,
   ];
 
   try {

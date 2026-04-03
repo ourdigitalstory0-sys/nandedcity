@@ -7,6 +7,7 @@ import Image from 'next/image';
 import TransitionFrame from './components/TransitionFrame';
 import DynamicHeader from './components/DynamicHeader';
 import FloatingActionBar from './components/FloatingActionBar';
+import StickyMobileCta from './components/StickyMobileCta';
 import EnquiryModal from './components/EnquiryModal';
 import { ModalProvider } from './context/ModalContext';
 import { Organization, WebSite, WithContext } from 'schema-dts';
@@ -34,8 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Nanded City Pune | Premium Residential Flats",
-    description: "Exclusive residential clusters — Melody, Aalaap, Saajgiri, Asawari, Sargam, Pancham. 700 Acres of eco-friendly luxury living on Sinhagad Road, Pune.",
-    images: ["https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"],
+    images: ["https://nandedcitypune.com/aalaap/assets/img/img-hero-banner-02.jpg"],
   },
   openGraph: {
     title: "Nanded City Pune | Built on Trust",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     siteName: "Nanded City Pune Residences",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+        url: "https://nandedcitypune.com/aalaap/assets/img/img-hero-banner-02.jpg",
         width: 1200,
         height: 630,
         alt: "Nanded City Pune Residential Township",
@@ -68,6 +68,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.nanded-city.in',
     languages: {
       'en-IN': 'https://www.nanded-city.in',
+      'mr-IN': 'https://www.nanded-city.in/mr/2-bhk-flats', // High-intent Marathi landing
     },
   },
 };
@@ -147,18 +148,37 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "inLanguage": "en-IN"
   };
 
+  const aboutSchema: any = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "@id": "https://www.nanded-city.in/about-us/#webpage",
+    "url": "https://www.nanded-city.in/about-us",
+    "name": "About Nanded City Developers",
+    "mainEntity": { "@id": "https://www.nanded-city.in/#organization" }
+  };
+
+  const contactSchema: any = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "@id": "https://www.nanded-city.in/#contact-page",
+    "url": "https://www.nanded-city.in/#contact",
+    "name": "Contact Nanded City Sales Team",
+    "mainEntity": { "@id": "https://www.nanded-city.in/#organization" }
+  };
+
   return (
     <html lang="en">
       {gtmEnabled && <GoogleTagManager gtmId={GTM_ID} />}
       <head>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema, websiteSchema]) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationSchema, websiteSchema, aboutSchema, contactSchema]) }}
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="dns-prefetch" href="https://www.nanded-city.in" />
+        <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={outfit.className}>
         <ModalProvider>

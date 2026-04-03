@@ -9,7 +9,7 @@ export const clusters: Cluster[] = [
     status: "Ongoing",
     rera: "P52100051948",
     reraUrl: "https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=P52100051948",
-    qrImage: "https://www.nanded-city.in/melody/assets/img/QR%20Code%20-%20Melody%20I.png",
+    qrImage: "https://nandedcitypune.com/wp-content/uploads/2023/08/Melody-I_Rera.jpeg",
     price: "On Request",
     area: "1,200 – 3,500 sq. ft. Plot area",
     possession: "Ongoing",
@@ -17,8 +17,12 @@ export const clusters: Cluster[] = [
     units: "Exclusive Plotted Development",
     description: "Melody Villa Lifestyle Plots in Nanded City — the flagship gated community for build-your-own-villa dreams. Secure a luxury plot in a premium bungalow community.",
     highlights: ["Independent House Plots", "Villa Lifestyle Plots", "Gated Community Plots Sinhagad Road", "Residential land with High ROI"],
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2023/08/Melody-I_Rera.jpeg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2023/08/Melody-I_Rera.jpeg",
+    faqs: [
+      { question: "What is the plot size in Melody I, Nanded City?", answer: "Melody I offers premium NA bungalow plots ranging from 1,200 to 3,500 sq. ft., ideal for independent villa construction." },
+      { question: "Is Melody I MahaRERA registered?", answer: "Yes, Melody I is a MahaRERA registered project with registration number P52100051948." }
+    ]
   },
   {
     id: "melody-2",
@@ -28,7 +32,7 @@ export const clusters: Cluster[] = [
     status: "Ongoing",
     rera: "P52100051867",
     reraUrl: "https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=P52100051867",
-    qrImage: "https://www.nanded-city.in/melody/assets/img/QR%20Code%20-%20Melody%20II.png",
+    qrImage: "https://nandedcitypune.com/wp-content/uploads/2023/08/Melody-II_Rera.jpeg",
     price: "On Request",
     area: "1,200 – 3,500 sq. ft. Plot area",
     possession: "Ongoing",
@@ -36,8 +40,12 @@ export const clusters: Cluster[] = [
     units: "Exclusive Plotted Development",
     description: "Melody Bungalow Community Pune — Phase II of the most aspiring NA plot development. Premium residential plots in Nanded City Pune for elite professionals.",
     highlights: ["Independent Plots Sinhagad Road", "Luxury Plot Community", "Gated Township Land", "MahaRERA Registered Plots"],
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2023/08/Melody-II_Rera.jpeg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2023/08/Melody-II_Rera.jpeg",
+    faqs: [
+      { question: "How many plots are available in Melody II?", answer: "Melody II is a boutique plotted development. Contact our sales team for current real-time inventory on Sinhagad Road." },
+      { question: "What is the possession status of Melody II plots?", answer: "Possession for Melody II NA plots is currently ongoing, allowing you to begin your villa construction soon." }
+    ]
   },
   {
     id: "melody-3",
@@ -45,9 +53,9 @@ export const clusters: Cluster[] = [
     type: "new",
     bhk: "Branded NA Bungalow Plots",
     status: "Ongoing",
-    rera: "Ongoing Registration",
+    rera: "P52100051948",
     reraUrl: null,
-    qrImage: "https://www.nanded-city.in/aalaap/assets/img/img-aalaap-qr-code.png",
+    qrImage: "https://nandedcitypune.com/wp-content/uploads/2026/01/project-qr.jpeg",
     price: "On Request",
     area: "1,200 – 3,500 sq. ft. Plot area",
     possession: "Ongoing",
@@ -55,8 +63,11 @@ export const clusters: Cluster[] = [
     units: "Exclusive Plotted Development",
     description: "Melody Luxury Plots — The final phase of Nanded City's premier bungalow lifestyle plots. High appreciation land investment on Sinhagad Road.",
     highlights: ["Villa Style Living", "Build-Ready NA Plots", "Township Plotted Project", "Private Gated Entrance"],
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2026/01/melody-banner-img-scaled.webp",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2026/01/melody-banner-img-scaled.webp",
+    faqs: [
+      { question: "What makes Melody III plots different?", answer: "Melody III is the latest phase offering the most modern infrastructure and curated gated community features within Nanded City." }
+    ]
   },
   {
     id: "aalaap-1",
@@ -74,8 +85,12 @@ export const clusters: Cluster[] = [
     units: "312 Units",
     description: "Aalaap Nanded City — The new launch premium 2.5 BHK and 3 BHK modern flats in Nanded City Pune. Early bird pricing for high-growth investment.",
     highlights: ["Aalaap New Launch Opportunity", "Modern Apartments Sinhagad Road", "Upcoming Premium Homes", "Township Lifestyle Access"],
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/aalaap/assets/img/img-hero-banner-02.jpg",
+    heroImage: "https://nandedcitypune.com/aalaap/assets/img/img-hero-banner-02.jpg",
+    faqs: [
+      { question: "What are the configuration options in Aalaap-I?", answer: "Aalaap-I offers modern 2 BHK and 3 BHK residences with carpet areas ranging from 720 to 1,280 sq. ft." },
+      { question: "When will I get possession of my Aalaap-I flat?", answer: "The estimated possession for Aalaap-I is June 2027, as per official timelines." }
+    ]
   },
   {
     id: "saajgiri",
@@ -93,8 +108,12 @@ export const clusters: Cluster[] = [
     units: "240 Units",
     description: "Saajgiri Nanded City Luxury Flats — The upcoming high-end 3 BHK project on Sinhagad Road. Pre-launch flats Pune township with Sahyadri hill views.",
     highlights: ["Saajgiri Luxury residences", "High Floor Panaromic Views", "Spacious 3 BHK Layouts", "Exclusive Concierge Services"],
-    image: "https://images.unsplash.com/photo-1628592102751-ba83b0314276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1628592102751-ba83b0314276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2026/02/saajgiri-ncp-banner-img-01.webp",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2026/02/saajgiri-ncp-banner-img-01.webp",
+    faqs: [
+      { question: "Is Saajgiri a luxury high-rise project?", answer: "Yes, Saajgiri is a G+28 premium residential tower offering exclusive 3 BHK luxury residences with panoramic Sahyadri hill views." },
+      { question: "What is the carpet area of Saajgiri 3 BHK flats?", answer: "Saajgiri offers expansive carpet areas ranging from 1,350 to 1,820 sq. ft., making it one of the largest 3 BHK segments in the township." }
+    ]
   },
   {
     id: "rhythm-1",
@@ -104,7 +123,7 @@ export const clusters: Cluster[] = [
     status: "Ongoing",
     rera: "P52100028606",
     reraUrl: "https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=P52100028606",
-    qrImage: "https://www.nanded-city.in/aalaap/assets/img/img-aalaap-qr-code.png",
+    qrImage: "https://nandedcitypune.com/wp-content/uploads/2024/02/Rhythm-1.png",
     price: "On Request",
     area: "1,500 - 3,500 sq. ft. Plot area",
     possession: "Ongoing",
@@ -112,8 +131,8 @@ export const clusters: Cluster[] = [
     units: "Exclusive Plotted Development",
     description: "Rhythm Plots Nanded City — Exclusive plot living in a gated township Pune. Premium residential plots with high appreciation land investment potential.",
     highlights: ["Exclusive Bungalow Land", "Residential Plots Sinhagad Road", "Luxury Plot Segment Pune", "Ready Possession Plots"],
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2022/01/rhy-hvr-img.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2022/01/rhy-hvr-img.jpg",
   },
   {
     id: "asawari",
@@ -130,8 +149,8 @@ export const clusters: Cluster[] = [
     units: "420 Units",
     description: "Asawari Nanded City Family Apartments — Peaceful living on Sinhagad Road with safe residential cluster living. Ready-to-move family-friendly flats.",
     highlights: ["Asawari Resale Flats", "Asawari 2 BHK Nanded City", "Peaceful Residential Society", "Top Township Amenities"],
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2017/10/aswari-1.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2017/10/aswari-1.jpg",
   },
   {
     id: "sargam",
@@ -148,8 +167,8 @@ export const clusters: Cluster[] = [
     units: "360 Units",
     description: "Sargam high-rise apartments Nanded City — Premium tower apartments with skyline views on Sinhagad Road. Modern tower living for urban professionals.",
     highlights: ["Sargam 3 BHK Nanded City", "Ready Possession Sargam", "High Rise Towers Pune", "Spacious Floor Plans"],
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2020/01/sargam-completed.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2020/01/sargam-completed.jpg",
   },
   {
     id: "pancham",
@@ -166,8 +185,8 @@ export const clusters: Cluster[] = [
     units: "288 Units",
     description: "Pancham modern apartments Nanded City — Smart layout flats Pune with urban lifestyle infrastructure. High-rise living on Sinhagad Road.",
     highlights: ["Pancham 2 BHK Nanded City", "Smart Urban Design", "High Rise Flats Pune", "Ready Possession Homes"],
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2020/01/pancham-completed.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2020/01/pancham-completed.jpg",
   },
   {
     id: "lalit",
@@ -184,8 +203,8 @@ export const clusters: Cluster[] = [
     units: "336 Units",
     description: "Lalit compact flats Nanded City — Efficient homes and compact urban apartments. Low maintenance lifestyle with smart family layouts.",
     highlights: ["Lalit Resale Flats", "Compact Smart Homes", "Low Maintenance Living", "Efficient Carpet Area"],
-    image: "https://images.unsplash.com/photo-1628592102751-ba83b0314276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1628592102751-ba83b0314276?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2017/10/latil-1.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2017/10/latil-1.jpg",
   },
   {
     id: "bageshree",
@@ -202,8 +221,8 @@ export const clusters: Cluster[] = [
     units: "256 Units",
     description: "Bageshree premium flats Nanded City — Spacious homes and upgraded lifestyle apartments. Luxury mid-segment living with modern clubhouse amenities.",
     highlights: ["Bageshree 2 BHK flats", "Spacious Family Homes", "Upgraded Lifestyle towers", "Premium Amenities Access"],
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2024/02/Bageshree.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2024/02/Bageshree.jpg",
   },
   {
     id: "kalashree",
@@ -220,8 +239,8 @@ export const clusters: Cluster[] = [
     units: "480 Units",
     description: "Kalashree large carpet flats Nanded City — Premium 3 BHK luxury family homes in Pune. High carpet area flats for elite residential living.",
     highlights: ["Kalashree 3 BHK Nanded City", "Large Carpet Area", "Premium Family Homes", "Elite Residential Project"],
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2024/02/Kalashree-Bulding-01.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2024/02/Kalashree-Bulding-01.jpg",
   },
   {
     id: "madhuvanti",
@@ -238,8 +257,8 @@ export const clusters: Cluster[] = [
     units: "320 Units",
     description: "Madhuvanti budget flats Nanded City — Affordable homes and value housing on Sinhagad Road. Ideal for first home buyers needing township lifestyle.",
     highlights: ["Madhuvanti Affordable flats", "First Home Opportunity", "Budget-Friendly Living", "High Resale Value"],
-    image: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2017/10/mad-1.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2017/10/mad-1.jpg",
   },
   {
     id: "sarang",
@@ -256,8 +275,8 @@ export const clusters: Cluster[] = [
     units: "240 Units",
     description: "Sarang view apartments Nanded City — Green facing flats Pune with hill-facing views. Nature-connected living on Sinhagad Road.",
     highlights: ["Sarang Scenic Living", "Hill View Flats Pune", "Green Zone Residency", "Peaceful Hillside Homes"],
-    image: "https://images.unsplash.com/photo-1512918728675-ed7a9ecdd3d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1512918728675-ed7a9ecdd3d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2017/10/sar-1-1.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2017/10/sar-1-1.jpg",
   },
   {
     id: "shubh-kalyan",
@@ -274,8 +293,8 @@ export const clusters: Cluster[] = [
     units: "180 Units",
     description: "Shubh Kalyan luxury flats Nanded City — Elite residential project Pune with gated luxury lifestyle. Premium Residences on Sinhagad Road.",
     highlights: ["Shubh Kalyan Luxury residences", "Elite Lifestyle towers", "Private Luxury enclave", "High-end High Rise"],
-    image: "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2017/10/shu-1.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2017/10/shu-1.jpg",
   },
   {
     id: "sur",
@@ -292,8 +311,8 @@ export const clusters: Cluster[] = [
     units: "220 Units",
     description: "Sur peaceful homes Nanded City — Calm living on Sinhagad Road with balanced lifestyle apartments. Stress-free residential community.",
     highlights: ["Sur Peaceful Living", "Quiet Township Homes", "Balanced Layout Flats", "Senior-Friendly Community"],
-    image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://is1-3.housingcdn.com/4f2250ad/2c89283e33e49e2954848034a787265e/v0/large/sur_at_nanded_city-nanded-pune-nanded_city_development_construction_co_ltd.jpg",
+    heroImage: "https://is1-3.housingcdn.com/4f2250ad/2c89283e33e49e2954848034a787265e/v0/large/sur_at_nanded_city-nanded-pune-nanded_city_development_construction_co_ltd.jpg",
   },
   {
     id: "mangal-bhairav",
@@ -310,8 +329,8 @@ export const clusters: Cluster[] = [
     units: "840 Units",
     description: "Mangal Bhairav affordable 1 BHK Nanded City — Entry level homes Pune for first-time buyers. High demand budget housing Sinhagad Road.",
     highlights: ["1 BHK under 40 Lakh", "Starter Homes Pune", "High Rental Income", "Best Budget Value"],
-    image: "https://images.unsplash.com/photo-1522708323590-d248b6d0267d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1522708323590-d248b6d0267d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://nandedcitypune.com/wp-content/uploads/2020/01/Mangal-Bhairav.jpg",
+    heroImage: "https://nandedcitypune.com/wp-content/uploads/2020/01/Mangal-Bhairav.jpg",
   },
   {
     id: "janaranjani",
@@ -328,8 +347,8 @@ export const clusters: Cluster[] = [
     units: "512 Units",
     description: "Janaranjani MHADA flats Nanded City — Government housing and low-cost homes Pune. Subsidized economical housing for all.",
     highlights: ["Cheap Flats Sinhagad Road", "MHADA Nanded City", "Economical Township Living", "Ready Possession MHADA"],
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://is1-2.housingcdn.com/4f2250ad/21966a337166ea20835f8e5f29910609/v0/large/nanded_city_janaranjani-nanded-pune-magarpatta_city_group.jpg",
+    heroImage: "https://is1-2.housingcdn.com/4f2250ad/21966a337166ea20835f8e5f29910609/v0/large/nanded_city_janaranjani-nanded-pune-magarpatta_city_group.jpg",
   },
   {
     id: "dhanashree",
@@ -337,8 +356,9 @@ export const clusters: Cluster[] = [
     type: "new",
     bhk: "Premium Plots",
     status: "Ongoing",
-    rera: "Ongoing",
-    reraUrl: null,
+    rera: "P52100002425",
+    reraUrl: "https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=P52100002425",
+    qrImage: "https://nandedcitypune.com/wp-content/uploads/2026/01/project-qr.jpeg",
     price: "On Request",
     area: "2,000 – 4,500 sq. ft. Plot area",
     possession: "Ongoing",
@@ -346,7 +366,7 @@ export const clusters: Cluster[] = [
     units: "Premium Bungalow Plots",
     description: "Dhanashree premium plots Nanded City — Build your own villa in Pune's finest township. Premium land investment with gated plot development.",
     highlights: ["Dhanashree NA Plots", "Luxury Villa Plots", "High Appreciation Land", "Gated Security Plots"],
-    image: "https://images.unsplash.com/photo-1500382017468-9049fee74a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
-    heroImage: "https://images.unsplash.com/photo-1500382017468-9049fee74a62?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80",
+    image: "https://www.nanded-city.in/wp-content/uploads/2026/02/dhanashree-ncp-featured-img.webp",
+    heroImage: "https://www.nanded-city.in/wp-content/uploads/2026/02/dhanashree-ncp-featured-img.webp",
   }
 ];

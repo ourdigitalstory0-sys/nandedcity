@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<PostParams>
   if (!post) return { title: 'Post Not Found' };
 
   return {
-    title: `${post.title} | Nanded City Pune Insights`,
+    title: `${post.title} | Nanded City Official Insights`,
     description: post.excerpt,
     alternates: {
       canonical: `https://www.nanded-city.in/blog/${post.slug}`,
@@ -61,6 +61,11 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
     notFound();
   }
 
+  // Find the related cluster for the conversion funnel CTA
+  const relatedEntity = clusters.find(c => c.id === post.relatedCluster) || clusters[0];
+  // Find related articles (same category, different slug)
+  const relatedPosts = blogs.filter(b => b.slug !== post.slug && b.category === post.category).slice(0, 3);
+  
   // Enhanced BlogPosting Schema with Speakable + E-E-A-T
   const jsonLd: any = {
     "@context": "https://schema.org",
@@ -110,11 +115,30 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
       "@type": "SpeakableSpecification",
       "xpath": [".blog-speakable-headline", ".blog-speakable-excerpt"]
     },
-    "about": {
-      "@type": "Thing",
-      "name": "Nanded City Pune Real Estate",
-      "sameAs": "https://www.nanded-city.in"
-    },
+    "about": [
+      {
+        "@type": "Place",
+        "name": "Nanded City Pune",
+        "sameAs": "https://www.nanded-city.in"
+      },
+      {
+        "@type": "Thing",
+        "name": "Real Estate Investment in Pune",
+        "sameAs": "https://en.wikipedia.org/wiki/Real_estate_in_India"
+      }
+    ],
+    "mentions": [
+      {
+        "@type": "Accommodation",
+        "name": relatedEntity.name,
+        "url": `https://www.nanded-city.in/cluster/${relatedEntity.id}`
+      },
+      {
+        "@type": "Place",
+        "name": "Sinhagad Road Pune",
+        "sameAs": "https://en.wikipedia.org/wiki/Sinhagad_Road"
+      }
+    ],
     "keywords": `${post.category}, Nanded City Pune, Sinhagad Road Real Estate, MahaRERA Projects`
   };
 
@@ -143,11 +167,6 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
       }
     ]
   };
-
-  // Find the related cluster for the conversion funnel CTA
-  const relatedEntity = clusters.find(c => c.id === post.relatedCluster) || clusters[0];
-  // Find related articles (same category, different slug)
-  const relatedPosts = blogs.filter(b => b.slug !== post.slug && b.category === post.category).slice(0, 3);
 
   return (
     <>

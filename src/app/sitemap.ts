@@ -33,6 +33,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     images: [escapeXml(b.coverImage)],
   }));
 
+  const mrUrls = [
+    { slug: '2-bhk-flats', priority: 0.90 },
+    { slug: 'bungalow-plots', priority: 0.90 },
+  ].map((m) => ({
+    url: `${baseUrl}/mr/${m.slug}`,
+    lastModified: '2026-03-30T00:00:00.000Z',
+    changeFrequency: 'weekly' as const,
+    priority: m.priority,
+  }));
+
+  const lpUrls = [
+    { slug: '2-bhk-flats', priority: 0.90 },
+    { slug: '3-bhk-luxury', priority: 0.90 },
+    { slug: 'na-bungalow-plots', priority: 0.90 },
+  ].map((l) => ({
+    url: `${baseUrl}/lp/${l.slug}`,
+    lastModified: '2026-03-30T00:00:00.000Z',
+    changeFrequency: 'weekly' as const,
+    priority: l.priority,
+  }));
+
   return [
     {
       url: baseUrl,
@@ -46,7 +67,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'daily',
       priority: 0.85,
     },
+    {
+      url: `${baseUrl}/about-us`,
+      lastModified: '2026-03-30T00:00:00.000Z',
+      changeFrequency: 'monthly',
+      priority: 0.70,
+    },
+    {
+      url: `${baseUrl}/legal-compliance`,
+      lastModified: '2026-03-30T00:00:00.000Z',
+      changeFrequency: 'monthly',
+      priority: 0.50,
+    },
     ...clusterUrls,
     ...blogUrls,
+    ...mrUrls,
+    ...lpUrls,
   ];
 }
