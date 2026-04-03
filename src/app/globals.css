@@ -776,3 +776,25 @@ h1, h2, h3, h4 { font-weight: 700; color: var(--primary-green); line-height: 1.2
   .footer-grid { gap: 32px; }
   .footer-bottom { flex-direction: column; text-align: center; }
 }
+
+/* Landing Page Specific Responsive Grids */
+.lp-hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+}
+.lp-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .lp-hero-grid { gap: 40px; }
+  .lp-trust-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+}
+@media (max-width: 768px) {
+  .lp-hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .lp-trust-grid { grid-template-columns: 1fr; gap: 16px; }
+}

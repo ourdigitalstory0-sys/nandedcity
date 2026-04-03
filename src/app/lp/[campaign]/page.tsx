@@ -124,7 +124,7 @@ export default async function LandingPage({ params }: { params: Promise<Campaign
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.6) 100%)' }} />
 
-        <div className="container" style={{ position: 'relative', padding: '100px 32px 140px', display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '60px', alignItems: 'center' }}>
+        <div className="container lp-hero-grid" style={{ position: 'relative', padding: '100px 32px 140px' }}>
           
           <div style={{ maxWidth: '640px' }}>
             <span style={{ display: 'inline-block', backgroundColor: 'var(--accent-gold)', color: '#000', padding: '6px 14px', borderRadius: '4px', fontSize: '0.8rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', marginBottom: '24px' }}>
@@ -175,7 +175,7 @@ export default async function LandingPage({ params }: { params: Promise<Campaign
       <section style={{ padding: '80px 0', backgroundColor: '#f8fafc' }}>
         <div className="container" style={{ textAlign: 'center' }}>
           <h2 style={{ fontSize: '2rem', color: '#0f172a', marginBottom: '40px' }}>Why Families Choose Nanded City</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+          <div className="lp-trust-grid">
             {['Self-Sustaining Township', 'In-House Hospital & Schools', '200+ Acres Greenery', 'Club Harmony & Kridaangan'].map((w) => (
               <div key={w} style={{ backgroundColor: '#fff', padding: '32px 20px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
                 <span style={{ color: 'var(--accent-gold)', fontSize: '2rem', display: 'block', marginBottom: '16px' }}>✦</span>
