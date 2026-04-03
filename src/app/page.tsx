@@ -192,10 +192,10 @@ export default function Home() {
           <ScrollReveal delay={0.2}>
             <div style={{ position: 'relative', width: '100%', height: '600px', backgroundColor: '#f1f5f9', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)' }}>
               <Image 
-                src="https://images.unsplash.com/photo-1577412647305-991150c7d163?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
+                src="/assets/img/master-layout.jpg" 
                 alt="Nanded City Master Township Layout showcasing Symphony IT Park, Destination Centers, and Residential Clusters" 
                 fill 
-                style={{ objectFit: 'cover' }} 
+                style={{ objectFit: 'cover', objectPosition: 'center' }} 
               />
             </div>
             
