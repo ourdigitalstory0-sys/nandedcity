@@ -6,8 +6,10 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEnquiryModal } from '../context/ModalContext';
 import { NavItem } from '@/types';
+import { SITE_CONFIG } from '@/config/site';
 
 export default function DynamicHeader() {
+
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const { openEnquiry } = useEnquiryModal();
@@ -30,13 +32,12 @@ export default function DynamicHeader() {
   }, [mobileMenuOpen]);
 
   const navItems: NavItem[] = [
-    { name: 'Apartments', href: '/#ongoing' },
-    { name: 'Plots', href: '/#ongoing' },
-    { name: 'Township', href: '/#township' },
-    { name: 'About Us', href: '/about-us' },
+    { name: 'All Residences', href: '/projects' },
+    { name: 'NA Plots', href: '/projects' },
+    { name: 'ROI Reports', href: '/blog' },
+    { name: 'About', href: '/about-us' },
     { name: 'Legal', href: '/legal-compliance' },
-    { name: 'Insights', href: '/blog' },
-    { name: 'Contact', href: '/#contact' }
+    { name: 'Contact', href: '/contact' }
   ];
 
   return (
@@ -111,9 +112,10 @@ export default function DynamicHeader() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               {/* WhatsApp Button (Hidden on very small screens if needed) */}
               <a 
-                href="https://wa.me/917996645777" 
+                href={SITE_CONFIG.contact.whatsapp} 
                 target="_blank" 
                 className="desktop-only"
+
                 style={{
                   display: 'flex',
                   alignItems: 'center',
@@ -227,9 +229,10 @@ export default function DynamicHeader() {
                 Enquire Now
               </button>
               <a 
-                href="https://wa.me/917996645777" 
+                href={SITE_CONFIG.contact.whatsapp} 
                 style={{ padding: '18px', backgroundColor: '#25D366', color: '#fff', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', fontWeight: '700' }}
               >
+
                 WhatsApp Experts
               </a>
             </div>

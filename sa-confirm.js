@@ -2,7 +2,7 @@ const fs = require('fs');
 const crypto = require('crypto');
 const http = require('https');
 
-const keyPath = '/Users/vikasyewle/Downloads/thematic-gift-461211-f1-a2ecf3247eb6.json';
+const keyPath = './service-account.json';
 const keyData = JSON.parse(fs.readFileSync(keyPath, 'utf8'));
 
 async function createJWT() {

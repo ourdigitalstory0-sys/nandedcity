@@ -2,11 +2,15 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { BreadcrumbList, WithContext } from 'schema-dts';
+import { SITE_CONFIG } from '@/config/site';
+
+
 
 interface BreadcrumbItem {
   name: string;
   href?: string;
+  current?: boolean;
 }
 
 interface BreadcrumbsProps {
@@ -14,69 +18,54 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ items }: BreadcrumbsProps) {
-  const pathname = usePathname();
-  
-  if (!items || items.length === 0) return null;
-
-  // Breadcrumb Schema for SEO - Hardening with Root Home Reference
-  const breadcrumbItems = [
-    { name: 'Home', href: '/' },
-    ...items
-  ];
-
-  const jsonLd = {
+  const jsonLd: WithContext<BreadcrumbList> = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    "itemListElement": breadcrumbItems.map((item, index) => ({
+    "itemListElement": items.map((item, index) => ({
       "@type": "ListItem",
       "position": index + 1,
       "name": item.name,
-      "item": item.href ? `https://www.nanded-city.in${item.href}` : `https://www.nanded-city.in${pathname}`,
-    })),
+      "item": item.href ? `${SITE_CONFIG.baseUrl}${item.href}` : SITE_CONFIG.baseUrl
+    }))
   };
 
+
   return (
-    <nav 
-      aria-label="Breadcrumb" 
-      style={{
-        padding: '12px 0',
-        backgroundColor: 'rgba(255, 255, 255, 0.05)',
-        backdropFilter: 'blur(5px)',
-        borderBottom: '1px solid rgba(0, 0, 0, 0.05)',
-        position: 'relative',
-        zIndex: 10
-      }}
-    >
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      
-      <div className="container" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: '#64748b' }}>
-        <Link 
-          href="/" 
-          style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }} 
-          onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = 'var(--accent-gold)')} 
-          onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = 'inherit')}
-        >
-          Home
-        </Link>
-        
+    <nav aria-label="Breadcrumb" style={{ marginBottom: '20px' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ol style={{ display: 'flex', flexWrap: 'wrap', listStyle: 'none', padding: 0, margin: 0, gap: '8px', alignItems: 'center' }}>
         {items.map((item, index) => (
-          <div key={item.name} style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <span style={{ color: '#cbd5e1' }}>/</span>
-            {item.href && index < items.length - 1 ? (
+          <li key={item.href} style={{ display: 'flex', alignItems: 'center', fontSize: '0.85rem', color: 'rgba(255,255,255,0.5)' }}>
+            {index > 0 && <span style={{ margin: '0 8px', opacity: 0.3 }}>/</span>}
+            {item.current || !item.href ? (
+              <span aria-current="page" style={{ color: item.current ? 'var(--accent-gold)' : 'inherit', fontWeight: item.current ? '600' : 'normal' }}>
+                {item.name}
+              </span>
+            ) : (
               <Link 
                 href={item.href} 
-                style={{ color: 'inherit', textDecoration: 'none', transition: 'color 0.2s' }}
-                onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = 'var(--accent-gold)')}
-                onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => (e.currentTarget.style.color = 'inherit')}
+                className="hover-gold"
+                style={{ 
+                  color: 'inherit', 
+                  textDecoration: 'none', 
+                  transition: 'color 0.2s' 
+                }}
               >
                 {item.name}
               </Link>
-            ) : (
-              <span style={{ color: '#0f172a', fontWeight: '600' }}>{item.name}</span>
             )}
-          </div>
+
+          </li>
         ))}
-      </div>
+      </ol>
+      <style jsx>{`
+        .hover-gold:hover {
+          color: var(--accent-gold) !important;
+        }
+      `}</style>
     </nav>
   );
 }

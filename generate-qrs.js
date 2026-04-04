@@ -2,12 +2,13 @@ const QRCode = require('qrcode');
 const fs = require('fs');
 
 const projects = [
-  { id: 'melody-1', url: 'https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=P52100051948' },
-  { id: 'melody-2', url: 'https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=P52100051867' },
-  { id: 'aalaap-1', url: 'https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=P52100055134' },
-  { id: 'saajgiri', url: 'https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=PR1260002501621' },
-  { id: 'rhythm-1', url: 'https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=P52100028606' },
-  { id: 'dhanashree', url: 'https://maharerait.mahaonline.gov.in/Registration/Registration_Details?RegNo=P52100002425' },
+  { id: 'melody-1', url: 'https://maharerait.mahaonline.gov.in/SearchList/Search?RegNo=P52100051948' },
+  { id: 'melody-2', url: 'https://maharerait.mahaonline.gov.in/SearchList/Search?RegNo=P52100051867' },
+  { id: 'aalaap-1', url: 'https://maharerait.mahaonline.gov.in/SearchList/Search?RegNo=P52100055134' },
+  { id: 'saajgiri', url: 'https://maharerait.mahaonline.gov.in/SearchList/Search?RegNo=PR1260002501621' },
+  { id: 'rhythm-1', url: 'https://maharerait.mahaonline.gov.in/SearchList/Search?RegNo=P52100028606' },
+  { id: 'dhanashree', url: 'https://maharerait.mahaonline.gov.in/SearchList/Search?RegNo=P52100002425' },
+  { id: 'melody-3', url: 'https://maharerait.mahaonline.gov.in/SearchList/Search?RegNo=P52100051948' },
 ];
 
 async function generateQRCodes() {

@@ -4,8 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEnquiryModal, ENQUIRY_CONTEXTS } from '../context/ModalContext';
 import { gtmEvents } from './GtmEvents';
+import { SITE_CONFIG } from '@/config/site';
 
 export default function StickyMobileCta() {
+
   const [isVisible, setIsVisible] = useState(false);
   const { openEnquiry } = useEnquiryModal();
 
@@ -52,7 +54,7 @@ export default function StickyMobileCta() {
         }}
       >
         <a
-          href="tel:+917996645777"
+          href={`tel:${SITE_CONFIG.contact.phoneNumeric}`}
           onClick={() => gtmEvents.phoneCallClick('sticky_mobile_bar')}
           style={{
             flex: '1',
@@ -74,10 +76,11 @@ export default function StickyMobileCta() {
         </a>
 
         <a
-          href="https://wa.me/917996645777?text=I%20am%20interested%20in%20Nanded%20City%20properties"
+          href={`${SITE_CONFIG.contact.whatsapp}?text=I%20am%20interested%20in%20Nanded%20City%20properties`}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => gtmEvents.whatsappClick('sticky_mobile_bar')}
+
           style={{
             flex: '1',
             display: 'flex',

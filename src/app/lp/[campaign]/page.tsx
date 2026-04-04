@@ -186,14 +186,16 @@ export default async function LandingPage({ params }: { params: Promise<Campaign
         </div>
       </section>
 
-      {/* Mini Stripped Footer */}
-      <footer style={{ padding: '40px', textAlign: 'center', backgroundColor: '#fff', borderTop: '1px solid #e2e8f0' }}>
-        <p style={{ fontSize: '0.8rem', color: '#94a3b8', maxWidth: '600px', margin: '0 auto' }}>
-          MahaRERA Registered Projects. The information provided is for general information purposes only. Images are for representation ONLY.
-        </p>
-        <p style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: '16px' }}>
-          © {new Date().getFullYear()} Nanded City Developers Pune. All rights reserved.
-        </p>
+      {/* Mini Stripped Footer with Authorization Disclaimer */}
+      <footer style={{ padding: '60px 40px', backgroundColor: '#fff', borderTop: '1px solid #e2e8f0' }}>
+        <div className="container" style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
+          <p style={{ fontSize: '0.82rem', color: 'rgba(15, 23, 42, 0.45)', lineHeight: '1.7', marginBottom: '24px' }}>
+            <strong style={{ color: '#0f172a' }}>Disclaimer:</strong> PropSmart Realty (Authorized Partner ID: A7744009295) is an <strong>Official Marketing & Sales Partner</strong> for Nanded City Pune. The project information, images, and pricing provided on this landing page are for representational and informational purposes only and are subject to change without notice. This website does not constitute an official offer from the developer. All trademarks, logos, and project names are the property of their respective owners.
+          </p>
+          <div style={{ fontSize: '0.75rem', color: '#94a3b8', borderTop: '1px solid #f1f5f9', paddingTop: '20px' }}>
+            © {new Date().getFullYear()} Nanded City Pune Residences. All rights reserved. | Authorized Marketing Channel
+          </div>
+        </div>
       </footer>
     </>
   );

@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useEnquiryModal, ENQUIRY_CONTEXTS, EnquiryContextType } from '../context/ModalContext';
 import { gtmEvents } from './GtmEvents';
+import { SITE_CONFIG } from '@/config/site';
+
 
 interface Action {
   label: string;
@@ -43,17 +45,18 @@ export default function FloatingActionBar() {
       label: 'WhatsApp Expert Now',
       emoji: '📱',
       color: '#25D366',
-      href: 'https://wa.me/917996645777?text=I%20am%20interested%20in%20Nanded%20City%20properties',
+      href: `${SITE_CONFIG.contact.whatsapp}?text=I%20am%20interested%20in%20Nanded%20City%20properties`,
       onClick: () => gtmEvents.whatsappClick('floating_bar')
     },
     {
-      label: 'Call Us +91 7996645777',
+      label: `Call Us ${SITE_CONFIG.contact.phone}`,
       emoji: '📞',
       color: '#3b82f6',
-      href: 'tel:+917996645777',
+      href: `tel:${SITE_CONFIG.contact.phoneNumeric}`,
       onClick: () => gtmEvents.phoneCallClick('floating_bar')
     }
   ];
+
 
   return (
     <AnimatePresence>

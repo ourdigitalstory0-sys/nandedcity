@@ -14,12 +14,15 @@ import MarketIntelligence from './components/MarketIntelligence';
 import TrustSection from './components/TrustSection';
 import Testimonials from './components/Testimonials';
 import { RealEstateAgent, WebSite, BreadcrumbList, LocalBusiness, SpeakableSpecification, WithContext, Offer, Residence } from 'schema-dts';
+import { SITE_CONFIG } from '../config/site';
+
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: 'https://www.nanded-city.in',
+    canonical: SITE_CONFIG.baseUrl,
   },
 };
+
 
 export default function Home() {
   const ongoingClusters = clusters.filter(c => c.type === 'new');
@@ -29,20 +32,21 @@ export default function Home() {
     {
       "@context": "https://schema.org",
       "@type": "RealEstateAgent",
-      "name": "Nanded City Developers",
-      "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      "@id": "https://www.nanded-city.in",
-      "url": "https://www.nanded-city.in",
-      "telephone": "+917996645777",
+      "name": SITE_CONFIG.brand.developerName,
+      "image": clusters[0].image,
+      "@id": SITE_CONFIG.baseUrl,
+      "url": SITE_CONFIG.baseUrl,
+      "telephone": SITE_CONFIG.contact.phoneNumeric,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Nanded, Sinhagad Road",
+        "streetAddress": "Nanded City Township, Sinhagad Road",
         "addressLocality": "Pune",
         "addressRegion": "Maharashtra",
         "postalCode": "411041",
         "addressCountry": "IN"
       },
-      "description": "Nanded City developers offer luxury 2, 2.5 & 3 BHK residential apartments in Sinhagad Road, Pune.",
+      "description": `Official Nanded City ${SITE_CONFIG.brand.organizationName} portal. Explore premium residential options.`,
+
       "makesOffer": clusters.filter(c => c.type === 'new').map(c => ({
         "@type": "Offer",
         "itemOffered": {
@@ -64,14 +68,15 @@ export default function Home() {
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "name": "Nanded City Pune",
-      "url": "https://www.nanded-city.in",
+      "name": SITE_CONFIG.name,
+      "url": SITE_CONFIG.baseUrl,
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://www.nanded-city.in/?s={search_term_string}",
+        "target": `${SITE_CONFIG.baseUrl}/blog?q={search_term_string}`,
         "query-input": "required name=search_term_string"
       }
     },
+
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -80,25 +85,27 @@ export default function Home() {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
-          "item": "https://www.nanded-city.in"
+          "item": SITE_CONFIG.baseUrl
         }
       ]
     },
+
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      "name": "Nanded City Developers Pune",
-      "image": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
-      "telephone": "+917996645777",
+      "name": SITE_CONFIG.brand.developerName,
+      "image": clusters[1].image,
+      "telephone": SITE_CONFIG.contact.phoneNumeric,
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Nanded, Sinhagad Road",
+        "streetAddress": "Nanded City Township, Sinhagad Road",
         "addressLocality": "Pune",
         "addressRegion": "Maharashtra",
         "postalCode": "411041",
         "addressCountry": "IN"
       }
     },
+
     {
       "@context": "https://schema.org",
       "@type": "SpeakableSpecification",
@@ -370,16 +377,17 @@ export default function Home() {
             <div className="contact-details">
               <div className="contact-item">
                 <span className="contact-icon">📍</span>
-                <span>Nanded, Sinhagad Road, Pune – 411041</span>
+                <span>{SITE_CONFIG.contact.address}</span>
               </div>
               <div className="contact-item">
                 <span className="contact-icon">📞</span>
-                <a href="tel:+917996645777" style={{ color: 'rgba(255,255,255,0.9)' }}>+91 7996645777</a>
+                <a href={`tel:${SITE_CONFIG.contact.phoneNumeric}`} style={{ color: 'rgba(255,255,255,0.9)' }}>{SITE_CONFIG.contact.phone}</a>
               </div>
               <div className="contact-item">
                 <span className="contact-icon">✉️</span>
-                <a href="mailto:info@www.nanded-city.in" style={{ color: 'rgba(255,255,255,0.9)' }}>info@www.nanded-city.in</a>
+                <a href={`mailto:${SITE_CONFIG.contact.email}`} style={{ color: 'rgba(255,255,255,0.9)' }}>{SITE_CONFIG.contact.email}</a>
               </div>
+
             </div>
           </ScrollReveal>
 

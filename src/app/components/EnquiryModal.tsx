@@ -3,8 +3,10 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEnquiryModal, ENQUIRY_CONTEXTS, EnquiryContextType } from '../context/ModalContext';
-import { clusters } from '../../data/clusters';
 import { gtmEvents } from './GtmEvents';
+
+import { SITE_CONFIG } from '@/config/site';
+import StepForm from './StepForm';
 
 interface ModalCopy {
   eyebrow: string;
@@ -37,18 +39,9 @@ const contextCopy: Record<EnquiryContextType, ModalCopy> = {
 };
 
 export default function EnquiryModal() {
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
   const { isEnquiryOpen, selectedProject, enquiryContext, closeEnquiry } = useEnquiryModal();
-  const ongoingClusters = clusters.filter(c => c.type === 'new');
   const copy = contextCopy[enquiryContext] || contextCopy[ENQUIRY_CONTEXTS.GENERAL];
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const nameInput = (form.elements[0] as HTMLInputElement).value;
-    gtmEvents.modalFormSubmit(enquiryContext, nameInput);
-    alert("Thank you! Our senior advisor will contact you within 30 minutes with personalised project data.");
-    closeEnquiry();
-  };
 
   useEffect(() => {
     if (isEnquiryOpen) {
@@ -56,27 +49,13 @@ export default function EnquiryModal() {
     }
   }, [isEnquiryOpen, enquiryContext]);
 
-  // Pre-select plot options if context is plot
-  const defaultSelect = selectedProject || (enquiryContext === ENQUIRY_CONTEXTS.PLOT ? 'plots' : '');
-
-  const inputStyle: React.CSSProperties = { 
-    padding: '14px 18px', 
-    borderRadius: '12px', 
-    border: '1.5px solid #e2e8f0', 
-    backgroundColor: '#f8fafc', 
-    fontSize: '0.95rem', 
-    outline: 'none', 
-    transition: 'border-color 0.2s' 
-  };
-
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
-    e.currentTarget.style.borderColor = 'var(--accent-gold)';
-  };
-
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
-    e.currentTarget.style.borderColor = '#e2e8f0';
-  };
-
+  // Reset success state when modal closes
+  useEffect(() => {
+    if (!isEnquiryOpen) {
+      const timer = setTimeout(() => setIsSubmitted(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [isEnquiryOpen]);
 
   return (
     <AnimatePresence>
@@ -100,73 +79,39 @@ export default function EnquiryModal() {
             style={{ position: 'relative', width: '100%', maxWidth: '520px', backgroundColor: '#fff', borderRadius: '28px', overflow: 'hidden', boxShadow: '0 30px 60px -12px rgba(0,0,0,0.5)' }}
           >
             {/* Close button */}
-            <button onClick={closeEnquiry} style={{ position: 'absolute', top: '18px', right: '18px', background: 'rgba(255,255,255,0.15)', border: 'none', width: '36px', height: '36px', borderRadius: '50%', fontSize: '1rem', cursor: 'pointer', color: '#fff', zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✕</button>
+            <button onClick={closeEnquiry} style={{ position: 'absolute', top: '18px', right: '18px', background: isSubmitted ? 'rgba(15, 23, 42, 0.05)' : 'rgba(255,255,255,0.15)', border: 'none', width: '36px', height: '36px', borderRadius: '50%', fontSize: '1rem', cursor: 'pointer', color: isSubmitted ? '#0f172a' : '#fff', zIndex: 10, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>✕</button>
             
-            {/* Header */}
-            <div style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)', padding: '40px 40px 32px', color: '#fff' }}>
-              <span style={{ color: 'var(--accent-gold)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.5px', fontSize: '0.72rem', marginBottom: '10px', display: 'block' }}>
-                {copy.eyebrow}
-              </span>
-              <h2 style={{ fontSize: '1.75rem', color: '#fff', marginBottom: '10px', lineHeight: '1.2' }}>{copy.headline}</h2>
-              <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.88rem', lineHeight: '1.6' }}>{copy.sub}</p>
-            </div>
-
-            {/* Form */}
-            <form onSubmit={handleSubmit} style={{ padding: '36px 40px' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <input 
-                  type="text" 
-                  placeholder="Full Name" 
-                  required 
-                  style={inputStyle}
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                />
-                <input 
-                  type="tel" 
-                  placeholder="Mobile Number" 
-                  required 
-                  style={inputStyle}
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                />
-
-                <select 
-                  defaultValue={defaultSelect}
-                  style={{ ...inputStyle, width: '100%', color: '#475569' }}
-                  onFocus={handleFocus}
-                  onBlur={handleBlur}
-                >
-                  <option value="" disabled>Select Project of Interest</option>
-                  {ongoingClusters.map(c => (
-                    <option key={c.id} value={c.id}>{c.name} – {c.bhk}</option>
-                  ))}
-                  <option value="plots">Melody Branded NA Bungalow Plots</option>
-                  <option value="township">Township Commercial / Destination</option>
-                </select>
-
-                <button type="submit" style={{ padding: '16px', backgroundColor: 'var(--accent-gold)', color: '#fff', borderRadius: '12px', border: 'none', fontWeight: '700', fontSize: '1rem', cursor: 'pointer', transition: 'all 0.2s ease', boxShadow: '0 4px 14px rgba(201,168,76,0.4)' }}>
-                  Submit Enquiry →
-                </button>
-
-                <div style={{ display: 'flex', gap: '16px', paddingTop: '4px' }}>
-                  <a href="https://wa.me/917996645777" target="_blank" rel="noopener noreferrer"
-                    onClick={() => gtmEvents.whatsappClick('modal')}
-                    style={{ flex: 1, padding: '12px', backgroundColor: '#f0fdf4', color: '#16a34a', borderRadius: '10px', textAlign: 'center', textDecoration: 'none', fontWeight: '600', fontSize: '0.85rem', border: '1px solid #bbf7d0' }}>
-                    📱 WhatsApp Expert
-                  </a>
-                  <a href="tel:+917996645777"
-                    onClick={() => gtmEvents.phoneCallClick('modal')}
-                    style={{ flex: 1, padding: '12px', backgroundColor: '#f8fafc', color: '#475569', borderRadius: '10px', textAlign: 'center', textDecoration: 'none', fontWeight: '600', fontSize: '0.85rem', border: '1px solid #e2e8f0' }}>
-                    📞 Call Now
-                  </a>
-                </div>
-
-                <p style={{ fontSize: '0.68rem', color: '#94a3b8', textAlign: 'center', lineHeight: '1.5' }}>
-                  MahaRERA: P52100055134 · P52100051948 · P52100051867 · Fully Compliant
-                </p>
+            {/* Header - Hidden on success to focus on the checkmark */}
+            {!isSubmitted && (
+              <div style={{ background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)', padding: '40px 40px 32px', color: '#fff' }}>
+                <span style={{ color: 'var(--accent-gold)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.5px', fontSize: '0.72rem', marginBottom: '10px', display: 'block' }}>
+                  {copy.eyebrow}
+                </span>
+                <h2 style={{ fontSize: '1.75rem', color: '#fff', marginBottom: '10px', lineHeight: '1.2' }}>{copy.headline}</h2>
+                <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.88rem', lineHeight: '1.6' }}>{copy.sub}</p>
               </div>
-            </form>
+            )}
+
+            {/* Step Engine */}
+            <div style={{ padding: isSubmitted ? '60px 40px' : '36px 40px' }}>
+              <StepForm 
+                theme="light"
+                context={enquiryContext}
+                initialProject={selectedProject}
+                onSuccess={() => setIsSubmitted(true)}
+              />
+              
+              {!isSubmitted && (
+                <div style={{ display: 'flex', gap: '16px', paddingTop: '24px', opacity: 0.6 }}>
+                   <div style={{ flex: 1, fontSize: '0.7rem', color: '#64748b', fontWeight: '500' }}>
+                     ✅ Official Partner Access
+                   </div>
+                   <div style={{ flex: 1, fontSize: '0.7rem', color: '#64748b', fontWeight: '500' }}>
+                     ✅ Verified MahaRERA Data
+                   </div>
+                </div>
+              )}
+            </div>
           </motion.div>
         </div>
       )}

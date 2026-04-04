@@ -1,6 +1,8 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
+import { SITE_CONFIG } from '@/config/site';
+import StepForm from './StepForm';
 
 interface EnquiryFormProps {
   clusterName: string;
@@ -8,31 +10,34 @@ interface EnquiryFormProps {
 }
 
 export default function EnquiryForm({ clusterName, bhk = "2 & 3 BHK" }: EnquiryFormProps) {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    alert(`Thank you for your interest in ${clusterName}! Our team will contact you shortly.`);
-    (e.target as HTMLFormElement).reset();
-  };
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const configs = bhk.split(/[,&]/).map(b => b.trim()).filter(Boolean);
+  // Determine context based on clusterName (Plot vs Apartment)
+  const context = clusterName.toLowerCase().includes('plot') || clusterName.toLowerCase().includes('melody') 
+    ? 'plot' 
+    : 'apartment';
 
   return (
-    <form className="enquiry-form" onSubmit={handleSubmit}>
-      <input type="text" placeholder="Your Full Name" className="form-input" required />
-      <input type="tel" placeholder="Mobile Number" className="form-input" required />
-      <input type="email" placeholder="Email Address" className="form-input" />
-      <select className="form-input form-select" defaultValue="">
-        <option value="" disabled>Select Configuration</option>
-        {configs.map(b => (
-          <option key={b} value={b}>{b}</option>
-        ))}
-      </select>
-      <button type="submit" className="btn btn-gold" style={{ width: '100%', textAlign: 'center' }}>
-        Request Site Visit →
-      </button>
-      <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.6)', textAlign: 'center', marginTop: '8px' }}>
-        By submitting, you agree to be contacted by our sales team.
-      </p>
-    </form>
+    <div className="enquiry-form-container" style={{ minHeight: '300px' }}>
+      {!isSubmitted && (
+        <div style={{ marginBottom: '20px' }}>
+          <h4 style={{ fontSize: '1rem', color: '#0f172a', marginBottom: '4px' }}>Enquire about {clusterName}</h4>
+          <p style={{ fontSize: '0.8rem', color: '#64748b' }}>Get floor plans and site visit schedule.</p>
+        </div>
+      )}
+      
+      <StepForm 
+        theme="light"
+        context={context}
+        initialProject={`${clusterName} (${bhk})`}
+        onSuccess={() => setIsSubmitted(true)}
+      />
+
+      {!isSubmitted && (
+        <p style={{ fontSize: '0.7rem', color: '#94a3b8', textAlign: 'center', marginTop: '16px' }}>
+          By continuing, you agree to official contact regarding Nanded City inventory.
+        </p>
+      )}
+    </div>
   );
 }

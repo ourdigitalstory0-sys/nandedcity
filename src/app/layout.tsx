@@ -11,7 +11,10 @@ import StickyMobileCta from './components/StickyMobileCta';
 import EnquiryModal from './components/EnquiryModal';
 import { ModalProvider } from './context/ModalContext';
 import { Organization, WebSite, WithContext } from 'schema-dts';
+import { SITE_CONFIG } from '@/config/site';
+
 import "./globals.css";
+
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-XXXXXXX';
 
@@ -19,35 +22,35 @@ const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500", "600",
 
 export const metadata: Metadata = {
   title: {
-    default: "Nanded City Pune | Premium Luxury Residential Flats",
-    template: "%s | Nanded City Pune",
+    default: `${SITE_CONFIG.name} | Premium Luxury Residential Flats`,
+    template: `%s | ${SITE_CONFIG.name}`,
   },
-  description: "Explore 1, 2, 2.5 & 3 BHK luxury residential apartments and NA bungalow plots in Nanded City, Sinhagad Road, Pune. Buy flats in Pune's most aspiring 700-acre gated community near Khadakwasla. MahaRERA compliant homes with world-class amenities.",
+  description: SITE_CONFIG.description,
   keywords: "Nanded City Pune, buy flat in Nanded City Pune, 1 BHK, 2 BHK, 2.5 BHK, 3 BHK, Nanded City Sinhagad Road, Nanded City township Pune, Nanded City flats for sale, Nanded City apartments, Nanded City property investment, Nanded City ready possession flats, Nanded City new launch, Nanded City resale flats, Nanded City price list, Nanded City brochure, Nanded City master plan, Nanded City amenities, Nanded City reviews, Nanded City location advantage, best township near Sinhagad Road Pune, gated community near Khadakwasla Pune",
-  metadataBase: new URL("https://www.nanded-city.in"),
+  metadataBase: new URL(SITE_CONFIG.baseUrl),
   verification: {
     google: "EO-ezSz-FlhAk-eKdIWOB9xTRFXojS-rHXyMVZPAyQs",
     yandex: "pending-yandex-verification-id",
     other: {
-      me: ['info@nanded-city.in', 'https://www.nanded-city.in'],
+      me: [SITE_CONFIG.contact.email, SITE_CONFIG.baseUrl],
     },
   },
   twitter: {
     card: "summary_large_image",
-    title: "Nanded City Pune | Premium Residential Flats",
-    images: ["https://nandedcitypune.com/aalaap/assets/img/img-hero-banner-02.jpg"],
+    title: `${SITE_CONFIG.name} | Premium Residential Flats`,
+    images: [SITE_CONFIG.brand.ogImage],
   },
   openGraph: {
-    title: "Nanded City Pune | Built on Trust",
-    description: "Discover 1, 2, 2.5 & 3 BHK luxury residential clusters and NA plots in Nanded City Township. 700 Acres of high-end suburban living near Khadakwasla, Pune.",
-    url: "https://www.nanded-city.in",
-    siteName: "Nanded City Pune Residences",
+    title: `${SITE_CONFIG.name} | Built on Trust`,
+    description: SITE_CONFIG.description,
+    url: SITE_CONFIG.baseUrl,
+    siteName: SITE_CONFIG.name,
     images: [
       {
-        url: "https://nandedcitypune.com/aalaap/assets/img/img-hero-banner-02.jpg",
+        url: SITE_CONFIG.brand.ogImage,
         width: 1200,
         height: 630,
-        alt: "Nanded City Pune Residential Township",
+        alt: SITE_CONFIG.name,
       },
     ],
     locale: "en_IN",
@@ -65,10 +68,10 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://www.nanded-city.in',
+    canonical: SITE_CONFIG.baseUrl,
     languages: {
-      'en-IN': 'https://www.nanded-city.in',
-      'mr-IN': 'https://www.nanded-city.in/mr/2-bhk-flats', // High-intent Marathi landing
+      'en-IN': SITE_CONFIG.baseUrl,
+      'mr-IN': `${SITE_CONFIG.baseUrl}/mr/2-bhk-flats`, // High-intent Marathi landing
     },
   },
 };
@@ -78,18 +81,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const organizationSchema: any = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    "@id": "https://www.nanded-city.in/#organization",
-    "name": "Nanded City Developers Pune",
-    "alternateName": "Nanded City Pune Residences",
-    "url": "https://www.nanded-city.in",
-    "logo": "https://www.nanded-city.in/nc-logo.png", 
-    "image": "https://nandedcitypune.com/aalaap/assets/img/img-hero-banner-02.jpg",
-    "description": "Nanded City Pune: 700+ acres of self-reliant premium township on Sinhagad Road near Khadakwasla. Offering 1, 2, 2.5, 3 BHK apartments and branded NA bungalow plots for business owners and professionals.",
-    "telephone": "+917996645777",
-    "email": "info@nanded-city.in",
+    "@id": `${SITE_CONFIG.baseUrl}/#organization`,
+    "name": SITE_CONFIG.brand.developerName,
+    "alternateName": SITE_CONFIG.name,
+    "url": SITE_CONFIG.baseUrl,
+    "logo": `${SITE_CONFIG.baseUrl}${SITE_CONFIG.brand.logo}`, 
+    "image": SITE_CONFIG.brand.ogImage,
+    "description": SITE_CONFIG.brand.organizationName + ": Authorized Partner for Nanded City Pune. 700+ acres of self-reliant premium township on Sinhagad Road.",
+    "telephone": SITE_CONFIG.contact.phoneNumeric,
+    "email": SITE_CONFIG.contact.email,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Nanded, Sinhagad Road",
+      "streetAddress": "Nanded City Township, Sinhagad Road",
       "addressLocality": "Pune",
       "addressRegion": "Maharashtra",
       "postalCode": "411041",
@@ -97,8 +100,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 18.4425,
-      "longitude": 73.81
+      "latitude": SITE_CONFIG.contact.location.latitude,
+      "longitude": SITE_CONFIG.contact.location.longitude
     },
     "areaServed": {
       "@type": "City",
@@ -111,9 +114,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "closes": "20:00"
     },
     "sameAs": [
-      "https://www.facebook.com/nandedcitypune",
-      "https://www.instagram.com/nandedcitypune"
+      SITE_CONFIG.social.facebook,
+      SITE_CONFIG.social.instagram
     ],
+
     "knowsAbout": [
       "Real Estate Investment in Pune",
       "Luxury Apartments Sinhagad Road",
@@ -206,10 +210,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     Pune&apos;s most aspiring township on Sinhagad Road near Khadakwasla dam. 700 Acres of curated, self-reliant luxury living near Anandnagar and Dhayari.
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                    <a href="tel:+917996645777" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', textDecoration: 'none' }}>📞 +91 7996645777</a>
-                    <a href="mailto:info@nanded-city.in" style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', textDecoration: 'none' }}>✉️ info@nanded-city.in</a>
-                    <a href="https://wa.me/917996645777" target="_blank" rel="noopener noreferrer" style={{ color: '#25D366', fontSize: '0.85rem', textDecoration: 'none' }}>📱 WhatsApp Expert</a>
+                    <a href={`tel:${SITE_CONFIG.contact.phoneNumeric}`} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', textDecoration: 'none' }}>📞 {SITE_CONFIG.contact.phone}</a>
+                    <a href={`mailto:${SITE_CONFIG.contact.email}`} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', textDecoration: 'none' }}>✉️ {SITE_CONFIG.contact.email}</a>
+                    <a href={SITE_CONFIG.contact.whatsapp} target="_blank" rel="noopener noreferrer" style={{ color: '#25D366', fontSize: '0.85rem', textDecoration: 'none' }}>📱 {SITE_CONFIG.contact.whatsappPrompt}</a>
                   </div>
+
                 </div>
 
                 {/* Column 2: Residential Projects Hub */}
@@ -280,9 +285,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <div style={{ height: '1px', backgroundColor: 'rgba(255,255,255,0.06)', marginBottom: '32px' }} />
 
               {/* Highly Hardened Strategy Disclaimer */}
-              <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.72rem', lineHeight: '1.7', marginBottom: '24px' }}>
-                The definitive Nanded City Pune Residential Platform. Explore premium 1 BHK, 2 BHK, 2.5 BHK, and 3 BHK flats near Sinhagad Road Pune. All residential clusters — including Asawari, Sargam, and Saajgiri — are MahaRERA compliant. Located near Nanded City Public School, Destination Centre, and Khadakwasla, Pune – 411041.
+              <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.72rem', lineHeight: '1.7', marginBottom: '16px' }}>
+                The definitive Nanded City Pune Residential Platform. Explore premium 1 BHK, 2 BHK, 2.5 BHK, and 3 BHK flats near Sinhagad Road Pune. All residential clusters — including Asawari, Sargam, and Saajgiri — are MahaRERA compliant. Located near Nanded City Public School, Destination Centre, and Khadakwasla, Nanded City Township, Sinhagad Road, Pune – 411041.
               </p>
+
+              <div style={{ backgroundColor: 'rgba(255,255,255,0.03)', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '32px' }}>
+                <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.7rem', lineHeight: '1.8', margin: 0 }}>
+                  <strong style={{ color: 'var(--accent-gold)' }}>Disclaimer:</strong> {SITE_CONFIG.brand.organizationName} ({SITE_CONFIG.contact.phone}) is an <strong>Authorized Marketing & Sales Partner</strong> for Nanded City Pune (the Township). All information, properties, prices, and floor plans featured on this independent portal are for representational and informational purposes only and are subject to change without notice. This platform does not constitute an official offer or guarantee from Nanded City Developers. We facilitate institutional advisory and site-visit arrangements for prospective homebuyers. All trademarks and logos belong to their respective owners.
+                </p>
+              </div>
+
 
               {/* Footer Bottom Bar */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>

@@ -7,6 +7,8 @@ import { blogs } from '../../../data/blogs';
 import { clusters } from '../../../data/clusters';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import { BlogPosting, BreadcrumbList, WithContext, SpeakableSpecification } from 'schema-dts';
+import { SITE_CONFIG } from '@/config/site';
+
 
 interface PostParams {
   slug: string;
@@ -27,12 +29,14 @@ export async function generateMetadata({ params }: { params: Promise<PostParams>
     title: `${post.title} | Nanded City Official Insights`,
     description: post.excerpt,
     alternates: {
-      canonical: `https://www.nanded-city.in/blog/${post.slug}`,
+      canonical: `${SITE_CONFIG.baseUrl}/blog/${post.slug}`,
     },
+
     openGraph: {
       title: post.title,
       description: post.excerpt,
-      url: `https://www.nanded-city.in/blog/${post.slug}`,
+      url: `${SITE_CONFIG.baseUrl}/blog/${post.slug}`,
+
       type: 'article',
       publishedTime: post.date,
       authors: [post.author],
@@ -72,15 +76,17 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
     "@type": "BlogPosting",
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://www.nanded-city.in/blog/${post.slug}`
+      "@id": `${SITE_CONFIG.baseUrl}/blog/${post.slug}`
     },
+
     "headline": post.title,
     "description": post.excerpt,
     "image": post.coverImage,  
     "author": {
       "@type": "Organization",
-      "name": post.author,
-      "url": "https://www.nanded-city.in",
+      "name": SITE_CONFIG.brand.organizationName,
+      "url": SITE_CONFIG.baseUrl,
+
       "knowsAbout": [
         "Real Estate Investment in Pune",
         "Sinhagad Road Property Market",
@@ -91,25 +97,28 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
       ],
       "memberOf": {
         "@type": "Organization",
-        "name": "Nanded City Developers Pune"
+        "name": SITE_CONFIG.brand.developerName
       }
-    },  
+    },
+  
     "publisher": {
       "@type": "Organization",
-      "name": "Nanded City Developers Pune",
+      "name": SITE_CONFIG.brand.developerName,
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.nanded-city.in/wp-content/themes/nandedcity/images/nc-logo.png"
+        "url": `${SITE_CONFIG.baseUrl}${SITE_CONFIG.brand.logo}`
       },
-      "@id": "https://www.nanded-city.in/#organization"
+      "@id": `${SITE_CONFIG.baseUrl}/#organization`
     },
+
     "datePublished": post.date,
     "dateModified": post.date,
     "inLanguage": "en-IN",
     "isPartOf": {
       "@type": "WebSite",
-      "@id": "https://www.nanded-city.in/#website"
+      "@id": `${SITE_CONFIG.baseUrl}/#website`
     },
+
     // Speakable — enables Google Assistant and SGE audio answers
     "speakable": {
       "@type": "SpeakableSpecification",
@@ -118,9 +127,10 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
     "about": [
       {
         "@type": "Place",
-        "name": "Nanded City Pune",
-        "sameAs": "https://www.nanded-city.in"
+        "name": SITE_CONFIG.name,
+        "sameAs": SITE_CONFIG.baseUrl
       },
+
       {
         "@type": "Thing",
         "name": "Real Estate Investment in Pune",
@@ -131,8 +141,9 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
       {
         "@type": "Accommodation",
         "name": relatedEntity.name,
-        "url": `https://www.nanded-city.in/cluster/${relatedEntity.id}`
+        "url": `${SITE_CONFIG.baseUrl}/cluster/${relatedEntity.id}`
       },
+
       {
         "@type": "Place",
         "name": "Sinhagad Road Pune",
@@ -151,20 +162,23 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.nanded-city.in"
+        "item": SITE_CONFIG.baseUrl
       },
+
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Market Intelligence",
-        "item": "https://www.nanded-city.in/blog"
+        "item": `${SITE_CONFIG.baseUrl}/blog`
       },
+
       {
         "@type": "ListItem",
         "position": 3,
         "name": post.title,
-        "item": `https://www.nanded-city.in/blog/${post.slug}`
+        "item": `${SITE_CONFIG.baseUrl}/blog/${post.slug}`
       }
+
     ]
   };
 
@@ -256,12 +270,22 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
               <div style={{ fontSize: '1.8rem', marginBottom: '10px' }}>🏠</div>
               <h4 style={{ color: '#fff', fontSize: '1rem', marginBottom: '8px' }}>Speak to a Specialist</h4>
               <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.82rem', marginBottom: '18px', lineHeight: '1.5' }}>Get personalised data on projects matching your profile.</p>
-              <a href="https://wa.me/917996645777" target="_blank" rel="noopener noreferrer" 
-                style={{ display: 'block', padding: '12px', backgroundColor: '#25D366', color: '#fff', borderRadius: '10px', fontWeight: '700', textDecoration: 'none', fontSize: '0.88rem', marginBottom: '10px' }}>
-                📱 WhatsApp Expert
+              <a href={SITE_CONFIG.contact.whatsapp} target="_blank" rel="noopener noreferrer" 
+                style={{ display: 'block', padding: '12px', backgroundColor: '#25D366', color: '#fff', borderRadius: '100px', fontWeight: '700', textDecoration: 'none', fontSize: '0.88rem', marginBottom: '10px' }}>
+                📱 {SITE_CONFIG.contact.whatsappPrompt}
               </a>
-              <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.68rem' }}>Response within 30 minutes</div>
+              <a href={`tel:${SITE_CONFIG.contact.phoneNumeric}`} 
+                style={{ display: 'block', padding: '12px', backgroundColor: '#3b82f6', color: '#fff', borderRadius: '100px', fontWeight: '700', textDecoration: 'none', fontSize: '0.88rem', marginBottom: '10px' }}>
+                📞 Call {SITE_CONFIG.contact.phone}
+              </a>
+              <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.68rem', marginBottom: '12px' }}>Response within 30 minutes</div>
+              <a href={`mailto:${SITE_CONFIG.contact.email}`} 
+                style={{ display: 'block', color: '#94a3b8', fontSize: '0.75rem', textDecoration: 'none', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '12px' }}>
+                📧 {SITE_CONFIG.contact.email}
+              </a>
+
             </div>
+
           </aside>
         </div>
       </article>

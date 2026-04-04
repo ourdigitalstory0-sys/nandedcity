@@ -12,6 +12,10 @@ import DynamicHeader from '../../components/DynamicHeader';
 import FloatingActionBar from '../../components/FloatingActionBar';
 import StickyMobileCta from '../../components/StickyMobileCta';
 import EnquiryModal from '../../components/EnquiryModal';
+import { SITE_CONFIG } from '@/config/site';
+import { Product, Residence, FAQPage, BreadcrumbList, Event, WithContext } from 'schema-dts';
+
+
 
 interface ClusterParams {
   id: string;
@@ -30,16 +34,17 @@ export async function generateMetadata({ params }: { params: Promise<ClusterPara
     description: `${cluster.description} ${cluster.bhk} apartments in Nanded City, Sinhagad Road, Pune. Price starts at ${cluster.price}. MahaRERA: ${cluster.rera}.`,
     keywords: `${cluster.name} Nanded City, ${cluster.bhk} Sinhagad Road Pune, ${cluster.name} price, ${cluster.name} RERA ${cluster.rera}`,
     openGraph: {
-      title: `${cluster.name} | Nanded City, Pune`,
+      title: `${cluster.name} | ${SITE_CONFIG.name}`,
       description: cluster.description,
-      url: `https://www.nanded-city.in/cluster/${cluster.id}`,
+      url: `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`,
       images: [{ url: cluster.heroImage, width: 1200, height: 630 }],
     },
     alternates: {
-      canonical: `https://www.nanded-city.in/cluster/${cluster.id}`,
+      canonical: `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`,
     },
   };
 }
+
 
 export default async function ClusterPage({ params }: { params: Promise<ClusterParams> }) {
   const resolvedParams = await params;
@@ -54,14 +59,15 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
   const productSchema: any = {
     "@context": "https://schema.org",
     "@type": "Product",
-    "name": `${cluster.name} — ${cluster.bhk} at Nanded City, Pune`,
+    "name": `${cluster.name} — ${cluster.bhk} at ${SITE_CONFIG.name}`,
     "description": cluster.description,
-    "url": `https://www.nanded-city.in/cluster/${cluster.id}`,
+    "url": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`,
     "image": cluster.heroImage,
     "brand": {
       "@type": "Brand",
-      "name": "Nanded City Developers Pune"
+      "name": SITE_CONFIG.brand.developerName
     },
+
     "category": isPlot ? "NA Bungalow Plots" : "Residential Apartments",
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -116,7 +122,7 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
     "@type": "Residence",
     "name": cluster.name,
     "description": cluster.description,
-    "url": `https://www.nanded-city.in/cluster/${cluster.id}`,
+    "url": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`,
     "image": cluster.heroImage,
     "numberOfRooms": cluster.bhk,
     "address": {
@@ -129,9 +135,10 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "18.4425",
-      "longitude": "73.8100"
+      "latitude": SITE_CONFIG.contact.location.latitude,
+      "longitude": SITE_CONFIG.contact.location.longitude
     },
+
     "amenityFeature": [
       { "@type": "LocationFeatureSpecification", "name": "Swimming Pool", "value": true },
       { "@type": "LocationFeatureSpecification", "name": "Gymnasium", "value": true },
@@ -185,15 +192,14 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
   const projectSchema: any = {
     "@context": "https://schema.org",
     "@type": "RealEstateProject",
-    "name": `${cluster.name} by Nanded City Developers`,
+    "name": `${cluster.name} by ${SITE_CONFIG.brand.developerName}`,
     "description": cluster.description,
-    "url": `https://www.nanded-city.in/cluster/${cluster.id}`,
+    "url": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`,
     "image": cluster.heroImage,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Nanded, Sinhagad Road",
+      "streetAddress": "Nanded City Township, Sinhagad Road",
       "addressLocality": "Pune",
-      "addressRegion": "Maharashtra",
       "postalCode": "411041",
       "addressCountry": "IN"
     },
@@ -233,10 +239,11 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
     "description": `Detailed project walkthrough and model flat tour for ${cluster.name}. Expert advisors available for pricing and floor plan discussions.`,
     "organizer": {
       "@type": "Organization",
-      "name": "Nanded City Developers",
-      "url": "https://www.nanded-city.in"
+      "name": SITE_CONFIG.brand.developerName,
+      "url": SITE_CONFIG.baseUrl
     }
   };
+
 
   // BreadcrumbList Schema
   const breadcrumbSchema: any = {
@@ -247,21 +254,22 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://www.nanded-city.in"
+        "item": SITE_CONFIG.baseUrl
       },
       {
         "@type": "ListItem",
         "position": 2,
-        "name": cluster.type === 'new' ? 'Ongoing Projects' : 'Completed Projects',
-        "item": "https://www.nanded-city.in/#ongoing"
+        "name": "Residential Clusters",
+        "item": `${SITE_CONFIG.baseUrl}/projects`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": cluster.name,
-        "item": `https://www.nanded-city.in/cluster/${cluster.id}`
+        "item": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`
       }
     ]
+
   };
 
   const jsonLd: any[] = [productSchema, projectSchema, residenceSchema, faqSchema, breadcrumbSchema, siteVisitEvent];
@@ -269,8 +277,9 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
   return (
     <>
       <Breadcrumbs items={[
-        { name: cluster.type === 'new' ? 'Ongoing Projects' : 'Completed Projects', href: '/#ongoing' },
-        { name: cluster.name }
+        { name: 'Home', href: '/' },
+        { name: 'Residential Clusters', href: '/projects' },
+        { name: cluster.name, href: `/cluster/${cluster.id}`, current: true }
       ]} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
@@ -395,9 +404,10 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
                 <EnquiryForm clusterName={cluster.name} bhk={cluster.bhk} />
                 <div className="enquiry-trust" style={{ marginTop: '24px', fontSize: '0.85rem', color: '#666', borderTop: '1px solid #eee', paddingTop: '16px' }}>
                   <div style={{ marginBottom: '8px' }}>✅ MahaRERA Verified Project</div>
-                  <div style={{ marginBottom: '8px' }}>✅ Official Nanded City Developer</div>
+                  <div style={{ marginBottom: '8px' }}>✅ Official {SITE_CONFIG.brand.developerName} Partner</div>
                   <div>✅ Free Site Visit Arranged</div>
                 </div>
+
               </ScrollReveal>
             </div>
 
@@ -406,7 +416,7 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
       </main>
 
       {/* Institutional Trust: MahaRERA Verified Badge */}
-      <section style={{ backgroundColor: '#f8fafc', padding: '60px 0', borderTop: '1px solid #e2e8f0', borderBottom: '1px solid #e2e8f0' }}>
+      <section style={{ backgroundColor: '#f8fafc', padding: '60px 0', borderTop: '1px solid #e2e8f0' }}>
         <div className="container">
           <ScrollReveal>
             <div style={{ 
@@ -449,7 +459,7 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
                   <>
                     <ReraQrCode 
                       reraNumber={cluster.rera} 
-                      qrImage={cluster.qrImage || "https://www.nanded-city.in/aalaap/assets/img/img-aalaap-qr-code.png"} 
+                      qrImage={cluster.qrImage || "/qrs/aalaap-1-qr.png"} 
                     />
                     <div style={{ fontSize: '1.1rem', fontWeight: '700', color: '#0f172a' }}>
                       {cluster.rera}
@@ -474,6 +484,42 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
         </div>
       </section>
 
+      {/* Project Intelligence: "Knowledge Mesh" refinement */}
+      <section style={{ backgroundColor: '#fff', padding: '80px 0', borderBottom: '1px solid #e2e8f0' }}>
+        <div className="container">
+          <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 400px', gap: '60px', alignItems: 'center' }}>
+            <ScrollReveal>
+              <span style={{ color: 'var(--accent-gold)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1.5px', fontSize: '0.75rem' }}>Investment Data</span>
+              <h2 style={{ fontSize: '2.2rem', color: '#0f172a', margin: '14px 0 20px' }}>Project Intelligence & ROI Analysis</h2>
+              <p style={{ color: '#64748b', fontSize: '1.1rem', lineHeight: '1.7', marginBottom: '30px' }}>
+                Our research team has audited the capital appreciation potential and rental yield trends for the {cluster.name} segment in Nanded City. Explore our latest market intelligence reports to understand why this cluster is a preferred choice for the city&apos;s elite professionals.
+              </p>
+              <div style={{ display: 'flex', gap: '16px' }}>
+                <Link href="/blog/nanded-city-investment-roi-doctors-professionals" className="btn btn-gold" style={{ padding: '12px 28px' }}>ROI Audit Report</Link>
+                <Link href="/blog/sinhgad-road-flyover-impact-2026" className="btn btn-outline" style={{ padding: '12px 28px', color: '#0f172a', borderColor: '#e2e8f0' }}>Infrastructure Impact</Link>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal delay={0.2}>
+              <div style={{ backgroundColor: '#f8fafc', padding: '40px', borderRadius: '24px', border: '1px solid #e2e8f0', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', top: '-20px', right: '-20px', fontSize: '6rem', opacity: 0.05 }}>📊</div>
+                <h4 style={{ fontSize: '1rem', color: '#0f172a', marginBottom: '16px', position: 'relative' }}>Relevant Market Insights</h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', position: 'relative' }}>
+                  {[
+                    { label: 'Nanded City vs Standalone Projects ROI', href: '/blog/nanded-city-vs-standalone-projects-roi' },
+                    { label: 'Price List & Master Plan Guide 2026', href: '/blog/nanded-city-pune-master-plan-price-list-guide' },
+                    { label: 'Infrastructure Update: Sinhgad Road 2026', href: '/blog/sinhgad-road-flyover-impact-2026' }
+                  ].map((insight, idx) => (
+                    <Link key={idx} href={insight.href} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px', padding: '12px', background: '#fff', borderRadius: '10px', fontSize: '0.82rem', fontWeight: '600', color: '#475569', border: '1px solid #f1f5f9' }}>
+                      <span style={{ color: 'var(--accent-gold)' }}>→</span> {insight.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
       {/* Project Lifecycle Continuity */}
       <section className="section-padding" style={{ backgroundColor: '#fff' }}>
         <div className="container">
@@ -483,7 +529,7 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
               <p style={{ color: 'var(--text-muted)', fontSize: '1.1rem' }}>Discover more residential options in Pune&apos;s finest township.</p>
             </ScrollReveal>
             <ScrollReveal delay={0.2}>
-              <Link href="/#ongoing" style={{ color: 'var(--primary-green)', fontWeight: '700', textDecoration: 'none', borderBottom: '2px solid var(--accent-gold)', paddingBottom: '4px' }}>
+              <Link href="/projects" style={{ color: 'var(--primary-green)', fontWeight: '700', textDecoration: 'none', borderBottom: '2px solid var(--accent-gold)', paddingBottom: '4px' }}>
                 All Residences →
               </Link>
             </ScrollReveal>

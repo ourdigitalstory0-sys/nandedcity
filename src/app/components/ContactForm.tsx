@@ -2,37 +2,39 @@
 
 import React from 'react';
 import { Cluster } from '@/types';
+import { SITE_CONFIG } from '@/config/site';
+import StepForm from './StepForm';
 
 interface ContactFormProps {
   ongoingClusters: Cluster[];
 }
 
 export default function ContactForm({ ongoingClusters }: ContactFormProps) {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    alert('Thank you! Our team will contact you shortly.');
-    (e.target as HTMLFormElement).reset();
-  };
+  const [isSubmitted, setIsSubmitted] = React.useState(false);
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
-      <h3 style={{ color: '#fff', marginBottom: '24px', fontSize: '1.25rem' }}>Request a Free Site Visit</h3>
-      <input type="text" id="contact-name" placeholder="Your Full Name" className="form-input" required />
-      <input type="tel" id="contact-phone" placeholder="Mobile Number" className="form-input" required />
-      <input type="email" id="contact-email" placeholder="Email Address (optional)" className="form-input" />
-      <select id="contact-project" className="form-input form-select" defaultValue="">
-        <option value="" disabled>Select Project of Interest</option>
-        {ongoingClusters.map(c => (
-          <option key={c.id} value={c.id}>{c.name} – {c.bhk}</option>
-        ))}
-      </select>
-      <textarea id="contact-msg" placeholder="Additional Message (optional)" className="form-input form-textarea" rows={3} />
-      <button type="submit" id="contact-submit" className="btn btn-gold" style={{ width: '100%' }}>
-        Submit Enquiry →
-      </button>
-      <p style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)', textAlign: 'center', marginTop: '10px' }}>
-        MahaRERA Reg. Nos: P52100051948 · P52100051867 · P52100055134 · PR1260002501621
-      </p>
-    </form>
+    <div className="contact-form" style={{ backgroundColor: 'rgba(255,255,255,0.02)', padding: '40px', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
+      {!isSubmitted && (
+        <>
+          <h3 style={{ color: '#fff', marginBottom: '8px', fontSize: '1.4rem' }}>Request Priority Consultation</h3>
+          <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.88rem', marginBottom: '24px' }}>Secure the latest inventory and special price list for Nanded City.</p>
+        </>
+      )}
+      
+      <div style={{ marginTop: '10px' }}>
+        <StepForm 
+          theme="dark" 
+          context="general"
+          onSuccess={() => setIsSubmitted(true)}
+        />
+      </div>
+
+      {!isSubmitted && (
+        <p style={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.35)', textAlign: 'center', marginTop: '20px', lineHeight: '1.5' }}>
+          Authorized Partner: A{SITE_CONFIG.contact.phoneNumeric}<br />
+          MahaRERA: P52100055134 · P52100051948 · P52100051867
+        </p>
+      )}
+    </div>
   );
 }

@@ -9,17 +9,19 @@ const escapeXml = (str: string) => str.replace(/&/g, '&amp;');
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.nanded-city.in';
 
+  const currentDate = new Date().toISOString();
+
   // Accurate lastModified dates based on project status
   const getClusterLastModified = (cluster: Cluster): string => {
     if (cluster.type === 'completed') return '2025-12-01T00:00:00.000Z';
     // Ongoing projects - use a realistic content-update date
-    return '2026-03-28T00:00:00.000Z';
+    return currentDate;
   };
 
   const clusterUrls = clusters.map((c) => ({
     url: escapeXml(`${baseUrl}/cluster/${c.id}`),
     lastModified: getClusterLastModified(c),
-    changeFrequency: (c.type === 'completed' ? 'monthly' : 'weekly') as 'monthly' | 'weekly',
+    changeFrequency: (c.type === 'completed' ? 'monthly' : 'daily') as 'monthly' | 'daily',
     priority: c.type === 'completed' ? 0.60 : 0.95,
     // Google Image Sitemap: embed hero images for indexing
     images: [escapeXml(c.heroImage)],
@@ -38,8 +40,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { slug: 'bungalow-plots', priority: 0.90 },
   ].map((m) => ({
     url: `${baseUrl}/mr/${m.slug}`,
-    lastModified: '2026-03-30T00:00:00.000Z',
-    changeFrequency: 'weekly' as const,
+    lastModified: currentDate,
+    changeFrequency: 'daily' as const,
     priority: m.priority,
   }));
 
@@ -49,33 +51,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { slug: 'na-bungalow-plots', priority: 0.90 },
   ].map((l) => ({
     url: `${baseUrl}/lp/${l.slug}`,
-    lastModified: '2026-03-30T00:00:00.000Z',
-    changeFrequency: 'weekly' as const,
+    lastModified: currentDate,
+    changeFrequency: 'daily' as const,
     priority: l.priority,
   }));
 
   return [
     {
       url: baseUrl,
-      lastModified: '2026-03-30T00:00:00.000Z',
+      lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 1.0,
     },
     {
       url: escapeXml(`${baseUrl}/blog`),
-      lastModified: '2026-03-30T00:00:00.000Z',
+      lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.85,
     },
     {
       url: `${baseUrl}/about-us`,
-      lastModified: '2026-03-30T00:00:00.000Z',
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.70,
     },
     {
       url: `${baseUrl}/legal-compliance`,
-      lastModified: '2026-03-30T00:00:00.000Z',
+      lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.50,
     },
