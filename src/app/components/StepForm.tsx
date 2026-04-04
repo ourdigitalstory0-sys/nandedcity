@@ -95,7 +95,8 @@ export default function StepForm({
 
   const intentOptions = context === 'plot' 
     ? ['Below 1500 sq.ft.', '1500 - 2500 sq.ft.', 'Above 2500 sq.ft.', 'Immediate Purchase']
-    : ['2 BHK Apartment', '3 BHK Apartment', 'Luxury 4 BHK', 'Ready Possession'];
+    : ['2 BHK Apartment', '3 BHK Apartment', 'Luxury 4 BHK', 'NA Bungalow Plots'];
+
 
   return (
     <div className={`step-form-container ${isDark ? 'dark' : 'light'}`}>
