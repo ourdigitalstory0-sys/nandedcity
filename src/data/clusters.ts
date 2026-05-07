@@ -22,7 +22,9 @@ export const clusters: Cluster[] = [
     faqs: [
       { question: "What is the plot size in Melody I, Nanded City?", answer: "Melody I offers premium NA bungalow plots starting from 2,400 sq. ft., ideal for independent villa construction." },
       { question: "Is Melody I MahaRERA registered?", answer: "Yes, Melody I is a MahaRERA registered project with registration number P52100051948." }
-    ]
+    ],
+    searchKeywords: ["NA Plots Sinhagad Road", "Bungalow plots Nanded City", "Independent house plots Pune", "Residential land Nanded City"],
+    coordinates: { lat: 18.4612, lng: 73.8015 }
   },
   {
     id: "melody-2",
@@ -45,7 +47,9 @@ export const clusters: Cluster[] = [
     faqs: [
       { question: "How many plots are available in Melody II?", answer: "Melody II is a boutique plotted development. Contact our sales team for current real-time inventory on Sinhagad Road." },
       { question: "What is the possession status of Melody II plots?", answer: "Possession for Melody II NA plots is currently ongoing, allowing you to begin your villa construction soon." }
-    ]
+    ],
+    searchKeywords: ["Gated community plots Pune", "Buy plot Sinhagad Road", "Nanded City plot price", "Luxury villa land Pune"],
+    coordinates: { lat: 18.4620, lng: 73.8025 }
   },
   {
     id: "melody-3",
@@ -151,6 +155,8 @@ export const clusters: Cluster[] = [
     highlights: ["Asawari Resale Flats", "Asawari 2 BHK Nanded City", "Peaceful Residential Society", "Top Township Amenities"],
     image: "https://nandedcitypune.com/wp-content/uploads/2017/10/aswari-1.jpg",
     heroImage: "https://nandedcitypune.com/wp-content/uploads/2017/10/aswari-1.jpg",
+    searchKeywords: ["Asawari Nanded City resale", "2 BHK flats Sinhagad Road ready", "Asawari Pune apartments", "Ready to move flats Pune"],
+    coordinates: { lat: 18.4590, lng: 73.8040 }
   },
   {
     id: "sargam",
@@ -169,6 +175,8 @@ export const clusters: Cluster[] = [
     highlights: ["Sargam 3 BHK Nanded City", "Ready Possession Sargam", "High Rise Towers Pune", "Spacious Floor Plans"],
     image: "https://nandedcitypune.com/wp-content/uploads/2020/01/sargam-completed.jpg",
     heroImage: "https://nandedcitypune.com/wp-content/uploads/2020/01/sargam-completed.jpg",
+    searchKeywords: ["Sargam Nanded City price", "3 BHK towers Sinhagad Road", "Sargam Pune reviews", "Luxury high rise Nanded City"],
+    coordinates: { lat: 18.4605, lng: 73.8055 }
   },
   {
     id: "pancham",
@@ -223,6 +231,8 @@ export const clusters: Cluster[] = [
     highlights: ["Bageshree 2 BHK flats", "Spacious Family Homes", "Upgraded Lifestyle towers", "Premium Amenities Access"],
     image: "https://nandedcitypune.com/wp-content/uploads/2024/02/Bageshree.jpg",
     heroImage: "https://nandedcitypune.com/wp-content/uploads/2024/02/Bageshree.jpg",
+    searchKeywords: ["Bageshree Nanded City rent", "2 BHK Bageshree Pune", "Affordable 2 BHK Sinhagad Road", "Bageshree floor plans"],
+    coordinates: { lat: 18.4630, lng: 73.8000 }
   },
   {
     id: "kalashree",

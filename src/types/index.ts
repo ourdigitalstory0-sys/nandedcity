@@ -17,6 +17,8 @@ export interface Cluster {
   image: string;
   heroImage: string;
   faqs?: { question: string; answer: string }[];
+  searchKeywords?: string[];
+  coordinates?: { lat: number; lng: number };
 }
 
 export interface BlogPost {

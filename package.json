@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seo:sweep": "node scripts/sovereign-sweep.js"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.2",

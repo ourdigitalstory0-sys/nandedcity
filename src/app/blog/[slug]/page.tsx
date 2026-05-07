@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { blogs } from '../../../data/blogs';
 import { clusters } from '../../../data/clusters';
+import { authors } from '../../../data/authors';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import { BlogPosting, BreadcrumbList, WithContext, SpeakableSpecification } from 'schema-dts';
 import { SITE_CONFIG } from '@/config/site';
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: { params: Promise<PostParams>
 
       type: 'article',
       publishedTime: post.date,
-      authors: [post.author],
+      authors: [authors.find(a => a.id === post.author)?.name || post.author],
       images: [
         {
           url: post.coverImage,
@@ -65,13 +66,15 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
     notFound();
   }
 
+  const author = authors.find(a => a.id === post.author);
+
   // Find the related cluster for the conversion funnel CTA
   const relatedEntity = clusters.find(c => c.id === post.relatedCluster) || clusters[0];
   // Find related articles (same category, different slug)
   const relatedPosts = blogs.filter(b => b.slug !== post.slug && b.category === post.category).slice(0, 3);
   
   // Enhanced BlogPosting Schema with Speakable + E-E-A-T
-  const jsonLd: any = {
+  const jsonLdBase: any = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "mainEntityOfPage": {
@@ -83,24 +86,11 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
     "description": post.excerpt,
     "image": post.coverImage,  
     "author": {
-      "@type": "Organization",
-      "name": SITE_CONFIG.brand.organizationName,
-      "url": SITE_CONFIG.baseUrl,
-
-      "knowsAbout": [
-        "Real Estate Investment in Pune",
-        "Sinhagad Road Property Market",
-        "NA Bungalow Plots Investment",
-        "MahaRERA Compliance",
-        "Township Living Pune",
-        "Luxury Apartments South Pune"
-      ],
-      "memberOf": {
-        "@type": "Organization",
-        "name": SITE_CONFIG.brand.developerName
-      }
+      "@type": "Person",
+      "name": authors.find(a => a.id === post.author)?.name || "Nanded City Intelligence Team",
+      "url": `${SITE_CONFIG.baseUrl}/about-us`,
+      "jobTitle": authors.find(a => a.id === post.author)?.role || "Senior Analyst"
     },
-  
     "publisher": {
       "@type": "Organization",
       "name": SITE_CONFIG.brand.developerName,
@@ -157,6 +147,7 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
   const breadcrumbSchema: any = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": `${SITE_CONFIG.baseUrl}/blog/${post.slug}/#breadcrumb`,
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -182,13 +173,27 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
     ]
   };
 
+  const webpageSchema: any = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_CONFIG.baseUrl}/blog/${post.slug}/#webpage`,
+    "url": `${SITE_CONFIG.baseUrl}/blog/${post.slug}`,
+    "name": post.title,
+    "description": post.excerpt,
+    "isPartOf": { "@id": `${SITE_CONFIG.baseUrl}/#website` },
+    "breadcrumb": { "@id": `${SITE_CONFIG.baseUrl}/blog/${post.slug}/#breadcrumb` },
+    "publisher": { "@id": `${SITE_CONFIG.baseUrl}/#organization` }
+  };
+
+  const jsonLd: any[] = [jsonLdBase, webpageSchema, breadcrumbSchema];
+
   return (
     <>
       <Breadcrumbs items={[
         { name: 'Latest Insights', href: '/blog' },
         { name: post.title }
       ]} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([jsonLd, breadcrumbSchema]) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       
       <article style={{ backgroundColor: '#fff', paddingTop: '80px' }}>
         {/* Header Hero */}
@@ -208,7 +213,7 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
                 {post.title}
               </h1>
               <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>✏️ {post.author}</span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>✏️ {author?.name || post.author}</span>
                 <span>•</span>
                 <span>📅 {post.date}</span>
               </div>
@@ -227,6 +232,41 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
           {/* Main Prose */}
           <div>
             <div className="prose" dangerouslySetInnerHTML={{ __html: post.content }} style={{ lineHeight: '1.8', color: '#334155', fontSize: '1.1rem' }} />
+
+            {/* Editorial Authority Bio */}
+            {author && (
+              <div style={{ marginTop: '60px', padding: '40px', backgroundColor: '#f8fafc', borderRadius: '24px', border: '1px solid #e2e8f0' }}>
+                <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
+                  <div style={{ 
+                    width: '80px', 
+                    height: '80px', 
+                    borderRadius: '100px', 
+                    backgroundColor: 'var(--accent-gold)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '1.5rem',
+                    color: '#fff',
+                    fontWeight: '800'
+                  }}>
+                    {author.name.charAt(0)}
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <h4 style={{ margin: 0, fontSize: '1.2rem', color: '#0f172a' }}>{author.name}</h4>
+                    <p style={{ margin: '4px 0 12px 0', fontSize: '0.9rem', color: 'var(--accent-gold)', fontWeight: '600' }}>{author.role}</p>
+                    <p style={{ margin: 0, fontSize: '0.95rem', color: '#64748b', lineHeight: '1.6' }}>{author.bio}</p>
+                    <div style={{ marginTop: '16px', display: 'flex', gap: '12px' }}>
+                      {author.specialization.map(s => (
+                        <span key={s} style={{ fontSize: '0.75rem', padding: '4px 12px', backgroundColor: '#fff', border: '1px solid #e2e8f0', borderRadius: '100px', color: '#475569' }}>
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+            
             <hr style={{ margin: '60px 0', border: '0', borderTop: '1px solid #e2e8f0' }} />
             <div style={{ backgroundColor: '#f8fafc', padding: '40px', borderRadius: '16px', border: '1px solid #e2e8f0', textAlign: 'center' }}>
               <span style={{ color: 'var(--accent-gold)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '0.78rem', marginBottom: '12px', display: 'block' }}>Take the Next Step</span>

@@ -37,69 +37,88 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
   return (
-    <section style={{ padding: '100px 0', backgroundColor: '#f8fafc' }}>
+    <section style={{ padding: '120px 0', backgroundColor: '#f8fafc', overflow: 'hidden' }}>
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          style={{ textAlign: 'center', marginBottom: '64px' }}
+          style={{ textAlign: 'center', marginBottom: '80px' }}
         >
-          <span style={{ color: 'var(--accent-gold)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.78rem', display: 'block', marginBottom: '12px' }}>
+          <span style={{ color: 'var(--accent-gold)', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.78rem', display: 'block', marginBottom: '16px' }}>
             Verified Resident Voices
           </span>
-          <h2 style={{ fontSize: '2.4rem', color: '#0f172a' }}>Trusted by Pune's Elite</h2>
-          <p style={{ color: '#64748b', marginTop: '12px', fontSize: '1.05rem' }}>
-            Hear from the doctors, CXOs, and investors who call Nanded City home.
+          <h2 style={{ fontSize: '2.8rem', color: '#0f172a', fontWeight: '800' }}>Trusted by Pune&apos;s Elite</h2>
+          <p style={{ color: '#64748b', marginTop: '16px', fontSize: '1.1rem', maxWidth: '600px', margin: '16px auto 0' }}>
+            Hear from the doctors, CXOs, and investors who call Nanded City home and have witnessed the township&apos;s legacy.
           </p>
         </motion.div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '28px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
           {testimonials.map((t, idx) => (
             <motion.div
               key={t.name}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.12 }}
+              transition={{ delay: idx * 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               style={{
                 backgroundColor: '#fff',
-                borderRadius: '24px',
-                padding: '40px',
-                border: '1px solid #e2e8f0',
-                boxShadow: '0 4px 6px -1px rgba(0,0,0,0.04), 0 10px 20px -4px rgba(0,0,0,0.06)',
+                borderRadius: '32px',
+                padding: '48px',
+                border: '1px solid rgba(15, 23, 42, 0.04)',
+                boxShadow: '0 20px 40px -15px rgba(0,0,0,0.06)',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '24px'
+                gap: '24px',
+                position: 'relative'
               }}
             >
-              {/* Quote */}
-              <div style={{ fontSize: '2.5rem', color: 'var(--accent-gold)', lineHeight: 1, marginBottom: '-10px' }}>&quot;</div>
-              <p style={{ color: '#475569', lineHeight: '1.7', fontSize: '0.95rem', fontStyle: 'italic', flexGrow: 1 }}>
+              {/* Verified Badge */}
+              <div style={{ position: 'absolute', top: '30px', right: '30px', display: 'flex', alignItems: 'center', gap: '6px', backgroundColor: 'rgba(16, 185, 129, 0.08)', padding: '6px 12px', borderRadius: '100px' }}>
+                <span style={{ fontSize: '0.8rem', color: '#10b981' }}>✓</span>
+                <span style={{ fontSize: '0.65rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.5px', color: '#10b981' }}>Verified Resident</span>
+              </div>
+              
+              <p style={{ 
+                color: '#334155', 
+                lineHeight: '1.9', 
+                fontSize: '1.05rem', 
+                fontStyle: 'normal', 
+                fontWeight: '500',
+                flexGrow: 1,
+                position: 'relative',
+                zIndex: 1,
+                letterSpacing: '-0.01em'
+              }}>
                 {t.quote}
               </p>
 
               {/* Author */}
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', paddingTop: '20px', borderTop: '1px solid #f1f5f9' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '20px', paddingTop: '32px', borderTop: '1px solid #f1f5f9' }}>
                 <div style={{
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '50%',
-                  backgroundColor: '#0f172a',
+                  width: '64px',
+                  height: '64px',
+                  borderRadius: '100px',
+                  backgroundColor: '#f8fafc',
+                  border: '2px solid var(--accent-gold)',
                   color: 'var(--accent-gold)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontWeight: '800',
-                  fontSize: '0.9rem',
-                  flexShrink: 0
+                  fontSize: '1.1rem',
+                  flexShrink: 0,
+                  boxShadow: '0 4px 12px rgba(197, 168, 114, 0.15)'
                 }}>
                   {t.avatar}
                 </div>
                 <div>
-                  <div style={{ fontWeight: '700', color: '#0f172a', fontSize: '0.95rem' }}>{t.name}</div>
-                  <div style={{ color: '#64748b', fontSize: '0.8rem' }}>{t.title}</div>
-                  <div style={{ color: 'var(--accent-gold)', fontSize: '0.75rem', fontWeight: '600', marginTop: '2px' }}>✓ {t.property}</div>
+                  <div style={{ fontWeight: '800', color: '#0f172a', fontSize: '1.1rem', marginBottom: '2px' }}>{t.name}</div>
+                  <div style={{ color: '#64748b', fontSize: '0.85rem', fontWeight: '500', marginBottom: '4px' }}>{t.title}</div>
+                  <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--accent-gold)', fontSize: '0.78rem', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                    <span style={{ fontSize: '1rem' }}>📍</span> {t.property}
+                  </div>
                 </div>
               </div>
             </motion.div>

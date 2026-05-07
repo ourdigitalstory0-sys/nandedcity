@@ -100,9 +100,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": SITE_CONFIG.contact.location.latitude,
-      "longitude": SITE_CONFIG.contact.location.longitude
+      "latitude": 18.4612,
+      "longitude": 73.8015
     },
+    "hasMap": "https://maps.app.goo.gl/NandedCityPune",
+    "priceRange": "₹45L - ₹2.5Cr",
     "areaServed": {
       "@type": "City",
       "name": "Pune"
@@ -117,7 +119,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       SITE_CONFIG.social.facebook,
       SITE_CONFIG.social.instagram
     ],
-
     "knowsAbout": [
       "Real Estate Investment in Pune",
       "Luxury Apartments Sinhagad Road",
@@ -134,18 +135,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const websiteSchema: any = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://www.nanded-city.in/#website",
+    "@id": `${SITE_CONFIG.baseUrl}/#website`,
     "name": "Nanded City Pune Residences",
-    "url": "https://www.nanded-city.in",
+    "url": SITE_CONFIG.baseUrl,
     "description": "Official residential platform for Nanded City Township, Sinhagad Road, Pune — premium asavari, bageshree, sargam apartments and branded NA bungalow plots.",
     "publisher": {
-      "@id": "https://www.nanded-city.in/#organization"
+      "@id": `${SITE_CONFIG.baseUrl}/#organization`
     },
     "potentialAction": {
       "@type": "SearchAction",
       "target": {
         "@type": "EntryPoint",
-        "urlTemplate": "https://www.nanded-city.in/blog?q={search_term_string}"
+        "urlTemplate": `${SITE_CONFIG.baseUrl}/blog?q={search_term_string}`
       },
       "query-input": "required name=search_term_string"
     },

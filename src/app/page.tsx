@@ -7,17 +7,23 @@ import { blogs } from '../data/blogs';
 import ContactForm from './components/ContactForm';
 import ReraQrCode from './components/ReraQrCode';
 import DynamicClusterGrid from './components/DynamicClusterGrid';
+import ROICalculator from './components/ROICalculator';
 import ScrollReveal from './components/ScrollReveal';
 import ParallaxHero from './components/ParallaxHero';
 import HeroActions from './components/HeroActions';
 import MarketIntelligence from './components/MarketIntelligence';
+import TownshipEcosystem from './components/TownshipEcosystem';
 import TrustSection from './components/TrustSection';
 import Testimonials from './components/Testimonials';
+import SearchIntelligence from './components/SearchIntelligence';
 import { RealEstateAgent, WebSite, BreadcrumbList, LocalBusiness, SpeakableSpecification, WithContext, Offer, Residence } from 'schema-dts';
 import { SITE_CONFIG } from '../config/site';
 
 
 export const metadata: Metadata = {
+  title: `${SITE_CONFIG.name} | Premium Residential Township Pune | Official Portal`,
+  description: `Official residential platform for Nanded City Township, Pune. Explore 1, 2, 2.5, 3 BHK apartments and NA bungalow plots on Sinhagad Road. MahaRERA registered projects.`,
+  keywords: "Nanded City Pune, Flats in Nanded City, 2 BHK in Nanded City, 3 BHK Sinhagad Road, NA Plots Pune, Township in Pune, Nanded City Price List, Real Estate Pune",
   alternates: {
     canonical: SITE_CONFIG.baseUrl,
   },
@@ -136,6 +142,7 @@ export default function Home() {
         </div>
       </ParallaxHero>
       <MarketIntelligence />
+      <TownshipEcosystem />
 
       {/* Ongoing Projects */}
       <section id="ongoing" className="section-padding" style={{ backgroundColor: '#fff' }}>
@@ -150,10 +157,12 @@ export default function Home() {
         </div>
       </section>
 
+      <ROICalculator />
       {/* 700-Acre Township Trust */}
       <TrustSection />
 
       {/* HNW Resident Testimonials */}
+      <SearchIntelligence />
       <Testimonials />
 
       {/* Why Nanded City */}

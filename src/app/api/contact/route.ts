@@ -1,25 +1,50 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 import { SITE_CONFIG } from '@/config/site';
+import { saveLeadToVault } from '@/lib/ledger';
 
 
 export async function POST(req: NextRequest) {
+  let savedLead: any = null;
   try {
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-      console.error('CRITICAL: RESEND_API_KEY is missing from environment.');
-      return NextResponse.json({ error: 'System configuration error.' }, { status: 500 });
-    }
-
-    const resend = new Resend(apiKey);
     const body = await req.json();
-    const { name, phone, project, email, message, source } = body;
+    const { name, phone, project, email, message, source, intent } = body;
 
     console.log(`[API Contact] New lead attempt: ${name} (${phone}) from ${source}`);
 
     if (!name || !phone) {
       return NextResponse.json({ error: 'Name and Phone are required' }, { status: 400 });
     }
+
+    // STEP 1: Sovereign Vault Persistence (Local First)
+    try {
+      savedLead = await saveLeadToVault({
+        name,
+        phone,
+        email,
+        project: project || 'Nanded City General',
+        message,
+        source: source || 'Official Website',
+        intent: intent || 'General'
+      });
+      console.log(`✅ [VAULT] Lead indexed successfully: ${savedLead.id}`);
+    } catch (vaultErr) {
+      console.error('❌ [VAULT] Critical failure saving lead locally.', vaultErr);
+      // We continue to email attempt, but vault failure is serious
+    }
+
+    // STEP 2: Email Dispatch via Resend
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error('CRITICAL: RESEND_API_KEY is missing from environment.');
+      // If we saved to vault, we can still return success
+      if (savedLead) {
+        return NextResponse.json({ success: true, vaultId: savedLead.id, note: 'Email dispatch skipped (config missing)' });
+      }
+      return NextResponse.json({ error: 'System configuration error.' }, { status: 500 });
+    }
+
+    const resend = new Resend(apiKey);
 
     // Modern HTML Lead Template for Premium Real Estate
     const leadHtml = `
@@ -46,6 +71,13 @@ export async function POST(req: NextRequest) {
             </div>
           </div>
 
+          ${intent ? `
+          <div style="margin-bottom: 30px;">
+            <p style="color: #64748b; font-size: 12px; text-transform: uppercase; margin-bottom: 4px;">Prospect Intent</p>
+            <p style="color: #0f172a; font-size: 16px; font-weight: 600; margin: 0;">${intent}</p>
+          </div>
+          ` : ''}
+
           ${email ? `
           <div style="margin-bottom: 30px;">
             <p style="color: #64748b; font-size: 12px; text-transform: uppercase; margin-bottom: 4px;">Email Address</p>
@@ -70,29 +102,41 @@ export async function POST(req: NextRequest) {
           </div>
         </div>
         <div style="background-color: #f1f5f9; padding: 20px; text-align: center; border-top: 1px solid #e2e8f0;">
-          <p style="color: #94a3b8; font-size: 12px; margin: 0;">${SITE_CONFIG.brand.organizationName} · Managed Lead Routing</p>
+          <p style="color: #94a3b8; font-size: 12px; margin: 0;">${SITE_CONFIG.brand.organizationName} · Vault ID: ${savedLead?.id || 'LOCAL'}</p>
         </div>
 
       </div>
     `;
 
-    const { data, error } = await resend.emails.send({
-      from: `${SITE_CONFIG.name} Leads <onboarding@resend.dev>`,
-      to: SITE_CONFIG.contact.email,
-      subject: `New Lead: ${name} — ${project || SITE_CONFIG.name}`,
-      html: leadHtml,
-      replyTo: email || undefined,
-    });
+    try {
+      const { data, error } = await resend.emails.send({
+        from: `${SITE_CONFIG.name} Leads <onboarding@resend.dev>`,
+        to: SITE_CONFIG.contact.email,
+        subject: `New Lead: ${name} — ${project || SITE_CONFIG.name}`,
+        html: leadHtml,
+        replyTo: email || undefined,
+      });
 
+      if (error) {
+        console.error('Resend Error:', error);
+        // If we have a vault ID, we can still report success to the frontend
+        if (savedLead) {
+          return NextResponse.json({ success: true, vaultId: savedLead.id, warning: 'Email dispatch failed' });
+        }
+        return NextResponse.json({ error: error.message }, { status: 500 });
+      }
 
-    if (error) {
-      console.error('Resend Error:', error);
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      return NextResponse.json({ success: true, id: data?.id, vaultId: savedLead?.id });
+    } catch (emailErr) {
+      console.error('Email Dispatch Critical Error:', emailErr);
+      if (savedLead) {
+        return NextResponse.json({ success: true, vaultId: savedLead.id, warning: 'Email dispatch crashed' });
+      }
+      throw emailErr;
     }
-
-    return NextResponse.json({ success: true, id: data?.id });
   } catch (err: any) {
     console.error('API Error:', err);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }
+

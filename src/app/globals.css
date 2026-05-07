@@ -4,30 +4,30 @@
    1. DESIGN TOKENS
 ───────────────────────────────────────── */
 :root {
-  --primary-green: #0f172a; /* Dynamic Navy Shift for robustness */
+  --primary-green: #0f172a; 
   --secondary-green: #1e293b;
-  --light-green: #f1f5f9;
-  --accent-gold: #c9a84c;
-  --accent-gold-hover: #b8972e;
-  --accent-gold-light: rgba(201, 168, 76, 0.15);
+  --light-green: #f8fafc;
+  --accent-gold: #c5a872;
+  --accent-gold-hover: #b4965d;
+  --accent-gold-light: rgba(197, 168, 114, 0.1);
   --text-dark: #0f172a;
   --text-muted: #64748b;
   --text-light: #f8fafc;
   --bg-color: #ffffff;
   --card-bg: #ffffff;
-  --border-color: #e2e8f0;
+  --border-color: rgba(15, 23, 42, 0.08);
   --border-radius-sm: 12px;
-  --border-radius: 20px;
-  --border-radius-lg: 32px;
+  --border-radius: 24px;
+  --border-radius-lg: 40px;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-  --shadow-gold: 0 10px 15px -3px rgba(201, 168, 76, 0.3);
-  --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-fast: all 0.2s ease;
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-blur: blur(12px);
+  --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 40px 80px -15px rgba(0, 0, 0, 0.12);
+  --shadow-gold: 0 10px 25px -5px rgba(197, 168, 114, 0.3);
+  --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-blur: blur(20px);
 }
 
 /* ─────────────────────────────────────────

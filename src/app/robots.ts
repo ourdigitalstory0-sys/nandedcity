@@ -1,30 +1,21 @@
 import { MetadataRoute } from 'next';
+import { SITE_CONFIG } from '@/config/site';
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = 'https://www.nanded-city.in';
+  const baseUrl = SITE_CONFIG.baseUrl;
 
   return {
     rules: [
       {
-        userAgent: 'Googlebot',
-        allow: ['/', '/cluster/', '/blog/', '/lp/', '/mr/', '/api/indexnow'],
-        disallow: ['/admin', '/private', '/_next/static/'],
-      },
-      {
-        userAgent: 'AdsBot-Google',
-        allow: ['/'],
-      },
-      {
-        userAgent: 'Bingbot',
-        allow: ['/', '/cluster/', '/blog/'],
-        disallow: ['/admin', '/private', '/_next/'],
-        crawlDelay: 1,
-      },
-      {
         userAgent: '*',
-        allow: ['/', '/cluster/', '/blog/', '/lp/', '/mr/', '/api/indexnow'],
-        disallow: ['/admin', '/private', '/*.json$', '/_next/', '/api/google-index'],
-        crawlDelay: 2,
+        allow: ['/', '/cluster/', '/blog/', '/lp/', '/mr/', '/projects', '/api/indexnow'],
+        disallow: ['/admin', '/private', '/_next/', '/api/google-index', '/*.json$'],
+        crawlDelay: 0, // Hardening: ensuring no artificial crawl delay for modern indexing
+      },
+      {
+        userAgent: 'Googlebot',
+        allow: ['/'],
+        disallow: ['/admin', '/private', '/_next/static/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

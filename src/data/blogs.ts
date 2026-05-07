@@ -1,4 +1,5 @@
 import { BlogPost, BlogCategory } from '@/types';
+import { authors } from './authors';
 export type { BlogPost, BlogCategory };
 
 export const blogCategories: BlogCategory[] = [
@@ -16,7 +17,7 @@ export const blogs: BlogPost[] = [
     project: "rhythm-1",
     title: "The Aspiring Circle: Why Nanded City's Branded NA Bungalow Plots are the Preferred Choice for CXOs, Doctors, and Entrepreneurs",
     excerpt: "Explore the most aspiring bungalow community in Pune. Discover why Nanded City's Branded NA Bungalow Plots are the ultimate real estate asset for the city's elite professionals.",
-    author: "Nanded City Community Relations",
+    author: "ananya-kulkarni",
     date: "2026-04-18",
     readTime: "7 min read",
     coverImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
@@ -32,7 +33,7 @@ export const blogs: BlogPost[] = [
     project: "all",
     title: "Infrastructure Revolution: The Sinhgad Road Flyover and Its Impact on Real Estate in 2026",
     excerpt: "Analyze the massive price appreciation on Sinhgad Road following the completion of the multi-level flyover.",
-    author: "Nanded City Urban Development Analyst",
+    author: "vikram-deshmukh",
     date: "2026-03-28",
     readTime: "6 min read",
     coverImage: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
@@ -48,7 +49,7 @@ export const blogs: BlogPost[] = [
     project: "all",
     title: "Investment ROI Core Audit: Nanded City vs Standalone Projects in South Pune",
     excerpt: "Why the internal infrastructure of a township provides a 3x higher rental yield and 40% more resale value.",
-    author: "Nanded City Asset Management",
+    author: "vikram-deshmukh",
     date: "2026-04-12",
     readTime: "9 min read",
     coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
@@ -64,7 +65,7 @@ export const blogs: BlogPost[] = [
     project: "all",
     title: "Nanded City Pune: The Definitive 2026 Guide to Master Plan, Price List & Location Advantage",
     excerpt: "The master guide to Nanded City Township. Explore the complete price list, brochure insights, and the strategic location advantage of Sinhagad Road Pune.",
-    author: "Nanded City Township Relations",
+    author: "ananya-kulkarni",
     date: "2026-04-26",
     readTime: "12 min read",
     coverImage: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
@@ -91,7 +92,7 @@ export const blogs: BlogPost[] = [
     project: "janaranjani",
     title: "Affordable Housing in Pune: A Guide to Janaranjani MHADA & Mangal Bhairav at Nanded City",
     excerpt: "Searching for budget homes or 1 BHK under 50 lakh? Explore Janaranjani MHADA and Mangal Bhairav entry-level housing in Nanded City Pune.",
-    author: "Nanded City Affordable Housing Cell",
+    author: "ananya-kulkarni",
     date: "2026-04-27",
     readTime: "8 min read",
     coverImage: "https://images.unsplash.com/photo-1522708323590-d248b6d0267d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
@@ -116,7 +117,7 @@ export const blogs: BlogPost[] = [
     project: "melody-1",
     title: "Investment ROI Audit 2026: Why Nanded City is Pune’s Premier Residential Asset for Doctors & Professionals",
     excerpt: "Data-driven audit of ROI, rental income, and resale value for Nanded City investment property. Tailored for Doctors, CAs, and IT Leaders.",
-    author: "Nanded City Investment Advisory",
+    author: "vikram-deshmukh",
     date: "2026-04-28",
     readTime: "10 min read",
     coverImage: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",

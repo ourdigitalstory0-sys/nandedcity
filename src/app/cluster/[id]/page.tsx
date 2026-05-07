@@ -12,6 +12,8 @@ import DynamicHeader from '../../components/DynamicHeader';
 import FloatingActionBar from '../../components/FloatingActionBar';
 import StickyMobileCta from '../../components/StickyMobileCta';
 import EnquiryModal from '../../components/EnquiryModal';
+import GoogleMap from '../../components/GoogleMap';
+import SearchIntelligence from '../../components/SearchIntelligence';
 import { SITE_CONFIG } from '@/config/site';
 import { Product, Residence, FAQPage, BreadcrumbList, Event, WithContext } from 'schema-dts';
 
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: { params: Promise<ClusterPara
   return {
     title: `${cluster.name} – ${cluster.bhk} in Nanded City, Pune | MahaRERA Compliant`,
     description: `${cluster.description} ${cluster.bhk} apartments in Nanded City, Sinhagad Road, Pune. Price starts at ${cluster.price}. MahaRERA: ${cluster.rera}.`,
-    keywords: `${cluster.name} Nanded City, ${cluster.bhk} Sinhagad Road Pune, ${cluster.name} price, ${cluster.name} RERA ${cluster.rera}`,
+    keywords: `${cluster.name} Nanded City, ${cluster.bhk} Sinhagad Road Pune, ${cluster.name} price, ${cluster.name} RERA ${cluster.rera}, ${cluster.searchKeywords?.join(', ')}`,
     openGraph: {
       title: `${cluster.name} | ${SITE_CONFIG.name}`,
       description: cluster.description,
@@ -54,67 +56,7 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
   // Determine if this is a plot or apartment
   const isPlot = cluster.bhk.toLowerCase().includes('plot');
 
-  // Enhanced Product-type schema with Offer, PropertyValue, and LocationFeatureSpecification
-  // Enhanced Product-type schema with Offer, PropertyValue, and LocationFeatureSpecification
-  const productSchema: any = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": `${cluster.name} — ${cluster.bhk} at ${SITE_CONFIG.name}`,
-    "description": cluster.description,
-    "url": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`,
-    "image": cluster.heroImage,
-    "brand": {
-      "@type": "Brand",
-      "name": SITE_CONFIG.brand.developerName
-    },
 
-    "category": isPlot ? "NA Bungalow Plots" : "Residential Apartments",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": "15420",
-      "reviewCount": "890"
-    },
-    "additionalProperty": [
-      {
-        "@type": "PropertyValue",
-        "name": "Configuration",
-        "value": cluster.bhk
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Carpet Area",
-        "value": cluster.area
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Floors",
-        "value": cluster.floors
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Total Units",
-        "value": cluster.units
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "Possession",
-        "value": cluster.possession
-      },
-      {
-        "@type": "PropertyValue",
-        "name": "MahaRERA Registration",
-        "value": cluster.rera
-      },
-      ...cluster.highlights.map(h => ({
-        "@type": "PropertyValue",
-        "name": "Amenity",
-        "value": h
-      }))
-    ]
-  };
 
   // Residence schema with LocationFeatureSpecification
   const residenceSchema: any = {
@@ -192,6 +134,7 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
   const projectSchema: any = {
     "@context": "https://schema.org",
     "@type": "RealEstateProject",
+    "@id": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}/#project`,
     "name": `${cluster.name} by ${SITE_CONFIG.brand.developerName}`,
     "description": cluster.description,
     "url": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`,
@@ -202,6 +145,11 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
       "addressLocality": "Pune",
       "postalCode": "411041",
       "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": cluster.coordinates?.lat || 18.4612,
+      "longitude": cluster.coordinates?.lng || 73.8015
     },
     "amenityFeature": residenceSchema.amenityFeature,
     "containsPlace": [
@@ -214,6 +162,66 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
         }
       }
     ]
+  };
+
+  // Google Products Integration
+  const productSchema: any = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "@id": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}/#product`,
+    "name": `${cluster.name} Nanded City`,
+    "image": cluster.image,
+    "description": cluster.description,
+    "sku": cluster.rera,
+    "brand": { "@id": `${SITE_CONFIG.baseUrl}/#organization` },
+    "offers": {
+      "@type": "AggregateOffer",
+      "priceCurrency": "INR",
+      "lowPrice": cluster.price.match(/\d+/) ? parseFloat(cluster.price.match(/\d+/)![0]) * (cluster.price.includes('Cr') ? 10000000 : 100000) : 0,
+      "offerCount": cluster.units.match(/\d+/) ? parseInt(cluster.units.match(/\d+/)![0]) : 1,
+      "availability": cluster.status === 'Ready to Move' ? "https://schema.org/InStock" : "https://schema.org/PreOrder",
+      "url": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`
+    }
+  };
+
+  // BreadcrumbList Schema
+  const breadcrumbSchema: any = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "@id": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}/#breadcrumb`,
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": SITE_CONFIG.baseUrl
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Residential Clusters",
+        "item": `${SITE_CONFIG.baseUrl}/projects`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": cluster.name,
+        "item": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`
+      }
+    ]
+  };
+
+  const webpageSchema: any = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}/#webpage`,
+    "url": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`,
+    "name": `${cluster.name} | ${SITE_CONFIG.name}`,
+    "description": cluster.description,
+    "isPartOf": { "@id": `${SITE_CONFIG.baseUrl}/#website` },
+    "breadcrumb": { "@id": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}/#breadcrumb` },
+    "mainEntity": { "@id": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}/#project` },
+    "lastReviewed": new Date().toISOString().split('T')[0]
   };
 
   // Event Schema for Daily Site Visits (Captures "Upcoming Events" snippet)
@@ -237,42 +245,18 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
       }
     },
     "description": `Detailed project walkthrough and model flat tour for ${cluster.name}. Expert advisors available for pricing and floor plan discussions.`,
-    "organizer": {
-      "@type": "Organization",
-      "name": SITE_CONFIG.brand.developerName,
-      "url": SITE_CONFIG.baseUrl
-    }
+    "organizer": { "@id": `${SITE_CONFIG.baseUrl}/#organization` }
   };
 
-
-  // BreadcrumbList Schema
-  const breadcrumbSchema: any = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": SITE_CONFIG.baseUrl
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Residential Clusters",
-        "item": `${SITE_CONFIG.baseUrl}/projects`
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": cluster.name,
-        "item": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`
-      }
-    ]
-
-  };
-
-  const jsonLd: any[] = [productSchema, projectSchema, residenceSchema, faqSchema, breadcrumbSchema, siteVisitEvent];
+  const jsonLd = [
+    productSchema, 
+    projectSchema, 
+    residenceSchema, 
+    faqSchema, 
+    breadcrumbSchema, 
+    webpageSchema, 
+    siteVisitEvent
+  ];
 
   return (
     <>
@@ -414,6 +398,27 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
           </div>
         </section>
       </main>
+      
+      {/* Location Intelligence: Google Maps Integration */}
+      <section style={{ padding: '80px 0', backgroundColor: '#fff' }}>
+        <div className="container">
+          <ScrollReveal className="section-header">
+            <span className="section-eyebrow">Location Intelligence</span>
+            <h2>Connected Ecosystem</h2>
+            <p>Strategically positioned within the 700-acre township on Sinhagad Road, Pune.</p>
+          </ScrollReveal>
+          
+          <div style={{ marginTop: '40px' }}>
+            <GoogleMap 
+              lat={cluster.coordinates?.lat} 
+              lng={cluster.coordinates?.lng} 
+              title={cluster.name} 
+            />
+          </div>
+        </div>
+      </section>
+
+      <SearchIntelligence />
 
       {/* Institutional Trust: MahaRERA Verified Badge */}
       <section style={{ backgroundColor: '#f8fafc', padding: '60px 0', borderTop: '1px solid #e2e8f0' }}>
