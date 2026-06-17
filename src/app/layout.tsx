@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata } from "next";
 import { Outfit } from "next/font/google";
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google';
 import Link from 'next/link';
 import Image from 'next/image';
 import TransitionFrame from './components/TransitionFrame';
@@ -194,9 +194,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "mainEntity": { "@id": "https://www.nanded-city.in/#organization" }
   };
 
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
   return (
     <html lang="en">
       {gtmEnabled && <GoogleTagManager gtmId={GTM_ID} />}
+      {gaId && <GoogleAnalytics gaId={gaId} />}
       <head>
         <script
           type="application/ld+json"
