@@ -2,10 +2,14 @@ import React from 'react';
 import { Metadata } from 'next';
 import { clusters } from '../../data/clusters';
 import ScrollReveal from '../components/ScrollReveal';
+import { SITE_CONFIG } from '@/config/site';
 
 export const metadata: Metadata = {
   title: "MahaRERA Compliance & Legal Records | Nanded City Pune",
   description: "Official legal compliance hub for Nanded City Developers Pune. Access all MahaRERA registration certificates and QR codes for all residential clusters.",
+  alternates: {
+    canonical: `${SITE_CONFIG.baseUrl}/legal-compliance`,
+  },
 };
 
 export default function LegalCompliance() {

@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 import { clusters } from '../../../data/clusters';
+import { blogs } from '../../../data/blogs';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  // CRON_SECRET Security Guard
+  const authHeader = request.headers.get('Authorization');
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return NextResponse.json({ error: 'Unauthorized. Invalid CRON_SECRET.' }, { status: 401 });
+  }
+
   const host = "www.nanded-city.in";
   // The unique key for IndexNow for this domain
   // In a production environment, this should match a hosted text file at the server root.
@@ -10,7 +17,17 @@ export async function GET() {
 
   const urlList = [
     `https://${host}/`,
-    ...clusters.map((c) => `https://${host}/cluster/${c.id}`)
+    `https://${host}/blog`,
+    `https://${host}/about-us`,
+    `https://${host}/legal-compliance`,
+    `https://${host}/projects`,
+    `https://${host}/mr/2-bhk-flats`,
+    `https://${host}/mr/bungalow-plots`,
+    `https://${host}/lp/2-bhk-flats`,
+    `https://${host}/lp/3-bhk-luxury`,
+    `https://${host}/lp/na-bungalow-plots`,
+    ...clusters.map((c) => `https://${host}/cluster/${c.id}`),
+    ...blogs.map((b) => `https://${host}/blog/${b.slug}`)
   ];
 
   const payload = {

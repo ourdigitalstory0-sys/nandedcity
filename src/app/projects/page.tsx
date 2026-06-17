@@ -8,8 +8,9 @@ import { SITE_CONFIG } from '@/config/site';
 
 
 export const metadata: Metadata = {
-  title: `${SITE_CONFIG.name} Residential Clusters | Ongoing & Ready to Move Projects`,
-  description: `Explore all residential clusters in ${SITE_CONFIG.name} Pune. Discover floor plans, prices, and MahaRERA details for Asawari, Sargam, Saajgiri, and Aalaap projects near Sinhagad Road.`,
+  title: `${SITE_CONFIG.name} Residential Clusters | Dominating Pune Real Estate Market`,
+  description: `Explore all residential clusters in ${SITE_CONFIG.name}, dominating the Pune Real Estate Market and Central Pune. Discover floor plans, prices, and MahaRERA details near Sinhagad Road.`,
+  keywords: "Pune Real Estate Market, Central Pune Real Estate, Sinhgad Road Real Estate, Top Real Estate in Pune, Nanded City Projects, Ongoing projects in Pune, Ready to Move projects Pune",
   alternates: {
     canonical: `${SITE_CONFIG.baseUrl}/projects`,
   },

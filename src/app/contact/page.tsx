@@ -61,13 +61,6 @@ export default function ContactPage() {
                     <a href={`tel:${SITE_CONFIG.contact.phoneNumeric}`} style={{ color: 'var(--primary-green)', textDecoration: 'none', fontWeight: '700', fontSize: '1.1rem' }}>{SITE_CONFIG.contact.phone}</a>
                   </div>
                 </div>
-                <div style={{ display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                  <span style={{ fontSize: '1.5rem' }}>✉️</span>
-                  <div>
-                    <strong style={{ display: 'block', fontSize: '1.1rem', color: '#0f172a', marginBottom: '4px' }}>Email</strong>
-                    <a href={`mailto:${SITE_CONFIG.contact.email}`} style={{ color: '#64748b', textDecoration: 'none' }}>{SITE_CONFIG.contact.email}</a>
-                  </div>
-                </div>
 
               </div>
             </div>

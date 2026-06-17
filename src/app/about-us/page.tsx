@@ -2,10 +2,14 @@ import React from 'react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import ScrollReveal from '../components/ScrollReveal';
+import { SITE_CONFIG } from '@/config/site';
 
 export const metadata: Metadata = {
   title: "About Nanded City Developers Pune | Legacy & Vision",
   description: "Discover the 25+ year legacy of Nanded City Developers. From Magarpatta City to Pune's largest self-reliant township on Sinhagad Road.",
+  alternates: {
+    canonical: `${SITE_CONFIG.baseUrl}/about-us`,
+  },
 };
 
 export default function AboutUs() {

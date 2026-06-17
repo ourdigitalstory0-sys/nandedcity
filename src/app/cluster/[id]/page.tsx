@@ -32,9 +32,9 @@ export async function generateMetadata({ params }: { params: Promise<ClusterPara
   const cluster = clusters.find((c) => c.id === resolvedParams.id);
   if (!cluster) return {};
   return {
-    title: `${cluster.name} – ${cluster.bhk} in Nanded City, Pune | MahaRERA Compliant`,
-    description: `${cluster.description} ${cluster.bhk} apartments in Nanded City, Sinhagad Road, Pune. Price starts at ${cluster.price}. MahaRERA: ${cluster.rera}.`,
-    keywords: `${cluster.name} Nanded City, ${cluster.bhk} Sinhagad Road Pune, ${cluster.name} price, ${cluster.name} RERA ${cluster.rera}, ${cluster.searchKeywords?.join(', ')}`,
+    title: `${cluster.name} – ${cluster.bhk} in Nanded City | Dominating Pune Real Estate Market`,
+    description: `${cluster.description} ${cluster.bhk} apartments in Nanded City, Sinhagad Road, Central Pune. Discover premium properties in the Pune Real Estate Market. Price starts at ${cluster.price}. MahaRERA: ${cluster.rera}.`,
+    keywords: `Pune Real Estate Market, Central Pune Real Estate, Sinhgad Road Real Estate, ${cluster.name} Nanded City, ${cluster.bhk} Sinhagad Road Pune, ${cluster.name} price, ${cluster.name} RERA ${cluster.rera}, ${cluster.searchKeywords?.join(', ')}`,
     openGraph: {
       title: `${cluster.name} | ${SITE_CONFIG.name}`,
       description: cluster.description,
@@ -136,7 +136,7 @@ export default async function ClusterPage({ params }: { params: Promise<ClusterP
     "@type": "RealEstateProject",
     "@id": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}/#project`,
     "name": `${cluster.name} by ${SITE_CONFIG.brand.developerName}`,
-    "description": cluster.description,
+    "description": `${cluster.description}. A premium offering dominating the Pune Real Estate Market on Sinhagad Road and Central Pune.`,
     "url": `${SITE_CONFIG.baseUrl}/cluster/${cluster.id}`,
     "image": cluster.heroImage,
     "address": {

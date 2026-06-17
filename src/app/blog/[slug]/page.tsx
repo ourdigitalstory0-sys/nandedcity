@@ -89,7 +89,11 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
       "@type": "Person",
       "name": authors.find(a => a.id === post.author)?.name || "Nanded City Intelligence Team",
       "url": `${SITE_CONFIG.baseUrl}/about-us`,
-      "jobTitle": authors.find(a => a.id === post.author)?.role || "Senior Analyst"
+      "jobTitle": authors.find(a => a.id === post.author)?.role || "Senior Analyst",
+      "sameAs": [
+        "https://www.linkedin.com/company/prop-smart-realty/",
+        "https://twitter.com/nandedcity"
+      ]
     },
     "publisher": {
       "@type": "Organization",
@@ -319,10 +323,6 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
                 📞 Call {SITE_CONFIG.contact.phone}
               </a>
               <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.68rem', marginBottom: '12px' }}>Response within 30 minutes</div>
-              <a href={`mailto:${SITE_CONFIG.contact.email}`} 
-                style={{ display: 'block', color: '#94a3b8', fontSize: '0.75rem', textDecoration: 'none', borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '12px' }}>
-                📧 {SITE_CONFIG.contact.email}
-              </a>
 
             </div>
 

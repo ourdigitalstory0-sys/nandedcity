@@ -1,0 +1,23 @@
+name: Automated SEO & Indexing Cron
+
+on:
+  schedule:
+    # Runs at 00:00 UTC every day
+    - cron: '0 0 * * *'
+  # Allow manual trigger for debugging
+  workflow_dispatch:
+
+jobs:
+  ping-search-engines:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Google Indexing API
+        run: |
+          curl -X POST https://nandedcitypune.com/api/google-index \
+          -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+          -H "Content-Type: application/json"
+
+      - name: Ping IndexNow (Bing/Yandex) API
+        run: |
+          curl -X GET https://nandedcitypune.com/api/indexnow \
+          -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}"

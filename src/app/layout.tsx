@@ -26,13 +26,25 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
-  keywords: "Nanded City Pune, buy flat in Nanded City Pune, 1 BHK, 2 BHK, 2.5 BHK, 3 BHK, Nanded City Sinhagad Road, Nanded City township Pune, Nanded City flats for sale, Nanded City apartments, Nanded City property investment, Nanded City ready possession flats, Nanded City new launch, Nanded City resale flats, Nanded City price list, Nanded City brochure, Nanded City master plan, Nanded City amenities, Nanded City reviews, Nanded City location advantage, best township near Sinhagad Road Pune, gated community near Khadakwasla Pune",
+  keywords: "Nanded City Township Pune, Pune Real Estate Market, Sinhgad Road Real Estate, Central Pune Real Estate, Top Real Estate in Pune, buy flat in Nanded City Pune, 1 BHK, 2 BHK, 2.5 BHK, 3 BHK, Nanded City Sinhagad Road, Google Rankings Pune, dominating Pune Real Estate, Nanded City property investment, Nanded City ready possession flats",
   metadataBase: new URL(SITE_CONFIG.baseUrl),
+  alternates: {
+    canonical: SITE_CONFIG.baseUrl,
+    types: {
+      'application/rss+xml': `${SITE_CONFIG.baseUrl}/api/rss`,
+    },
+    languages: {
+      'en-IN': SITE_CONFIG.baseUrl,
+      'mr-IN': `${SITE_CONFIG.baseUrl}/mr/2-bhk-flats`, // High-intent Marathi landing
+    },
+  },
   verification: {
     google: "EO-ezSz-FlhAk-eKdIWOB9xTRFXojS-rHXyMVZPAyQs",
     yandex: "pending-yandex-verification-id",
+    yahoo: "pending-yahoo-verification-id",
     other: {
-      me: [SITE_CONFIG.contact.email, SITE_CONFIG.baseUrl],
+      me: [SITE_CONFIG.baseUrl],
+      "msvalidate.01": ["pending-bing-verification-id"],
     },
   },
   twitter: {
@@ -67,13 +79,7 @@ export const metadata: Metadata = {
       'max-video-preview': -1,
     },
   },
-  alternates: {
-    canonical: SITE_CONFIG.baseUrl,
-    languages: {
-      'en-IN': SITE_CONFIG.baseUrl,
-      'mr-IN': `${SITE_CONFIG.baseUrl}/mr/2-bhk-flats`, // High-intent Marathi landing
-    },
-  },
+
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -89,7 +95,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "image": SITE_CONFIG.brand.ogImage,
     "description": SITE_CONFIG.brand.organizationName + ": Authorized Partner for Nanded City Pune. 700+ acres of self-reliant premium township on Sinhagad Road.",
     "telephone": SITE_CONFIG.contact.phoneNumeric,
-    "email": SITE_CONFIG.contact.email,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Nanded City Township, Sinhagad Road",
@@ -105,10 +110,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
     "hasMap": "https://maps.app.goo.gl/NandedCityPune",
     "priceRange": "₹45L - ₹2.5Cr",
-    "areaServed": {
-      "@type": "City",
-      "name": "Pune"
-    },
+    "areaServed": [
+      { "@type": "City", "name": "Pune" },
+      { "@type": "Place", "name": "Sinhgad Road" },
+      { "@type": "Place", "name": "Central Pune" },
+      { "@type": "Place", "name": "Pune Real Estate Market" }
+    ],
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
       "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
@@ -117,10 +124,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
     "sameAs": [
       SITE_CONFIG.social.facebook,
-      SITE_CONFIG.social.instagram
+      SITE_CONFIG.social.instagram,
+      "https://en.wikipedia.org/wiki/Nanded_City"
     ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": SITE_CONFIG.contact.phoneNumeric,
+      "contactType": "sales",
+      "areaServed": "IN",
+      "availableLanguage": ["en", "hi", "mr"]
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Satish Magar"
+    },
+    "foundingDate": "2010",
     "knowsAbout": [
       "Real Estate Investment in Pune",
+      "Pune Real Estate Market",
+      "Sinhgad Road Real Estate",
+      "Central Pune Real Estate",
       "Luxury Apartments Sinhagad Road",
       "NA Bungalow Plots Pune",
       "MahaRERA Registered Projects",
@@ -212,7 +235,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   </p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                     <a href={`tel:${SITE_CONFIG.contact.phoneNumeric}`} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', textDecoration: 'none' }}>📞 {SITE_CONFIG.contact.phone}</a>
-                    <a href={`mailto:${SITE_CONFIG.contact.email}`} style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.85rem', textDecoration: 'none' }}>✉️ {SITE_CONFIG.contact.email}</a>
                     <a href={SITE_CONFIG.contact.whatsapp} target="_blank" rel="noopener noreferrer" style={{ color: '#25D366', fontSize: '0.85rem', textDecoration: 'none' }}>📱 {SITE_CONFIG.contact.whatsappPrompt}</a>
                   </div>
 

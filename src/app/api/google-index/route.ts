@@ -93,6 +93,12 @@ async function notifyGoogle(accessToken: string, url: string, type: string = 'UR
 }
 
 export async function POST(request: NextRequest) {
+  // CRON_SECRET Security Guard
+  const authHeader = request.headers.get('Authorization');
+  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    return NextResponse.json({ error: 'Unauthorized. Invalid CRON_SECRET.' }, { status: 401 });
+  }
+
   const host = 'https://www.nanded-city.in';
 
   // Collect all indexable URLs

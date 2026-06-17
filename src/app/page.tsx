@@ -7,23 +7,25 @@ import { blogs } from '../data/blogs';
 import ContactForm from './components/ContactForm';
 import ReraQrCode from './components/ReraQrCode';
 import DynamicClusterGrid from './components/DynamicClusterGrid';
-import ROICalculator from './components/ROICalculator';
 import ScrollReveal from './components/ScrollReveal';
 import ParallaxHero from './components/ParallaxHero';
 import HeroActions from './components/HeroActions';
 import MarketIntelligence from './components/MarketIntelligence';
-import TownshipEcosystem from './components/TownshipEcosystem';
-import TrustSection from './components/TrustSection';
-import Testimonials from './components/Testimonials';
-import SearchIntelligence from './components/SearchIntelligence';
+import dynamic from 'next/dynamic';
+
+const TownshipEcosystem = dynamic(() => import('./components/TownshipEcosystem'), { ssr: true });
+const TrustSection = dynamic(() => import('./components/TrustSection'), { ssr: true });
+const Testimonials = dynamic(() => import('./components/Testimonials'), { ssr: true });
+const SearchIntelligence = dynamic(() => import('./components/SearchIntelligence'), { ssr: true });
+const ROICalculator = dynamic(() => import('./components/ROICalculator'), { ssr: true });
 import { RealEstateAgent, WebSite, BreadcrumbList, LocalBusiness, SpeakableSpecification, WithContext, Offer, Residence } from 'schema-dts';
 import { SITE_CONFIG } from '../config/site';
 
 
 export const metadata: Metadata = {
-  title: `${SITE_CONFIG.name} | Premium Residential Township Pune | Official Portal`,
-  description: `Official residential platform for Nanded City Township, Pune. Explore 1, 2, 2.5, 3 BHK apartments and NA bungalow plots on Sinhagad Road. MahaRERA registered projects.`,
-  keywords: "Nanded City Pune, Flats in Nanded City, 2 BHK in Nanded City, 3 BHK Sinhagad Road, NA Plots Pune, Township in Pune, Nanded City Price List, Real Estate Pune",
+  title: `${SITE_CONFIG.name} | Dominating Pune Real Estate Market | Official Portal`,
+  description: `Official residential platform for Nanded City Township Pune, dominating the Pune Real Estate Market on Sinhagad Road and Central Pune. Explore premium 1, 2, 2.5, 3 BHK apartments and NA bungalow plots.`,
+  keywords: "Nanded City Township Pune, Pune Real Estate Market, Central Pune Real Estate, Sinhgad Road Real Estate, Top Real Estate in Pune, Nanded City Pune, Flats in Nanded City, 2 BHK in Nanded City, 3 BHK Sinhagad Road, NA Plots Pune",
   alternates: {
     canonical: SITE_CONFIG.baseUrl,
   },
@@ -102,6 +104,20 @@ export default function Home() {
       "name": SITE_CONFIG.brand.developerName,
       "image": clusters[1].image,
       "telephone": SITE_CONFIG.contact.phoneNumeric,
+      "description": "Leading developer dominating the Pune Real Estate Market, specializing in premium residential townships on Sinhagad Road and Central Pune.",
+      "priceRange": "₹45L - ₹2.5Cr",
+      "hasMap": "https://maps.app.goo.gl/NandedCityPune",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 18.4612,
+        "longitude": 73.8015
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Pune" },
+        { "@type": "Place", "name": "Sinhgad Road" },
+        { "@type": "Place", "name": "Central Pune" },
+        { "@type": "Place", "name": "Pune Real Estate Market" }
+      ],
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Nanded City Township, Sinhagad Road",
@@ -116,6 +132,39 @@ export default function Home() {
       "@context": "https://schema.org",
       "@type": "SpeakableSpecification",
       "xpath": [".hero-seo-text", ".speakable-title"]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the price of a 2 BHK in Nanded City Pune?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The price of a 2 BHK in Nanded City starts from ₹68 Lakhs depending on the cluster like Bageshree, Sargam, or Asawari."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Nanded City a good investment in Pune Real Estate Market?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, Nanded City Township offers high ROI and rental yields, making it one of the most appreciating assets in the Central Pune and Sinhgad Road real estate market."
+          }
+        }
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "SiteNavigationElement",
+      "name": ["Projects", "Market Blogs", "About Township", "Contact"],
+      "url": [
+        "https://www.nanded-city.in/projects",
+        "https://www.nanded-city.in/blog",
+        "https://www.nanded-city.in/about-us",
+        "https://www.nanded-city.in/contact"
+      ]
     }
   ];
 
@@ -126,7 +175,7 @@ export default function Home() {
       {/* Hero */}
       <ParallaxHero bgImage="https://nandedcitypune.com/wp-content/uploads/2026/02/saajgiri-ncp-banner-img-01.webp">
         <span className="badge badge-gold">Sinhagad Road · Pune</span>
-        <h1 className="speakable-title">Welcome to <span>Nanded City Pune</span></h1>
+        <h1 className="speakable-title">Welcome to <span>Nanded City Township Pune</span></h1>
         <p className="hero-seo-text">
           Discover <strong>premium 2 & 3 BHK luxury flats</strong> and the <strong>most aspiring community of Branded NA Bungalow Plots</strong> at Nanded City Township on Sinhgad Road. A curated ecosystem for <strong>CEOs, CXOs, Doctors, CAs, and Business Owners</strong> offering world-class infrastructure across a 700-Acre township.
         </p>
@@ -391,10 +440,6 @@ export default function Home() {
               <div className="contact-item">
                 <span className="contact-icon">📞</span>
                 <a href={`tel:${SITE_CONFIG.contact.phoneNumeric}`} style={{ color: 'rgba(255,255,255,0.9)' }}>{SITE_CONFIG.contact.phone}</a>
-              </div>
-              <div className="contact-item">
-                <span className="contact-icon">✉️</span>
-                <a href={`mailto:${SITE_CONFIG.contact.email}`} style={{ color: 'rgba(255,255,255,0.9)' }}>{SITE_CONFIG.contact.email}</a>
               </div>
 
             </div>
