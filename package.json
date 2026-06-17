@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seo:sweep": "node scripts/sovereign-sweep.js"
+    "seo:sweep": "node scripts/sovereign-sweep.js",
+    "prepare": "husky"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.2",
@@ -26,7 +27,14 @@
     "@types/react-dom": "^19.2.3",
     "eslint": "^9",
     "eslint-config-next": "16.2.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.7",
     "schema-dts": "^2.0.0",
     "typescript": "^6.0.2"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix"
+    ]
   }
 }
