@@ -4,12 +4,14 @@ import { Outfit } from "next/font/google";
 import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google';
 import Link from 'next/link';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 import TransitionFrame from './components/TransitionFrame';
 import DynamicHeader from './components/DynamicHeader';
-import FloatingActionBar from './components/FloatingActionBar';
-import StickyMobileCta from './components/StickyMobileCta';
-import EnquiryModal from './components/EnquiryModal';
 import { ModalProvider } from './context/ModalContext';
+
+const FloatingActionBar = dynamic(() => import('./components/FloatingActionBar'));
+const StickyMobileCta = dynamic(() => import('./components/StickyMobileCta'));
+const EnquiryModal = dynamic(() => import('./components/EnquiryModal'));
 import { Organization, WebSite, WithContext } from 'schema-dts';
 import { SITE_CONFIG } from '@/config/site';
 
