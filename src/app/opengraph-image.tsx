@@ -92,7 +92,7 @@ export default function Image() {
             display: 'flex',
           }}
         >
-          Nanded City Pune
+          Nanded City Township Pune
         </div>
 
         {/* Subtitle */}

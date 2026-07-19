@@ -31,7 +31,7 @@ export async function GET() {
   activeClusters.forEach((cluster) => {
     rss += `
     <item>
-      <title><![CDATA[${cluster.name} - ${cluster.bhk} in Nanded City Pune]]></title>
+      <title><![CDATA[${cluster.name} - ${cluster.bhk} in Nanded City Township Pune]]></title>
       <link>${SITE_CONFIG.baseUrl}/cluster/${cluster.id}</link>
       <description><![CDATA[${cluster.description}]]></description>
       <guid>${SITE_CONFIG.baseUrl}/cluster/${cluster.id}</guid>

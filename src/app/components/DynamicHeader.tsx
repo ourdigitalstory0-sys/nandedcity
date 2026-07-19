@@ -79,7 +79,7 @@ export default function DynamicHeader() {
             <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', flexShrink: 0 }}>
               <Image 
                 src="/nc-logo.png" 
-                alt="Nanded City Pune Official Logo" 
+                alt="Nanded City Township Pune Official Logo" 
                 width={140} 
                 height={42} 
                 style={{ objectFit: 'contain' }}

@@ -63,14 +63,14 @@ export const blogs: BlogPost[] = [
     slug: "nanded-city-pune-master-plan-price-list-guide",
     category: "township",
     project: "all",
-    title: "Nanded City Pune: The Definitive 2026 Guide to Master Plan, Price List & Location Advantage",
+    title: "Nanded City Township Pune: The Definitive 2026 Guide to Master Plan, Price List & Location Advantage",
     excerpt: "The master guide to Nanded City Township. Explore the complete price list, brochure insights, and the strategic location advantage of Sinhagad Road Pune.",
     author: "ananya-kulkarni",
     date: "2026-04-26",
     readTime: "12 min read",
     coverImage: "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     content: `
-      <h2>A City Within a City: Nanded City Pune Master Plan</h2>
+      <h2>A City Within a City: Nanded City Township Pune Master Plan</h2>
       <p>Spanning 700 acres, the <strong>Nanded City master plan</strong> is a blueprint for self-reliant urban living. From residential clusters like <a href="/cluster/asawari">Asawari</a> and <a href="/cluster/saajgiri">Saajgiri</a> to the specialized <a href="/cluster/melody-1">Melody plots</a>, the township handles over 15,000 happy families.</p>
       
       <h3>Location Advantage: Khadakwasla to Sinhagad Road</h3>
@@ -91,14 +91,14 @@ export const blogs: BlogPost[] = [
     category: "apartments",
     project: "janaranjani",
     title: "Affordable Housing in Pune: A Guide to Janaranjani MHADA & Mangal Bhairav at Nanded City",
-    excerpt: "Searching for budget homes or 1 BHK under 50 lakh? Explore Janaranjani MHADA and Mangal Bhairav entry-level housing in Nanded City Pune.",
+    excerpt: "Searching for budget homes or 1 BHK under 50 lakh? Explore Janaranjani MHADA and Mangal Bhairav entry-level housing in Nanded City Township Pune.",
     author: "ananya-kulkarni",
     date: "2026-04-27",
     readTime: "8 min read",
     coverImage: "https://images.unsplash.com/photo-1522708323590-d248b6d0267d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     content: `
       <h2>Budget Living Without Compromise</h2>
-      <p><strong>Nanded City Pune</strong> has democratized luxury by providing high-quality <strong>affordable flats near Sinhagad Road</strong>. Clusters like <a href="/cluster/janaranjani">Janaranjani MHADA</a> and <a href="/cluster/mangal-bhairav">Mangal Bhairav</a> offer the perfect entry-level opportunity for first-time buyers.</p>
+      <p><strong>Nanded City Township Pune</strong> has democratized luxury by providing high-quality <strong>affordable flats near Sinhagad Road</strong>. Clusters like <a href="/cluster/janaranjani">Janaranjani MHADA</a> and <a href="/cluster/mangal-bhairav">Mangal Bhairav</a> offer the perfect entry-level opportunity for first-time buyers.</p>
       
       <h3>Keywords for Budget Seekers</h3>
       <ul>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "Nanded City Pune | Exclusive Offers & Pricing",
+  title: "Nanded City Township Pune | Exclusive Offers & Pricing",
   description: "Secure the best pricing with zero brokerage for premium 2, 2.5, and 3 BHK luxury flats at Nanded City, Sinhagad Road, Pune.",
   robots: {
     index: false, // Essential: We DO NOT want Google indexing ad-specific landing pages and causing duplicate content penalties.

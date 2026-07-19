@@ -20,7 +20,7 @@ export default function AboutUs() {
       "@type": "Organization",
       "name": "Nanded City Developers Pune",
       "foundingDate": "2010",
-      "description": "Creators of the 700-acre Nanded City Pune self-reliant township.",
+      "description": "Creators of the 700-acre Nanded City Township Pune self-reliant township.",
       "parentOrganization": {
         "@type": "Organization",
         "name": "Magarpatta City Township Development & Construction Company Limited"

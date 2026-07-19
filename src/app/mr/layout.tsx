@@ -2,10 +2,10 @@ import React from 'react';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: "नांदेड सिटी पुणे | Nanded City Pune Residential Projects",
+  title: "नांदेड सिटी पुणे | Nanded City Township Pune Residential Projects",
   description: "नांदेड सिटी पुणे (सिंहगड रोड) मधील सर्वोत्कृष्ट 2 BHK आणि 3 BHK लक्झरी फ्लॅट्स आणि एन.ए. (N.A.) बंगलो प्लॉट्स. १०% बुकींग अमाउंट आणि शून्य ब्रोकरेज.",
   openGraph: {
-    title: "नांदेड सिटी पुणे | Nanded City Pune Residential Projects",
+    title: "नांदेड सिटी पुणे | Nanded City Township Pune Residential Projects",
     description: "नांदेड सिटी पुणे (सिंहगड रोड) मधील सर्वोत्कृष्ट 2 BHK, 3 BHK आणि बंगलो प्लॉट्स.",
     locale: "mr_IN",
     type: "website",

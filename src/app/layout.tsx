@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
-  keywords: "Nanded City Township Pune, Pune Real Estate Market, Sinhgad Road Real Estate, Central Pune Real Estate, Top Real Estate in Pune, buy flat in Nanded City Pune, 1 BHK, 2 BHK, 2.5 BHK, 3 BHK, Nanded City Sinhagad Road, Google Rankings Pune, dominating Pune Real Estate, Nanded City property investment, Nanded City ready possession flats",
+  keywords: "Nanded City Township Pune, Pune Real Estate Market, Sinhgad Road Real Estate, Central Pune Real Estate, Top Real Estate in Pune, buy flat in Nanded City Township Pune, 1 BHK, 2 BHK, 2.5 BHK, 3 BHK, Nanded City Sinhagad Road, Google Rankings Pune, dominating Pune Real Estate, Nanded City property investment, Nanded City ready possession flats",
   metadataBase: new URL(SITE_CONFIG.baseUrl),
   alternates: {
     canonical: SITE_CONFIG.baseUrl,
@@ -93,7 +93,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "url": SITE_CONFIG.baseUrl,
     "logo": `${SITE_CONFIG.baseUrl}${SITE_CONFIG.brand.logo}`, 
     "image": SITE_CONFIG.brand.ogImage,
-    "description": SITE_CONFIG.brand.organizationName + ": Authorized Partner for Nanded City Pune. 700+ acres of self-reliant premium township on Sinhagad Road.",
+    "description": SITE_CONFIG.brand.organizationName + ": Authorized Partner for Nanded City Township Pune. 700+ acres of self-reliant premium township on Sinhagad Road.",
     "telephone": SITE_CONFIG.contact.phoneNumeric,
     "address": {
       "@type": "PostalAddress",
@@ -159,7 +159,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE_CONFIG.baseUrl}/#website`,
-    "name": "Nanded City Pune Residences",
+    "name": "Nanded City Township Pune Residences",
     "url": SITE_CONFIG.baseUrl,
     "description": "Official residential platform for Nanded City Township, Sinhagad Road, Pune — premium asavari, bageshree, sargam apartments and branded NA bungalow plots.",
     "publisher": {
@@ -229,7 +229,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <div>
                   <Image 
                     src="/nc-logo.png" 
-                    alt="Nanded City Pune Official Logo" 
+                    alt="Nanded City Township Pune Official Logo" 
                     width={180} height={50}
                     style={{ objectFit: 'contain', filter: 'brightness(0) invert(1) opacity(0.9)', marginBottom: '20px' }}
                   />

@@ -109,7 +109,7 @@ export default async function LandingPage({ params }: { params: Promise<Campaign
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(lpSchema) }} />
       {/* Stripped LP Header */}
       <header style={{ padding: '20px 40px', background: '#fff', borderBottom: '1px solid #e2e8f0', display: 'flex', justifyContent: 'center' }}>
-        <Image src="/nc-logo.png" alt="Nanded City Pune Official Logo" width={180} height={50} style={{ objectFit: 'contain' }} />
+        <Image src="/nc-logo.png" alt="Nanded City Township Pune Official Logo" width={180} height={50} style={{ objectFit: 'contain' }} />
       </header>
 
       {/* Hero / Above the Fold Conversion Trap */}
@@ -193,7 +193,7 @@ export default async function LandingPage({ params }: { params: Promise<Campaign
             <strong style={{ color: '#0f172a' }}>Disclaimer:</strong> PropSmart Realty (Authorized Partner ID: A7744009295) is an <strong>Official Marketing & Sales Partner</strong> for Nanded City Pune. The project information, images, and pricing provided on this landing page are for representational and informational purposes only and are subject to change without notice. This website does not constitute an official offer from the developer. All trademarks, logos, and project names are the property of their respective owners.
           </p>
           <div style={{ fontSize: '0.75rem', color: '#94a3b8', borderTop: '1px solid #f1f5f9', paddingTop: '20px' }}>
-            © {new Date().getFullYear()} Nanded City Pune Residences. All rights reserved. | Authorized Marketing Channel
+            © {new Date().getFullYear()} Nanded City Township Pune Residences. All rights reserved. | Authorized Marketing Channel
           </div>
         </div>
       </footer>

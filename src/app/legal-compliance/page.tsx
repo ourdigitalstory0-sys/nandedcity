@@ -5,7 +5,7 @@ import ScrollReveal from '../components/ScrollReveal';
 import { SITE_CONFIG } from '@/config/site';
 
 export const metadata: Metadata = {
-  title: "MahaRERA Compliance & Legal Records | Nanded City Pune",
+  title: "MahaRERA Compliance & Legal Records | Nanded City Township Pune",
   description: "Official legal compliance hub for Nanded City Developers Pune. Access all MahaRERA registration certificates and QR codes for all residential clusters.",
   alternates: {
     canonical: `${SITE_CONFIG.baseUrl}/legal-compliance`,
@@ -16,7 +16,7 @@ export default function LegalCompliance() {
   const tableSchema: any = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "MahaRERA Legal Compliance - Nanded City Pune",
+    "name": "MahaRERA Legal Compliance - Nanded City Township Pune",
     "description": "Comprehensive list of all MahaRERA registrations for Nanded City Developers."
   };
 

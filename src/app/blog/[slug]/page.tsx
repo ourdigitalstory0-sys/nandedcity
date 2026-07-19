@@ -144,7 +144,7 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
         "sameAs": "https://en.wikipedia.org/wiki/Sinhagad_Road"
       }
     ],
-    "keywords": `${post.category}, Nanded City Pune, Sinhagad Road Real Estate, MahaRERA Projects`
+    "keywords": `${post.category}, Nanded City Township Pune, Sinhagad Road Real Estate, MahaRERA Projects`
   };
 
   // BreadcrumbList Schema
