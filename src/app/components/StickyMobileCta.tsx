@@ -4,12 +4,13 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEnquiryModal, ENQUIRY_CONTEXTS } from '../context/ModalContext';
 import { gtmEvents } from './GtmEvents';
-import { SITE_CONFIG } from '@/config/site';
-
+import { SITE_CONFIG, getWhatsappLink } from '@/config/site';
+import { usePathname } from 'next/navigation';
 export default function StickyMobileCta() {
 
   const [isVisible, setIsVisible] = useState(false);
   const { openEnquiry } = useEnquiryModal();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +77,7 @@ export default function StickyMobileCta() {
         </a>
 
         <a
-          href={`${SITE_CONFIG.contact.whatsapp}?text=I%20am%20interested%20in%20Nanded%20City%20properties`}
+          href={getWhatsappLink(pathname)}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => gtmEvents.whatsappClick('sticky_mobile_bar')}

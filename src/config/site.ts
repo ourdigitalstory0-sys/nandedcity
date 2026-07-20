@@ -24,3 +24,29 @@ export const SITE_CONFIG = {
     ogImage: "https://nandedcitypune.com/aalaap/assets/img/img-hero-banner-02.jpg",
   },
 };
+
+export function getWhatsappLink(pathname?: string | null) {
+  const base = "https://wa.me/917744009295";
+  let text = "Hi, I am interested in Nanded City properties.";
+  
+  if (pathname) {
+    if (pathname.includes('/cluster/')) {
+      const slug = pathname.split('/').pop() || '';
+      const projectName = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      text = `Hi, I am interested in the ${projectName} project at Nanded City.`;
+    } else if (pathname.includes('/lp/')) {
+      const slug = pathname.split('/').pop() || '';
+      const campaignName = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      text = `Hi, I am interested in ${campaignName} at Nanded City.`;
+    } else if (pathname.includes('/mr/')) {
+      const slug = pathname.split('/').pop() || '';
+      const campaignName = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      text = `Hi, I am interested in ${campaignName} at Nanded City (Marathi Inquiry).`;
+    } else if (pathname.includes('/blog/')) {
+      const slug = pathname.split('/').pop() || '';
+      const blogName = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+      text = `Hi, I read the article "${blogName}" and am interested in Nanded City.`;
+    }
+  }
+  return `${base}?text=${encodeURIComponent(text)}`;
+}

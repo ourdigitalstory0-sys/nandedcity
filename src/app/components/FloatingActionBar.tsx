@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { useEnquiryModal, ENQUIRY_CONTEXTS, EnquiryContextType } from '../context/ModalContext';
 import { gtmEvents } from './GtmEvents';
-import { SITE_CONFIG } from '@/config/site';
-
+import { SITE_CONFIG, getWhatsappLink } from '@/config/site';
+import { usePathname } from 'next/navigation';
 
 interface Action {
   label: string;
@@ -20,6 +20,7 @@ export default function FloatingActionBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [visible, setVisible] = useState(false);
   const { openEnquiry } = useEnquiryModal();
+  const pathname = usePathname();
 
   // Show FAB only after scrolling past the hero
   useEffect(() => {
@@ -45,7 +46,7 @@ export default function FloatingActionBar() {
       label: 'WhatsApp Expert Now',
       emoji: '📱',
       color: '#25D366',
-      href: `${SITE_CONFIG.contact.whatsapp}?text=I%20am%20interested%20in%20Nanded%20City%20properties`,
+      href: getWhatsappLink(pathname),
       onClick: () => gtmEvents.whatsappClick('floating_bar')
     },
     {

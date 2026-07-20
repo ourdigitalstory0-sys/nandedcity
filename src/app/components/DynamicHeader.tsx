@@ -6,13 +6,15 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEnquiryModal } from '../context/ModalContext';
 import { NavItem } from '@/types';
-import { SITE_CONFIG } from '@/config/site';
+import { SITE_CONFIG, getWhatsappLink } from '@/config/site';
+import { usePathname } from 'next/navigation';
 
 export default function DynamicHeader() {
 
   const [scrolled, setScrolled] = useState<boolean>(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
   const { openEnquiry } = useEnquiryModal();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -112,7 +114,7 @@ export default function DynamicHeader() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
               {/* WhatsApp Button (Hidden on very small screens if needed) */}
               <a 
-                href={SITE_CONFIG.contact.whatsapp} 
+                href={getWhatsappLink(pathname)} 
                 target="_blank" 
                 className="desktop-only"
 
@@ -229,7 +231,7 @@ export default function DynamicHeader() {
                 Enquire Now
               </button>
               <a 
-                href={SITE_CONFIG.contact.whatsapp} 
+                href={getWhatsappLink(pathname)} 
                 style={{ padding: '18px', backgroundColor: '#25D366', color: '#fff', borderRadius: '12px', textAlign: 'center', textDecoration: 'none', fontWeight: '700' }}
               >
 

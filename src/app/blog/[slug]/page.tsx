@@ -8,7 +8,7 @@ import { clusters } from '../../../data/clusters';
 import { authors } from '../../../data/authors';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import { BlogPosting, BreadcrumbList, WithContext, SpeakableSpecification } from 'schema-dts';
-import { SITE_CONFIG } from '@/config/site';
+import { SITE_CONFIG, getWhatsappLink } from '@/config/site';
 
 
 interface PostParams {
@@ -314,7 +314,7 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
               <div style={{ fontSize: '1.8rem', marginBottom: '10px' }}>🏠</div>
               <h4 style={{ color: '#fff', fontSize: '1rem', marginBottom: '8px' }}>Speak to a Specialist</h4>
               <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '0.82rem', marginBottom: '18px', lineHeight: '1.5' }}>Get personalised data on projects matching your profile.</p>
-              <a href={SITE_CONFIG.contact.whatsapp} target="_blank" rel="noopener noreferrer" 
+              <a href={getWhatsappLink(`/blog/${resolvedParams.slug}`)} target="_blank" rel="noopener noreferrer" 
                 style={{ display: 'block', padding: '12px', backgroundColor: '#25D366', color: '#fff', borderRadius: '100px', fontWeight: '700', textDecoration: 'none', fontSize: '0.88rem', marginBottom: '10px' }}>
                 📱 {SITE_CONFIG.contact.whatsappPrompt}
               </a>

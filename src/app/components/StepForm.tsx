@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SITE_CONFIG } from '@/config/site';
+import { SITE_CONFIG, getWhatsappLink } from '@/config/site';
+import { usePathname } from 'next/navigation';
 import { gtmEvents } from './GtmEvents';
 
 interface StepFormProps {
@@ -20,6 +21,7 @@ export default function StepForm({
 }: StepFormProps) {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const pathname = usePathname();
   const [intent, setIntent] = useState('');
   const [formData, setFormData] = useState({
     name: '',
@@ -215,7 +217,7 @@ export default function StepForm({
               Our senior property advisor will contact you within 30 minutes with official pricing and e-brochures.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              <a href={SITE_CONFIG.contact.whatsapp} target="_blank" className="btn" style={{ backgroundColor: '#25D366', color: '#fff', borderRadius: '12px', padding: '14px', textDecoration: 'none', fontWeight: '700' }}>
+              <a href={getWhatsappLink(pathname)} target="_blank" className="btn" style={{ backgroundColor: '#25D366', color: '#fff', borderRadius: '12px', padding: '14px', textDecoration: 'none', fontWeight: '700' }}>
                 Join via WhatsApp
               </a>
               <button 
