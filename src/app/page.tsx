@@ -258,7 +258,7 @@ export default function Home() {
             <div style={{ position: 'relative', width: '100%', height: '600px', backgroundColor: '#f1f5f9', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)' }}>
               <Image 
                 src="/assets/img/master-layout.jpg" 
-                alt="Nanded City Master Township Layout showcasing Symphony IT Park, Destination Centers, and Residential Clusters" 
+                alt="Nanded City Township Pune Master Layout Map - Pune Real Estate Ecosystem showcasing Residential Clusters, Symphony IT Park, and Flats" 
                 fill 
                 style={{ objectFit: 'cover', objectPosition: 'center' }} 
               />
@@ -303,7 +303,7 @@ export default function Home() {
                 <article className="cluster-card cluster-card-sm">
                 <a href={`/cluster/${cluster.id}`} className="card-image-link">
                   <div className="card-image card-image-sm">
-                    <Image src={cluster.image} alt={`${cluster.name} completed residential project Nanded City`} fill sizes="(max-width:768px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                    <Image src={cluster.image} alt={`${cluster.name} - Ready Possession ${cluster.bhk} Flats in Nanded City Township Pune`} fill sizes="(max-width:768px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
                     <div className="card-badge-wrap">
                       <span className="badge" style={{ backgroundColor: '#e8f5e9', color: '#2e7d32' }}>Ready to Move</span>
                     </div>
@@ -347,7 +347,7 @@ export default function Home() {
                   <Link href={`/blog/${blog.slug}`} className="card-image-link" style={{ height: '220px', position: 'relative' }}>
                     <Image 
                       src={blog.coverImage} 
-                      alt={blog.title} 
+                      alt={`${blog.title} - Nanded City Township Pune Real Estate Blog Insights`} 
                       fill 
                       sizes="(max-width:768px) 100vw, 33vw" 
                       style={{ objectFit: 'cover' }} 

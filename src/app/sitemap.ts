@@ -50,6 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: l.priority,
   }));
 
+  const nearUrls = require('../data/locations').locations.map((loc: any) => ({
+    url: `${baseUrl}/near/${loc.slug}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.80,
+  }));
+
   return [
     {
       url: baseUrl,
@@ -85,6 +92,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...blogUrls,
     ...mrUrls,
     ...lpUrls,
+    ...nearUrls,
   ];
 }
 

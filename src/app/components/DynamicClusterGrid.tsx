@@ -74,7 +74,7 @@ export default function DynamicClusterGrid({ clusters }: DynamicClusterGridProps
                 <div className="card-image">
                   <Image 
                     src={cluster.image} 
-                    alt={`${cluster.name} - ${cluster.bhk} apartments in Nanded City`} 
+                    alt={`${cluster.name} - ${cluster.bhk} Flats in Nanded City Township Pune Real Estate`} 
                     fill 
                     sizes="(max-width:768px) 100vw, 50vw" 
                     style={{ objectFit: 'cover' }} 

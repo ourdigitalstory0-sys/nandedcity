@@ -7,6 +7,7 @@ import { blogs } from '../../../data/blogs';
 import { clusters } from '../../../data/clusters';
 import { authors } from '../../../data/authors';
 import Breadcrumbs from '../../components/Breadcrumbs';
+import ShareWidget from '../../components/ShareWidget';
 import { BlogPosting, BreadcrumbList, WithContext, SpeakableSpecification } from 'schema-dts';
 import { SITE_CONFIG, getWhatsappLink } from '@/config/site';
 
@@ -204,7 +205,7 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
         <div style={{ position: 'relative', height: '400px', width: '100%', backgroundColor: '#0f172a' }}>
           <Image 
             src={post.coverImage} 
-            alt={post.title}
+            alt={`${post.title} - Official Nanded City Township Pune Real Estate Blog`}
             fill
             priority
             style={{ objectFit: 'cover', opacity: 0.4 }}
@@ -236,6 +237,8 @@ export default async function BlogPost({ params }: { params: Promise<PostParams>
           {/* Main Prose */}
           <div>
             <div className="prose" dangerouslySetInnerHTML={{ __html: post.content }} style={{ lineHeight: '1.8', color: '#334155', fontSize: '1.1rem' }} />
+            
+            <ShareWidget title={`${post.title} - Nanded City Pune Real Estate Blog`} />
 
             {/* Editorial Authority Bio */}
             {author && (
