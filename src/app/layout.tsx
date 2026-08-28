@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_CONFIG.name}`,
   },
   description: SITE_CONFIG.description,
-  keywords: "Nanded City Township Pune, Pune Real Estate Market, Sinhgad Road Real Estate, Central Pune Real Estate, Top Real Estate in Pune, buy flat in Nanded City Township Pune, 1 BHK, 2 BHK, 2.5 BHK, 3 BHK, Nanded City Sinhagad Road, Google Rankings Pune, dominating Pune Real Estate, Nanded City property investment, Nanded City ready possession flats",
+  keywords: SITE_CONFIG.seo.primaryKeywords,
   metadataBase: new URL(SITE_CONFIG.baseUrl),
   alternates: {
     canonical: SITE_CONFIG.baseUrl,
@@ -314,19 +314,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
               {/* Highly Hardened Strategy Disclaimer */}
               <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: '0.72rem', lineHeight: '1.7', marginBottom: '16px' }}>
-                The definitive Nanded City Pune Residential Platform. Explore premium 1 BHK, 2 BHK, 2.5 BHK, and 3 BHK flats near Sinhagad Road Pune. All residential clusters — including Asawari, Sargam, and Saajgiri — are MahaRERA compliant. Located near Nanded City Public School, Destination Centre, and Khadakwasla, Nanded City Township, Sinhagad Road, Pune – 411041.
+                The definitive Nanded City Township Pune Residential Platform. Explore premium 1 BHK, 2 BHK, 2.5 BHK, and 3 BHK flats near Sinhagad Road Pune. All residential clusters — including Asawari, Sargam, and Saajgiri — are MahaRERA compliant. Located near Nanded City Public School, Destination Centre, and Khadakwasla, Nanded City Township, Sinhagad Road, Pune – 411041.
               </p>
 
               <div style={{ backgroundColor: 'rgba(255,255,255,0.03)', padding: '20px', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '32px' }}>
                 <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.7rem', lineHeight: '1.8', margin: 0 }}>
-                  <strong style={{ color: 'var(--accent-gold)' }}>Disclaimer:</strong> {SITE_CONFIG.brand.organizationName} ({SITE_CONFIG.contact.phone}) is an <strong>Authorized Marketing & Sales Partner</strong> for Nanded City Pune (the Township). All information, properties, prices, and floor plans featured on this independent portal are for representational and informational purposes only and are subject to change without notice. This platform does not constitute an official offer or guarantee from Nanded City Developers. We facilitate institutional advisory and site-visit arrangements for prospective homebuyers. All trademarks and logos belong to their respective owners.
+                  <strong style={{ color: 'var(--accent-gold)' }}>Disclaimer:</strong> {SITE_CONFIG.brand.organizationName} ({SITE_CONFIG.contact.phone}) is an <strong>Authorized Marketing & Sales Partner</strong> for Nanded City Township Pune (the Township). All information, properties, prices, and floor plans featured on this independent portal are for representational and informational purposes only and are subject to change without notice. This platform does not constitute an official offer or guarantee from Nanded City Developers. We facilitate institutional advisory and site-visit arrangements for prospective homebuyers. All trademarks and logos belong to their respective owners.
                 </p>
               </div>
 
 
               {/* Footer Bottom Bar */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-                <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.8rem' }}>© {new Date().getFullYear()} Nanded City Pune. Built on trust.</span>
+                <span style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.8rem' }}>© {new Date().getFullYear()} Nanded City Township Pune. Built on trust.</span>
                 <div style={{ display: 'flex', gap: '24px' }}>
                   <Link href="/privacy-policy" style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.8rem', textDecoration: 'none' }}>Privacy Policy</Link>
                   <Link href="/terms" style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.8rem', textDecoration: 'none' }}>Terms of Use</Link>

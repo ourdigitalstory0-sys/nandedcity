@@ -62,7 +62,7 @@ export default function SearchIntelligence() {
           
           <div style={{ padding: '24px', backgroundColor: '#f1f5f9', borderRadius: '16px', fontSize: '0.85rem', color: '#64748b', lineHeight: '1.6' }}>
             <p>
-              <strong>Nanded City Pune Ecosystem:</strong> Our digital platform is optimized for the Pune real estate market, providing high-fidelity data on residential clusters like <strong>Asavari, Bageshree, Sargam, and Melody</strong>. We ensure all project information complies with <strong>MahaRERA</strong> standards, offering transparent pricing and floor plans for high-intent buyers looking for townships on <strong>Sinhagad Road</strong>.
+              <strong>Nanded City Township Pune Ecosystem:</strong> Our digital platform is optimized for the Pune real estate market, providing high-fidelity data on residential clusters like <strong>Asavari, Bageshree, Sargam, and Melody</strong>. We ensure all project information complies with <strong>MahaRERA</strong> standards, offering transparent pricing and floor plans for high-intent buyers looking for townships on <strong>Sinhagad Road</strong>.
             </p>
           </div>
         </div>

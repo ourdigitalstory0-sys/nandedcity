@@ -23,6 +23,20 @@ export const SITE_CONFIG = {
     logo: "/nc-logo.png",
     ogImage: "https://nandedcitypune.com/aalaap/assets/img/img-hero-banner-02.jpg",
   },
+  seo: {
+    primaryKeywords: [
+      "Nanded City Township Pune",
+      "Nanded City Sinhagad Road",
+      "Pune Real Estate Market",
+      "Premium Flats in Nanded City",
+      "2 BHK Nanded City",
+      "3 BHK Sinhagad Road",
+      "NA Bungalow Plots Pune",
+      "Khadakwasla Real Estate",
+      "Top Real Estate in Pune",
+      "MahaRERA Registered Projects Pune"
+    ].join(", "),
+  }
 };
 
 export function getWhatsappLink(pathname?: string | null) {
