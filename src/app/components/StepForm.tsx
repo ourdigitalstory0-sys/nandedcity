@@ -27,7 +27,8 @@ export default function StepForm({
     name: '',
     phone: '',
     email: '',
-    project: initialProject || ''
+    project: initialProject || '',
+    honey: '' // Honeypot field
   });
 
   const isDark = theme === 'dark';
@@ -52,6 +53,14 @@ export default function StepForm({
     const cleanPhone = formData.phone.replace(/\D/g, '');
     if (cleanPhone.length < 10) {
       setError("Please enter a valid 10-digit mobile number.");
+      return;
+    }
+
+    if (formData.honey) {
+      console.warn("Spam bot detected via honeypot.");
+      // Silently succeed for bots
+      setStep(3);
+      if (onSuccess) onSuccess(formData.name);
       return;
     }
 
@@ -170,6 +179,18 @@ export default function StepForm({
                 value={formData.phone}
                 onChange={e => setFormData({...formData, phone: e.target.value})}
               />
+              
+              {/* Anti-spam Honeypot */}
+              <div style={{ display: 'none' }} aria-hidden="true">
+                <input 
+                  type="text" 
+                  name="bot_field_honey" 
+                  tabIndex={-1} 
+                  autoComplete="off"
+                  value={formData.honey}
+                  onChange={e => setFormData({...formData, honey: e.target.value})}
+                />
+              </div>
 
               <AnimatePresence>
                 {error && (

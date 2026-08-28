@@ -4,9 +4,34 @@ import { SITE_CONFIG } from '@/config/site';
 import { saveLeadToVault } from '@/lib/ledger';
 
 
+// In-memory rate limiter for serverless environment (Basic protection)
+const rateLimitMap = new Map<string, { count: number; lastReset: number }>();
+const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 3;
+
 export async function POST(req: NextRequest) {
   let savedLead: any = null;
   try {
+    // 1. IP-Based Rate Limiting Hardening
+    const ip = req.headers.get('x-forwarded-for') || 'unknown';
+    const now = Date.now();
+    
+    if (ip !== 'unknown') {
+      const userLimit = rateLimitMap.get(ip) || { count: 0, lastReset: now };
+      
+      if (now - userLimit.lastReset > RATE_LIMIT_WINDOW) {
+        userLimit.count = 1;
+        userLimit.lastReset = now;
+      } else {
+        userLimit.count += 1;
+        if (userLimit.count > MAX_REQUESTS_PER_WINDOW) {
+          console.warn(`🚨 [SECURITY] Rate limit exceeded for IP: ${ip}`);
+          return NextResponse.json({ error: 'Too many requests. Please try again later.' }, { status: 429 });
+        }
+      }
+      rateLimitMap.set(ip, userLimit);
+    }
+
     const body = await req.json();
     const { name, phone, project, email, message, source, intent } = body;
 
@@ -22,6 +47,13 @@ export async function POST(req: NextRequest) {
 
     if (!cleanName || !cleanPhone || cleanPhone.length < 10) {
       return NextResponse.json({ error: 'Valid Name and Phone are required' }, { status: 400 });
+    }
+
+    // 2. Strict Indian Phone Number Hardening
+    const indianPhoneRegex = /^[6-9]\d{9}$/;
+    if (!indianPhoneRegex.test(cleanPhone)) {
+      console.warn(`🚨 [SECURITY] Invalid Phone Number format attempted: ${cleanPhone}`);
+      return NextResponse.json({ error: 'Please enter a valid 10-digit Indian mobile number.' }, { status: 400 });
     }
 
     // Security: Block obvious spam keywords or links
