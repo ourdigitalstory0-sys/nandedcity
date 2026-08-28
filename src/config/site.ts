@@ -34,7 +34,24 @@ export const SITE_CONFIG = {
       "NA Bungalow Plots Pune",
       "Khadakwasla Real Estate",
       "Top Real Estate in Pune",
-      "MahaRERA Registered Projects Pune"
+      "MahaRERA Registered Projects Pune",
+      "Melody Plots Nanded City",
+      "Aalaap Nanded City",
+      "Saajgiri Nanded City",
+      "Rhythm Plots Nanded City",
+      "Asawari Nanded City",
+      "Sargam Nanded City",
+      "Pancham Nanded City",
+      "Lalit Nanded City",
+      "Bageshree Nanded City",
+      "Kalashree Nanded City",
+      "Madhuvanti Nanded City",
+      "Sarang Nanded City",
+      "Shubh Kalyan Nanded City",
+      "Sur Nanded City",
+      "Mangal Bhairav Nanded City",
+      "Janaranjani Nanded City",
+      "Dhanashree Plots Nanded City"
     ].join(", "),
   }
 };
