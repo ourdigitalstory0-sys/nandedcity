@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ROICalculator() {
@@ -9,17 +9,9 @@ export default function ROICalculator() {
   const [growth, setGrowth] = useState(10); // 10% avg for Nanded City
   const [rental, setRental] = useState(3.5); // 3.5% avg yield
 
-  const [futureValue, setFutureValue] = useState(0);
-  const [totalRental, setTotalRental] = useState(0);
-  const [totalRoi, setTotalRoi] = useState(0);
-
-  useEffect(() => {
-    const fv = investment * Math.pow(1 + growth / 100, years);
-    const rent = investment * (rental / 100) * years;
-    setFutureValue(fv);
-    setTotalRental(rent);
-    setTotalRoi(((fv + rent - investment) / investment) * 100);
-  }, [investment, years, growth, rental]);
+  const futureValue = investment * Math.pow(1 + growth / 100, years);
+  const totalRental = investment * (rental / 100) * years;
+  const totalRoi = ((futureValue + totalRental - investment) / investment) * 100;
 
   const formatCurrency = (val: number) => 
     new Intl.NumberFormat('en-IN', { 

@@ -81,48 +81,7 @@ export const gtmEvents = {
   },
 };
 
-interface GtmProps {
-  gtmId?: string;
-}
 
-/**
- * GtmScript Component — renders the GTM container script.
- * Place this inside <head> in layout.js
- */
-export function GtmScript({ gtmId = 'GTM-XXXXXXX' }: GtmProps) {
-  return (
-    <>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','${gtmId}');
-          `,
-        }}
-      />
-    </>
-  );
-}
-
-/**
- * GtmNoScript Component — renders the GTM noscript fallback.
- * Place this at the top of <body> in layout.js
- */
-export function GtmNoScript({ gtmId = 'GTM-XXXXXXX' }: GtmProps) {
-  return (
-    <noscript>
-      <iframe
-        src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-        height="0"
-        width="0"
-        style={{ display: 'none', visibility: 'hidden' }}
-      />
-    </noscript>
-  );
-}
 
 export default function GtmEvents() {
   // This component doesn't render anything — it's just an export container

@@ -79,7 +79,7 @@ export default function TownshipEcosystem() {
           <span className="section-eyebrow">Township Ecosystem</span>
           <h2 style={{ fontSize: '2.5rem', marginTop: '12px' }}>A Self-Reliant Digital Fortress</h2>
           <p style={{ maxWidth: '700px', margin: '20px auto', color: '#64748b' }}>
-            Nanded City isn't just a project; it's a 700-acre self-contained ecosystem. Explore the internal infrastructure that drives 100% of our community's needs.
+            Nanded City isn&apos;t just a project; it&apos;s a 700-acre self-contained ecosystem. Explore the internal infrastructure that drives 100% of our community&apos;s needs.
           </p>
         </div>
 
