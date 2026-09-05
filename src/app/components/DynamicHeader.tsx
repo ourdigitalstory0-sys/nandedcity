@@ -52,11 +52,29 @@ export default function DynamicHeader() {
           left: 0,
           width: '100%',
           zIndex: 1000,
-          padding: '16px 0',
-          pointerEvents: 'none'
+          pointerEvents: 'none',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
         }}
       >
-        <div className="container" style={{ display: 'flex', justifyContent: 'center' }}>
+        {/* Entity Clarity Top Bar - SEO/E-E-A-T Hardening */}
+        <div style={{
+          width: '100%',
+          backgroundColor: '#0f172a',
+          color: '#fff',
+          textAlign: 'center',
+          padding: '6px 12px',
+          fontSize: '0.75rem',
+          fontWeight: 500,
+          letterSpacing: '0.5px',
+          pointerEvents: 'auto',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+        }}>
+          {SITE_CONFIG.brand.partnerStatus}: <strong>{SITE_CONFIG.brand.organizationName}</strong> | MahaRERA: {SITE_CONFIG.brand.rera}
+        </div>
+
+        <div className="container" style={{ display: 'flex', justifyContent: 'center', padding: '16px 0' }}>
           <motion.div 
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}

@@ -13,25 +13,25 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    quote: "Nanded City gave me exactly what I was looking for — a community of peers, not just neighbours. My family now lives in Sargam, and the township's school and hospital mean I never have to leave unless I choose to.",
-    name: "Dr. Prashant Kulkarni",
-    title: "Senior Oncologist, Sahyadri Hospital",
-    avatar: "PK",
-    property: "Sargam, 3 BHK"
+    quote: "Nanded City gave me exactly what I was looking for — a complete ecosystem. My family lives here, and having schools, parks, and essential services inside the township means unparalleled convenience.",
+    name: "Resident Experience",
+    title: "Nanded City Resident",
+    avatar: "R",
+    property: "Premium Apartment"
   },
   {
-    quote: "As a CXO, I value my time. Nanded City's internal infrastructure — from the fire station to the marketplace — means my family is completely secured. The Melody Bungalow Plot investment yielded 28% appreciation in 3 years.",
-    name: "Vikram Iyer",
-    title: "CXO, Global SaaS Firm",
-    avatar: "VI",
-    property: "Melody II, Branded Plot"
+    quote: "The internal infrastructure is excellent. From dedicated green spaces to the central marketplace, it feels like a secure, self-sustaining city. It's a wonderful environment to raise a family.",
+    name: "Resident Experience",
+    title: "Township Homeowner",
+    avatar: "H",
+    property: "Bungalow Plot"
   },
   {
-    quote: "The decision to buy into Nanded City was driven by data. The 12.5% annual appreciation and the consistent rental demand from IT professionals in Manikbaug make this Pune's most resilient real estate micro-market.",
-    name: "CA Sunita Desai",
-    title: "Chartered Accountant & Real Estate Advisor",
-    avatar: "SD",
-    property: "Aalaap-I, 2 BHK"
+    quote: "We chose Nanded City for its strategic location on Sinhagad Road and the massive open spaces. It offers a peaceful retreat away from the city traffic, yet keeps us connected to major hubs.",
+    name: "Resident Experience",
+    title: "Nanded City Resident",
+    avatar: "R",
+    property: "Premium Apartment"
   }
 ];
 

@@ -40,9 +40,9 @@ export default function Home() {
     {
       "@context": "https://schema.org",
       "@type": "RealEstateAgent",
-      "name": SITE_CONFIG.brand.developerName,
+      "name": SITE_CONFIG.brand.organizationName,
       "image": clusters[0].image,
-      "@id": SITE_CONFIG.baseUrl,
+      "@id": `${SITE_CONFIG.baseUrl}/#organization`,
       "url": SITE_CONFIG.baseUrl,
       "telephone": SITE_CONFIG.contact.phoneNumeric,
       "address": {
@@ -53,7 +53,7 @@ export default function Home() {
         "postalCode": "411041",
         "addressCountry": "IN"
       },
-      "description": `Official Nanded City ${SITE_CONFIG.brand.organizationName} portal. Explore premium residential options.`,
+      "description": `Independent Authorized Channel Partner for Nanded City Township.`,
 
       "makesOffer": clusters.filter(c => c.type === 'new').map(c => ({
         "@type": "Offer",
@@ -96,36 +96,6 @@ export default function Home() {
           "item": SITE_CONFIG.baseUrl
         }
       ]
-    },
-
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "name": SITE_CONFIG.brand.developerName,
-      "image": clusters[1].image,
-      "telephone": SITE_CONFIG.contact.phoneNumeric,
-      "description": "Leading developer dominating the Pune Real Estate Market, specializing in premium residential townships on Sinhagad Road and Central Pune.",
-      "priceRange": "₹45L - ₹2.5Cr",
-      "hasMap": "https://maps.app.goo.gl/NandedCityPune",
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 18.4612,
-        "longitude": 73.8015
-      },
-      "areaServed": [
-        { "@type": "City", "name": "Pune" },
-        { "@type": "Place", "name": "Sinhgad Road" },
-        { "@type": "Place", "name": "Central Pune" },
-        { "@type": "Place", "name": "Pune Real Estate Market" }
-      ],
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Nanded City Township, Sinhagad Road",
-        "addressLocality": "Pune",
-        "addressRegion": "Maharashtra",
-        "postalCode": "411041",
-        "addressCountry": "IN"
-      }
     },
 
     {
@@ -174,20 +144,18 @@ export default function Home() {
 
       {/* Hero */}
       <ParallaxHero bgImage="https://nandedcitypune.com/wp-content/uploads/2026/02/saajgiri-ncp-banner-img-01.webp">
-        <span className="badge badge-gold">Sinhagad Road · Pune</span>
-        <h1 className="speakable-title">Welcome to <span>Nanded City Township Pune</span></h1>
+        <span className="badge badge-gold">Independent Authorized Partner</span>
+        <h1 className="speakable-title">Nanded City Pune — <span>Property Advisory</span></h1>
         <p className="hero-seo-text">
-          Discover <strong>premium 2 & 3 BHK luxury flats</strong> and the <strong>most aspiring community of Branded NA Bungalow Plots</strong> at Nanded City Township on Sinhgad Road. A curated ecosystem for <strong>CEOs, CXOs, Doctors, CAs, and Business Owners</strong> offering world-class infrastructure across a 700-Acre township.
+          Explore current Nanded City residential projects, 2 & 3 BHK homes, bungalow plots, pricing, floor plans, and MahaRERA details. A curated ecosystem offering world-class infrastructure across a 700-Acre master-planned township.
         </p>
         <HeroActions />
         <div className="hero-stats">
-          <div className="hero-stat"><strong>400+</strong><span>Acres</span></div>
+          <div className="hero-stat"><strong>700</strong><span>Acres Master-Plan</span></div>
           <div className="hero-stat-divider" />
-          <div className="hero-stat"><strong>15k+</strong><span>Happy Families</span></div>
+          <div className="hero-stat"><strong>15k+</strong><span>Current Families</span></div>
           <div className="hero-stat-divider" />
           <div className="hero-stat"><strong>12+</strong><span>Clusters</span></div>
-          <div className="hero-stat-divider" />
-          <div className="hero-stat"><strong>25+ Yrs</strong><span>Of Trust</span></div>
         </div>
       </ParallaxHero>
       <MarketIntelligence />

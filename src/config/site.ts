@@ -1,11 +1,11 @@
 export const SITE_CONFIG = {
-  name: "Nanded City Township Pune",
-  description: "Official residential platform for Nanded City Township Pune, dominating the Pune Real Estate Market on Sinhagad Road and Central Pune. Explore 1, 2, 2.5 & 3 BHK luxury flats and branded NA bungalow plots.",
+  name: "Nanded City Pune — Independent Property Advisory",
+  description: "Independent Authorized Channel Partner for Nanded City Township, Pune. Explore 1, 2, 2.5 & 3 BHK premium flats and NA bungalow plots on Sinhagad Road.",
   baseUrl: "https://www.nanded-city.in",
   contact: {
     phone: "+91 7744009295",
     phoneNumeric: "7744009295",
-    address: "Nanded City Township, Sinhagad Road, Pune - 411041",
+    address: "PropSmart Realty, Authorized Partner, Nanded City Township, Sinhagad Road, Pune - 411041",
     whatsapp: "https://wa.me/917744009295?text=Hi,%20I%20am%20interested%20in%20the%20project.",
     whatsappPrompt: "Chat with Sales Expert",
     location: {
@@ -19,7 +19,9 @@ export const SITE_CONFIG = {
   },
   brand: {
     organizationName: "PropSmart Realty",
-    developerName: "Nanded City Developers Pune",
+    developerName: "Nanded City Development & Construction Company Limited",
+    partnerStatus: "Independent Authorized Channel Partner",
+    rera: "A7744009295",
     logo: "/nc-logo.png",
     ogImage: "https://nandedcitypune.com/aalaap/assets/img/img-hero-banner-02.jpg",
   },

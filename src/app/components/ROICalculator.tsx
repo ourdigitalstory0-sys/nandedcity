@@ -122,7 +122,7 @@ export default function ROICalculator() {
             </div>
 
             <p style={{ marginTop: '24px', fontSize: '0.75rem', color: '#64748b', textAlign: 'center' }}>
-              *Projections based on historical 2015-2026 Nanded City appreciation data.
+              *Calculations are for illustrative purposes only and do not constitute financial advice. Actual rental yields and appreciation may vary based on market conditions.
             </p>
           </motion.div>
 

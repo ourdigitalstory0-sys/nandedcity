@@ -90,12 +90,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
     "@id": `${SITE_CONFIG.baseUrl}/#organization`,
-    "name": SITE_CONFIG.brand.developerName,
-    "alternateName": SITE_CONFIG.name,
+    "name": SITE_CONFIG.brand.organizationName,
+    "alternateName": `${SITE_CONFIG.brand.partnerStatus} for ${SITE_CONFIG.brand.developerName}`,
     "url": SITE_CONFIG.baseUrl,
     "logo": `${SITE_CONFIG.baseUrl}${SITE_CONFIG.brand.logo}`, 
     "image": SITE_CONFIG.brand.ogImage,
-    "description": SITE_CONFIG.brand.organizationName + ": Authorized Partner for Nanded City Township Pune. 700+ acres of self-reliant premium township on Sinhagad Road.",
+    "description": `${SITE_CONFIG.brand.organizationName} is an Independent Authorized Channel Partner (MahaRERA: ${SITE_CONFIG.brand.rera}) offering property advisory for Nanded City Township Pune.`,
     "telephone": SITE_CONFIG.contact.phoneNumeric,
     "address": {
       "@type": "PostalAddress",
@@ -110,13 +110,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "latitude": 18.4612,
       "longitude": 73.8015
     },
-    "hasMap": "https://maps.app.goo.gl/NandedCityPune",
     "priceRange": "₹45L - ₹2.5Cr",
     "areaServed": [
       { "@type": "City", "name": "Pune" },
-      { "@type": "Place", "name": "Sinhgad Road" },
-      { "@type": "Place", "name": "Central Pune" },
-      { "@type": "Place", "name": "Pune Real Estate Market" }
+      { "@type": "Place", "name": "Sinhgad Road" }
     ],
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
@@ -126,8 +123,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     },
     "sameAs": [
       SITE_CONFIG.social.facebook,
-      SITE_CONFIG.social.instagram,
-      "https://en.wikipedia.org/wiki/Nanded_City"
+      SITE_CONFIG.social.instagram
     ],
     "contactPoint": {
       "@type": "ContactPoint",
@@ -135,25 +131,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       "contactType": "sales",
       "areaServed": "IN",
       "availableLanguage": ["en", "hi", "mr"]
-    },
-    "founder": {
-      "@type": "Person",
-      "name": "Satish Magar"
-    },
-    "foundingDate": "2010",
-    "knowsAbout": [
-      "Real Estate Investment in Pune",
-      "Pune Real Estate Market",
-      "Sinhgad Road Real Estate",
-      "Central Pune Real Estate",
-      "Luxury Apartments Sinhagad Road",
-      "NA Bungalow Plots Pune",
-      "MahaRERA Registered Projects",
-      "Township Living Pune",
-      "1 BHK, 2 BHK, 2.5 BHK, 3 BHK Flats Pune",
-      "MHADA Janaranjani Nanded City",
-      "Ready Possession Flats Pune"
-    ]
+    }
   };
 
   // WebSite Schema with SearchAction — Sitelinks Search Box eligibility
@@ -161,9 +139,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE_CONFIG.baseUrl}/#website`,
-    "name": "Nanded City Township Pune Residences",
+    "name": "Nanded City Pune — Independent Property Advisory",
     "url": SITE_CONFIG.baseUrl,
-    "description": "Official residential platform for Nanded City Township, Sinhagad Road, Pune — premium asavari, bageshree, sargam apartments and branded NA bungalow plots.",
+    "description": "Independent Authorized Channel Partner for Nanded City Township, Pune. Explore 1, 2, 2.5 & 3 BHK premium flats and NA bungalow plots on Sinhagad Road.",
     "publisher": {
       "@id": `${SITE_CONFIG.baseUrl}/#organization`
     },
